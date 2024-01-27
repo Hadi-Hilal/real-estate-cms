@@ -1,0 +1,14 @@
+{
+    "Users": "المستخدمين",
+    "Admins": "المشرفين",
+    "Admin": "المشرف",
+    "Last Login": "آخر تسجيل دخول",
+    "Verified": "تم التحقق من الايميل",
+    "Never Logged In": "لم يقم بتسجيل الدخول",
+    "Switch To Admin": "التبديل إلى المسؤول",
+    "Switch To User": "التبديل إلى المستخدم",
+    "Search In Users": "ابحث في المستخدمين",
+    "Search In Admins": "ابحث في المشرفين",
+    "User Type": "نوع المستخدم",
+    "Users Deleted Successfully": "تم حذف المستخدمين بنجاح"
+}

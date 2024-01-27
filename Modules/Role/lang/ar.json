@@ -1,0 +1,20 @@
+{
+    "Roles List": "قائمة الأدوار",
+    "Roles": "الادوار",
+    "Craete": "إنشاء",
+    "Role Name": "اسم الدور",
+    "New Role": "إضافة دور جديد",
+    "View Role Details": "عرض تفاصيل الدور",
+    "Total Users With This Role": "إجمالي المستخدمين في هذا الدور :",
+    "Total Permissions With This Role": "مجموع الأذونات :",
+    "Enter A Role Name": "أدخل اسم الدور",
+    "Role Permissions": "أذونات الدور",
+    "Administrator Access": "وصول المسؤول",
+    "View Role": "عرض الدور",
+    "Edit Role": "تعديل الدور",
+    "Update Role": "تحديث الدور",
+    "Delete Role": "حذف الدور",
+    "No Role Assigned": "لم يتم تعيين دور",
+    "Assign New User": "تعيين مستخدم جديد لدور",
+    "Users Assigned": "المستخدمون المعينون"
+}

@@ -1,0 +1,30 @@
+{
+    "name": "hadi/currency",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Currency\\": "",
+            "Modules\\Currency\\App\\": "app/",
+            "Modules\\Currency\\Database\\Factories\\": "database/factories/",
+            "Modules\\Currency\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Currency\\Tests\\": "tests/"
+        }
+    }
+}

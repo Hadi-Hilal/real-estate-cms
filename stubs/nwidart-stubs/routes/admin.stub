@@ -1,0 +1,11 @@
+<?php
+use Illuminate\Support\Facades\Route;
+use $MODULE_NAMESPACE$\$STUDLY_NAME$\$CONTROLLER_NAMESPACE$\$STUDLY_NAME$Controller;
+
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified' , 'can:Manage $STUDLY_NAME$s'])->group(function () {
+
+        Route::resource('$LOWER_NAME$s', $STUDLY_NAME$Controller::class)->except('destroy', 'show');
+        Route::delete('$LOWER_NAME$s/deleteMulti', [$STUDLY_NAME$Controller::class, 'deleteMulti'])->name('$LOWER_NAME$s.deleteMulti');
+
+});

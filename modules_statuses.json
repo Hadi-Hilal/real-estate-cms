@@ -1,0 +1,13 @@
+{
+    "Dashboard": true,
+    "Role": true,
+    "Settings": true,
+    "User": true,
+    "Subscriber": true,
+    "Testimonial": true,
+    "Site": true,
+    "Core": true,
+    "Faq": true,
+    "Blog": true,
+    "Currency": true
+}

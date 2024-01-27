@@ -1,0 +1,30 @@
+{
+    "name": "hadi/testimonial",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Testimonial\\": "",
+            "Modules\\Testimonial\\App\\": "app/",
+            "Modules\\Testimonial\\Database\\Factories\\": "database/factories/",
+            "Modules\\Testimonial\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Testimonial\\Tests\\": "tests/"
+        }
+    }
+}

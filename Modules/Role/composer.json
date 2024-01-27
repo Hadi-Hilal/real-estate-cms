@@ -1,0 +1,30 @@
+{
+    "name": "hadi/role",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Role\\": "",
+            "Modules\\Role\\App\\": "app/",
+            "Modules\\Role\\Database\\Factories\\": "database/factories/",
+            "Modules\\Role\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Role\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@extends('layouts.admin.base')
+
+@section('title' , __('$LOWER_NAME$'))
+
+@section('toolbar')
+    @php
+        $breadcrumbItems = [
+            ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
+            ['label' => '$LOWER_NAME$'],
+        ];
+    @endphp
+    <x-admin.breadcrumb :pageTitle="__('$LOWER_NAME$')" :breadcrumbItems="$breadcrumbItems"/>
+    <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
+@endsection
+
+@section('content')
+@endsection

@@ -1,0 +1,30 @@
+{
+    "name": "hadi/faq",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Faq\\": "",
+            "Modules\\Faq\\App\\": "app/",
+            "Modules\\Faq\\Database\\Factories\\": "database/factories/",
+            "Modules\\Faq\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Faq\\Tests\\": "tests/"
+        }
+    }
+}
