@@ -5,9 +5,10 @@
     "User": true,
     "Subscriber": true,
     "Testimonial": true,
-    "Site": true,
     "Core": true,
     "Faq": true,
     "Blog": true,
-    "Currency": true
+    "Currency": true,
+    "FileManger": true,
+    "Page": true
 }

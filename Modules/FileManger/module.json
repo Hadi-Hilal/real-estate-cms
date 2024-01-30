@@ -1,0 +1,11 @@
+{
+    "name": "FileManger",
+    "alias": "filemanger",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\FileManger\\app\\Providers\\FileMangerServiceProvider"
+    ],
+    "files": []
+}

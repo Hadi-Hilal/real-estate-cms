@@ -64,7 +64,7 @@
     "Blog Title" : "عنوان المدونة",
     "Blog Image" : "صورة المدونة",
     "Blog Intro" : "مقدمة المدونة",
-    "Blog Keywords" : "الكلمات المفتاحية ",
+    "Keywords" : "الكلمات المفتاحية ",
     "Content" : "المحتوى",
     "Featured" : "مميز" ,
     "Image" : "الصورة" ,
@@ -88,13 +88,19 @@
     "Dark Mode" : "الوضع الليلي",
     "Light Mode" : "الوضع النهاري",
     "Actions" : "الإجراءات",
-
-
+    "Title" : "العنوان",
+    "Url": "عنوان URL",
+    "Brief Description" : "وصف مختصر",
+    "Character": "حرف",
 
     "Manage Settings" : "إدارة الإعدادات",
-    "Manage Roles" : "إدارة الأدوار",
+    "Manage Pages" : "إدارة الصفحات",
+    "Manage FileManger" : "إدارة مدير الملفات",
+    "Manage Faqs" : "إدارة الأسئلة الشائعة",
     "Manage Testimonials" : "إدارة توصيات العملاء",
     "Manage Subscribers" : "إدارة المشتركين",
+    "Manage Currencies" : "إدارة العملات",
+    "Manage Roles" : "إدارة الأدوار",
     "Manage Users & Admins" : "إدارة المستخدمين والمسؤولين"
 
 }

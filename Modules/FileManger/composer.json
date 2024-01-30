@@ -1,0 +1,31 @@
+{
+    "name": "hadi/filemanger",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\FileManger\\": "",
+            "Modules\\FileManger\\App\\": "app/",
+            "Modules\\FileManger\\Database\\Factories\\": "database/factories/",
+            "Modules\\FileManger\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\FileManger\\Tests\\": "tests/"
+        }
+    }
+}
