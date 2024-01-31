@@ -12,7 +12,7 @@ class CurrencyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'img' => 'required|image|mimes:jpeg,png,jpg,webp|max:1048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:1048',
             'name' => 'required|string|min:3',
             'code' => 'required|string|size:3',
         ];

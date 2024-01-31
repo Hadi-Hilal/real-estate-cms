@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('type', ['custom', 'service'])->default('custom');
             $table->enum('publish', ['published', 'archived'])->default('published');
             $table->boolean('featured')->default(true);
+            $table->bigInteger('visites')->default(0);
             $table->timestamps();
         });
     }

@@ -29,6 +29,7 @@
     "Delete Selected" : "امسح المحدد" ,
     "User": "المستخدم" ,
     "Joined Date" : "تاريخ الانضمام",
+    "Created At" : "تاريخ الانشاء",
     "Please Chose One" : "إختر واحد من فضلك",
     "This action cannot be undone." : "لا يمكن التراجع عن هذا الإجراء.",
     "Yes Delete!" : "نعم ، احذف!!" ,
@@ -92,6 +93,7 @@
     "Url": "عنوان URL",
     "Brief Description" : "وصف مختصر",
     "Character": "حرف",
+    "Visites" : "عدد الزيارات",
 
     "Manage Settings" : "إدارة الإعدادات",
     "Manage Pages" : "إدارة الصفحات",

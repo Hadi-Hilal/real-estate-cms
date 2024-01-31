@@ -134,7 +134,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input class="form-control" value="{{old('keywords' , 'Real Estate,')}}" name="keywords" id="kt_tagify_1"/>
+                <input class="form-control" value="{{old('keywords' , 'Real Estate,')}}" name="keywords"
+                       id="kt_tagify_1"/>
             </div>
         </div>
 
@@ -192,10 +193,7 @@
 @endsection
 
 @section('js')
-
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
-
+    <script src="https://cdn.tiny.cloud/1/{{Config::get('core.tinymce_key')}}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         $(document).ready(function (e) {
             var input1 = document.querySelector("#kt_tagify_1");
@@ -228,16 +226,17 @@
                     .trim(); // Trim leading/trailing whitespace and dashes
             }
 
-            $('textarea#tinymce').tinymce({
-            height: 600, /* other settings... */
-            relative_urls: true,
-            browser_spellcheck: true,
-            plugins: 'link autolink , image , insertdatetime , table',
-            link_default_target: '_blank',
-            @if(app()->getLocale() == 'ar') language: 'ar', @endif
-            images_file_types: 'jpg,svg,png,webp'
+            tinymce.init({
+                selector: 'textarea',
+                height: 750,
+                plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                @if(app()->getLocale() == 'ar') language: 'ar', @endif
+                ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+            });
 
-        });
         })
 
     </script>

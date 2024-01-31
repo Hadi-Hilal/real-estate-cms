@@ -17,7 +17,7 @@ class PageController extends Controller
    }
     public function index(Request $request)
     {
-        $pages = $this->pageRepository->paginate($request , ['id', 'title' , 'slug' , 'image' , 'type' , 'publish' , 'featured' , 'featured']);
+        $pages = $this->pageRepository->paginate($request , ['id', 'title' , 'slug' , 'image' , 'type' , 'publish' , 'featured' , 'visites' , 'created_at']);
 
         return view('page::admin.index' , compact('pages'));
     }

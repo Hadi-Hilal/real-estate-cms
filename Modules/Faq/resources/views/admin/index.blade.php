@@ -60,7 +60,7 @@
                     <span
                         class="badge badge-light-{{$faq->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($faq->publish)}}</span>
                 </td>
-                <td class="text-end">
+                <td >
                     <a href="{{route('admin.faqs.edit' , [$faq->id])}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">

@@ -10,8 +10,6 @@ use Modules\Currency\app\Models\Currency;
 
 class CurrencyService
 {
-
-
     public function updateExchangeRatesFromApi()
     {
         try {

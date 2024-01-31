@@ -137,7 +137,7 @@
                 <!--begin::Joined-->
                 <!--begin::Action=-->
 
-                <td class="text-end">
+                <td >
                     <a href="{{route('admin.users.switch' , [$user->id])}}"
                        class="btn btn-outline-primary btn-outline btn-sm">
                         {{__('Switch To Admin')}}

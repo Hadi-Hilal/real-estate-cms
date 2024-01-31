@@ -72,7 +72,7 @@
                         <span
                             class="badge badge-light-{{$testimonial->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($testimonial->publish)}}</span>
                 </td>
-                <td class="text-end">
+                <td >
                     <a href="{{route('admin.testimonials.edit' , $testimonial->id)}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">

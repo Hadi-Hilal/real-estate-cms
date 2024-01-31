@@ -19,7 +19,7 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Custom Pages')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-           <a href="{{route('admin.pages.create')}}" class="btn btn-light-primary me-3">
+        <a href="{{route('admin.pages.create')}}" class="btn btn-light-primary me-3">
             <i class="ki-duotone ki-message-add fs-2">
                 <span class="path1"></span>
                 <span class="path2"></span>
@@ -27,7 +27,7 @@
             </i>
             {{__('New Custom Page')}}</a>
 
-         <!--begin::Filter-->
+        <!--begin::Filter-->
         <button type="button" class="btn btn-sm btn-primary me-3" data-kt-menu-trigger="click"
                 data-kt-menu-placement="bottom-end">
             <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
@@ -50,40 +50,30 @@
                 <!--begin::Separator-->
                 <div class="separator border-gray-200"></div>
                 <!--end::Separator-->
-                    <!--begin::Content-->
+                <!--begin::Content-->
                 <div class="px-7 py-5" data-kt-user-table-filter="form">
-{{--                    <div class="mb-10">--}}
-{{--                        <label class="form-label fs-6 fw-bold">{{__('Featured')}}:</label>--}}
-{{--                        <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"--}}
-{{--                                data-placeholder="Select option" data-allow-clear="true"--}}
-{{--                                data-kt-user-table-filter="featured" data-hide-search="true" name="featured">--}}
-{{--                            <option value="" ></option>--}}
-{{--                            <option @checked(request()->query('featured') == 1) value="1">{{__('Yes')}}</option>--}}
-{{--                             <option @checked(request()->query('featured') == 0)  value="0">{{__('No')}}</option>--}}
-
-{{--                        </select>--}}
-{{--                    </div>--}}
-
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Publish')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
                                 data-placeholder="Select option" data-allow-clear="true"
                                 data-kt-user-table-filter="featured" data-hide-search="true" name="publish">
                             <option value="" selected></option>
-                            <option @selected(request()->query('publish') == 'published') value="published">{{__('published')}}</option>
-                             <option @selected(request()->query('publish') == 'archived') value="archived">{{__('archived')}}</option>
-
+                            <option
+                                @selected(request()->query('publish') == 'published') value="published">{{__('published')}}</option>
+                            <option
+                                @selected(request()->query('publish') == 'archived') value="archived">{{__('archived')}}</option>
                         </select>
                     </div>
-                       <div class="mb-10">
+                    <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Type')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
                                 data-placeholder="Select option" data-allow-clear="true"
                                 data-kt-user-table-filter="featured" data-hide-search="true" name="type">
                             <option value="" selected></option>
-                            <option @selected(request()->query('type') == 'custom')  value="custom">{{__('Custom Page')}}</option>
-                             <option @selected(request()->query('type') == 'service') value="service">{{__('Service Page')}}</option>
-
+                            <option
+                                @selected(request()->query('type') == 'custom')  value="custom">{{__('Custom Page')}}</option>
+                            <option
+                                @selected(request()->query('type') == 'service') value="service">{{__('Service Page')}}</option>
                         </select>
                     </div>
                     <!--begin::Actions-->
@@ -97,10 +87,8 @@
                     <!--end::Actions-->
                 </div>
                 <!--end::Content-->
-
             </form>
         </div>
-
 
     </div>
 @endsection
@@ -122,7 +110,9 @@
             <th class="min-w-200px">{{__('Title')}}</th>
             <th class="min-w-150px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
-             <th class="min-w-150px">{{__('Type')}}</th>
+            <th class="min-w-150px">{{__('Type')}}</th>
+            <th class="min-w-150px">{{__('Created At')}}</th>
+            <th class="min-w-150px"><i class="bi bi-eye text-primary fa-2x"></i></th>
             <th class="min-w-200px text-end rounded-end"></th>
         </tr>
         </thead>
@@ -159,19 +149,26 @@
                     @endif
                 </td>
                 <td>
-                    <span class="badge badge-light-{{$page->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($page->publish)}}</span>
+                    <span
+                        class="badge badge-light-{{$page->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($page->publish)}}</span>
                 </td>
                 <td>
-                    {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }}
+                   <strong> {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }} </strong>
                 </td>
-                <td class="text-end">
-                        <a href="{{route('admin.pages.edit' , $page->id)}}"
-                           class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                            <i class="ki-duotone ki-message-edit fs-1">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                        </a>
+                <td>
+                    {{$page->created_at->diffForHumans() }}
+                </td>
+                <td>
+                    {{$page->visites }}
+                </td>
+                <td >
+                    <a href="{{route('admin.pages.edit' , $page->id)}}"
+                       class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                        <i class="ki-duotone ki-message-edit fs-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </a>
                 </td>
             </tr>
         @endforeach

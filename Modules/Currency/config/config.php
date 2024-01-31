@@ -2,7 +2,7 @@
 
 return [
     'name' => 'Currency',
-    'apiKey' => 'af5a037b12b98de0c82d5d263f1689a5',
+    'apiKey' => '57980fdcfcda965d6e39115369b236c0',
     'currencyCodes' => [
         'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN', 'BAM',
         'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 'BSD', 'BTC',

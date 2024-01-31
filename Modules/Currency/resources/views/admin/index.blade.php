@@ -73,7 +73,7 @@
                 <td>
                     {{$currency->updated_at->diffForHumans()}}
                 </td>
-                <td class="text-end">
+                <td >
                     <a href="{{route('admin.currencies.edit' , $currency->id)}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">
