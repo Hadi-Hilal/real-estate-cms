@@ -3,27 +3,30 @@
 namespace Modules\Page\app\Repositories;
 
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Http\Request;
 use Modules\Core\app\Traits\FileTrait;
 use Modules\Page\app\Http\Requests\PageRequest;
 use Modules\Page\app\Models\Page;
 
 class PageModelRepository implements PageRepository
 {
-use FileTrait;
+    use FileTrait;
+
     protected $pageUploadPath = 'pages';
-public function paginate(Request $request, array $columns = ['*']): LengthAwarePaginator
-{
-    return Page::select($columns)
-        ->when($request->has('publish') and $request->query('publish'), function ($q) use ($request) {
-            $q->where('publish', $request->query('publish'));
-        })
-        ->when($request->has('type') and $request->query('type'), function ($q) use ($request) {
-            $q->where('type', $request->query('type'));
-        })->paginate(Config::get('core.page_size'));
-}
+
+    public function paginate(Request $request, array $columns = ['*']): LengthAwarePaginator
+    {
+        return Page::select($columns)
+            ->when($request->has('publish') and $request->query('publish'), function ($q) use ($request) {
+                $q->where('publish', $request->query('publish'));
+            })
+            ->when($request->has('type') and $request->query('type'), function ($q) use ($request) {
+                $q->where('type', $request->query('type'));
+            })->paginate(Config::get('core.page_size'));
+    }
+
     public function store(PageRequest $request): bool
     {
         if ($request->has('img')) {
@@ -35,11 +38,11 @@ public function paginate(Request $request, array $columns = ['*']): LengthAwareP
         $keywordsInput = $request->input('keywords');
         $decodedData = json_decode($keywordsInput, true);
         $valuesArray = array_column($decodedData, 'value');
-        $keywords = implode(', ' ,$valuesArray);
+        $keywords = implode(', ', $valuesArray);
 
         $request->merge([
             'image' => $path,
-            'keywords' => $keywords ,
+            'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'Published' : 'Archived',
             'featured' => $request->has('featured') ? 1 : 0,
         ]);
@@ -64,10 +67,10 @@ public function paginate(Request $request, array $columns = ['*']): LengthAwareP
         $keywordsInput = $request->input('keywords');
         $decodedData = json_decode($keywordsInput, true);
         $valuesArray = array_column($decodedData, 'value');
-        $keywords = implode(', ' ,$valuesArray);
+        $keywords = implode(', ', $valuesArray);
 
         $request->merge([
-            'keywords' => $keywords ,
+            'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'Published' : 'Archived',
             'featured' => $request->has('featured') ? 1 : 0,
         ]);

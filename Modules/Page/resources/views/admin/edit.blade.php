@@ -1,6 +1,6 @@
 @extends('layouts.admin.base')
 
-    @section('title' , __('Edit Page'))
+@section('title' , __('Edit Page'))
 
 @section('toolbar')
     @php
@@ -65,7 +65,6 @@
             </div>
             <!--end::Col-->
         </div>
-           <input type="hidden" name="slug" value="{{$page->slug}}" id="slug">
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -76,7 +75,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="title" value="{{old('title' , $page->title)}}"
+                <input type="text" class="form-control form-control-solid" name="title"
+                       value="{{old('title' , $page->title)}}"
                        placeholder="About us"/>
 
             </div>
@@ -121,7 +121,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input class="form-control" value="{{old('keywords' , $page->keywords)}}" name="keywords" id="kt_tagify_1"/>
+                <input class="form-control" value="{{old('keywords' , $page->keywords)}}" name="keywords"
+                       id="kt_tagify_1"/>
             </div>
         </div>
 
@@ -135,12 +136,14 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" @checked($page->type == 'custom') type="radio" name="type" id="inlineRadio1"
+                    <input class="form-check-input" @checked($page->type == 'custom') type="radio" name="type"
+                           id="inlineRadio1"
                            value="custom">
                     <label class="form-check-label" for="inlineRadio1">{{__('Custom Page')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input"  @checked($page->type == 'service') type="radio" name="type" id="inlineRadio2"
+                    <input class="form-check-input" @checked($page->type == 'service') type="radio" name="type"
+                           id="inlineRadio2"
                            value="service">
                     <label class="form-check-label" for="inlineRadio2">{{__('Service Page')}}</label>
                 </div>
@@ -157,7 +160,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" @checked($page->publish == 'published') type="checkbox" name="publish"
+                    <input class="form-check-input h-30px w-50px"
+                           @checked($page->publish == 'published') type="checkbox" name="publish"
                            id="flexSwitch30x50"/>
                 </div>
             </div>
@@ -171,7 +175,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" @checked($page->featured == 1) type="checkbox" name="featured" id="flexSwitch30x50"/>
+                    <input class="form-check-input h-30px w-50px" @checked($page->featured == 1) type="checkbox"
+                           name="featured" id="flexSwitch30x50"/>
                 </div>
             </div>
         </div>
@@ -180,7 +185,8 @@
 
 @section('js')
 
-    <script src="https://cdn.tiny.cloud/1/{{Config::get('core.tinymce_key')}}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{Config::get('core.tinymce_key')}}/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
     <script>
         $(document).ready(function (e) {
             var input1 = document.querySelector("#kt_tagify_1");

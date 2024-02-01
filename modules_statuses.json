@@ -7,8 +7,8 @@
     "Testimonial": true,
     "Core": true,
     "Faq": true,
-    "Blog": true,
     "Currency": true,
     "FileManger": true,
-    "Page": true
+    "Page": true,
+    "Blog": true
 }

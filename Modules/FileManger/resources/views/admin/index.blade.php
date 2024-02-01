@@ -20,9 +20,8 @@
 
     <div id="fm" style="height: 600px;"></div>
 
-
 @endsection
 @section('js')
-        <!-- File manager -->
+    <!-- File manager -->
     <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
-    @endsection
+@endsection

@@ -2,8 +2,8 @@
 
 namespace Modules\Page\app\Repositories;
 
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Modules\Page\app\Http\Requests\PageRequest;
 use Modules\Page\app\Models\Page;
 

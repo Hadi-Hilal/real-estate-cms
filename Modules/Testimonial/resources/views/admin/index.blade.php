@@ -53,10 +53,10 @@
 
                 <td>
                     <div class="d-flex align-items-center">
-                        <div class="symbol symbol-50px me-5 symbol-circle">
+                        <a href="{{$testimonial->image}}" target="_blank" class="symbol symbol-50px me-5 symbol-circle">
                             <img src="{{$testimonial->image}}" class=""
                                  alt="{{$testimonial->name}}"/>
-                        </div>
+                        </a>
                         <div class="d-flex justify-content-start flex-column">
                             <a href="{{$testimonial->link ?? '#'}}"
                                class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{$testimonial->name}}</a>
@@ -72,7 +72,7 @@
                         <span
                             class="badge badge-light-{{$testimonial->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($testimonial->publish)}}</span>
                 </td>
-                <td >
+                <td>
                     <a href="{{route('admin.testimonials.edit' , $testimonial->id)}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">

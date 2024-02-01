@@ -13,8 +13,8 @@ class PageRequest extends FormRequest
     {
         return [
             'img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'title' => 'required|string|min:3',
-            'slug' => 'required|string|min:3',
+            'title' => 'required|string|min:4',
+            'slug' => 'sometimes|string|min:4|unique:pages,slug',
             'description' => 'required|string|min:10',
             'content' => 'required|min:25',
             'keywords' => 'required',

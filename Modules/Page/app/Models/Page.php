@@ -11,9 +11,9 @@ class Page extends Model
     use HasFactory;
     use HasTranslations;
 
-    protected $appends = ['image_link'];
     public $translatable = ['title', 'description', 'content', 'keywords'];
-    protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'type', 'publish', 'keywords', 'featured' , 'visites'];
+    protected $appends = ['image_link'];
+    protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'type', 'publish', 'keywords', 'featured', 'visites'];
 
     public function getImageLinkAttribute()
     {

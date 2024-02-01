@@ -91,7 +91,6 @@
             <div class="col-xl-9 fv-row">
                 <input type="text" class="form-control form-control-solid" name="title" value="{{old('title')}}"
                        placeholder="About us"/>
-
             </div>
         </div>
         <div class="row mb-8">
@@ -193,17 +192,18 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.tiny.cloud/1/{{Config::get('core.tinymce_key')}}/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{Config::get('core.tinymce_key')}}/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
     <script>
         $(document).ready(function (e) {
             var input1 = document.querySelector("#kt_tagify_1");
             new Tagify(input1);
 
-            $('#gslug').on('keyup', function () {
+            $('#gslug').on('input', function () {
                 var val = $(this).val();
                 var slug = generateSlug(val);
                 if (slug !== '') {
-                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/articles/" + slug);
+                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/" + slug);
                     $('#slug').val(slug);
                 } else {
                     $('#link').addClass('text-danger').text("{{__('The Slug Should Be English')}}");
@@ -211,7 +211,7 @@
 
             });
 
-            $("#description").on("keyup", function () {
+            $("#description").on("input", function () {
                 var text = $(this).val();
                 var charCount = text.length;
                 $("#wordCountDisplay").text(charCount + ' ' + '{{__('Character')}}');

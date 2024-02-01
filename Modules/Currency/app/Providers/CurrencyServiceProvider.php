@@ -41,7 +41,7 @@ class CurrencyServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-         $this->app->booted(function () {
+        $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
             $schedule->call(function () {
                 (new CurrencyService())->updateExchangeRatesFromApi();

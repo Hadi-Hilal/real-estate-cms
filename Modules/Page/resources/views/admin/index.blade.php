@@ -129,10 +129,10 @@
 
                 <td>
                     <div class="d-flex align-items-center">
-                        <div class="symbol me-5">
+                        <a href="{{$page->image_link}}" target="_blank" class="symbol me-5">
                             <img src="{{$page->image_link}}" class=""
                                  alt="{{$page->title}}"/>
-                        </div>
+                        </a>
                     </div>
                 </td>
                 <td>
@@ -153,7 +153,7 @@
                         class="badge badge-light-{{$page->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($page->publish)}}</span>
                 </td>
                 <td>
-                   <strong> {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }} </strong>
+                    <strong> {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }} </strong>
                 </td>
                 <td>
                     {{$page->created_at->diffForHumans() }}
@@ -161,7 +161,7 @@
                 <td>
                     {{$page->visites }}
                 </td>
-                <td >
+                <td>
                     <a href="{{route('admin.pages.edit' , $page->id)}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">

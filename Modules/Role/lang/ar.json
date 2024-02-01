@@ -16,5 +16,15 @@
     "Delete Role": "حذف الدور",
     "No Role Assigned": "لم يتم تعيين دور",
     "Assign New User": "تعيين مستخدم جديد لدور",
-    "Users Assigned": "المستخدمون المعينون"
+    "Users Assigned": "المستخدمون المعينون",
+    "Manage Settings": "إدارة الإعدادات",
+    "Manage Blogs": "إدارة المدونات",
+    "Manage Pages": "إدارة الصفحات",
+    "Manage FileManger": "إدارة مدير الملفات",
+    "Manage Faqs": "إدارة الأسئلة الشائعة",
+    "Manage Testimonials": "إدارة توصيات العملاء",
+    "Manage Subscribers": "إدارة المشتركين",
+    "Manage Currencies": "إدارة العملات",
+    "Manage Roles": "إدارة الأدوار",
+    "Manage Users & Admins": "إدارة المستخدمين والمسؤولين"
 }

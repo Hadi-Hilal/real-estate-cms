@@ -1,16 +1,16 @@
 <?php
 
-namespace Modules\Faq\app\Models;
+namespace Modules\Blog\app\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Faq extends Model
+class BlogCategory extends Model
 {
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['title', 'content'];
-    protected $fillable = ['title', 'content', 'link', 'publish'];
+    public $translatable = ['name'];
+    protected $fillable = ['name', 'slug'];
 }

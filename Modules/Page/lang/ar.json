@@ -1,10 +1,9 @@
 {
-    "Pages" : "الصفحات",
+    "Pages": "الصفحات",
     "Custom Pages": "صفحات مخصصة",
-    "New Page" : "إضافة صفحة جديدة",
-    "This Description Very Important For SEO Should Be Between 150-160 characters" :
-    "هذا الوصف مهم جدًا لتحسين محركات البحث (SEO) ويجب أن يتراوح بين 150-160 حرفًا",
-    "Page Type" : "نوع الصفحة",
-    "Custom Page" : "صفحة مخصصة",
-    "Service Page" : "صفحة خدمات"
+    "New Page": "إضافة صفحة جديدة",
+    "This Description Very Important For SEO Should Be Between 150-160 characters": "هذا الوصف مهم جدًا لتحسين محركات البحث (SEO) ويجب أن يتراوح بين 150-160 حرفًا",
+    "Page Type": "نوع الصفحة",
+    "Custom Page": "صفحة مخصصة",
+    "Service Page": "صفحة خدمات"
 }

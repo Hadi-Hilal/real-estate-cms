@@ -4,8 +4,8 @@ namespace Modules\Testimonial\app\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Testimonial\app\Repositories\TestimonialModelRepository;
 use Modules\Testimonial\app\Repositories\CurrencyRepository;
+use Modules\Testimonial\app\Repositories\TestimonialModelRepository;
 use Modules\Testimonial\app\Repositories\TestimonialRepository;
 
 class TestimonialServiceProvider extends ServiceProvider
