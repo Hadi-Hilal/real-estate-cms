@@ -5,11 +5,8 @@
     "Add New Category": "إضافة تصنيف جديدة",
     "Edit Category": "تعديل التصنيف",
     "Search In Categories": "ابحث في أقسام المدونات",
-    "Add New Blog": "أضف مدونة جديدة",
-    "Edit Blog": "تعديل المدونة",
-    "Blog Link": "رابط المدونة",
-    "Blog Title": "عنوان المدونة",
-    "Blog Image": "صورة المدونة",
-    "Blog Intro": "مقدمة المدونة",
-    "New Post": "منشور جديد"
+    "Add New Post": "أضف منشور جديد",
+    "Edit Post": "تعديل المنشور",
+    "Posts": "المنشورات",
+    "Search In Posts": "ابحث في أقسام المنشورات"
 }

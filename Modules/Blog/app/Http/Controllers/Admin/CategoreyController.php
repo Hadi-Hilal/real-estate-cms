@@ -5,7 +5,6 @@ namespace Modules\Blog\app\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Modules\Blog\app\Http\Requests\BlogCategoryRequest;
 use Modules\Blog\app\Models\BlogCategory;
 
@@ -17,7 +16,7 @@ class CategoreyController extends Controller
         $this->setActive('blogs');
         $this->setActive('categories');
         $categories = BlogCategory::paginate($this->pageSize());
-        return view('blog::admin.categories', compact('categories'));
+        return view('blog::admin.categories.index', compact('categories'));
     }
 
     public function store(BlogCategoryRequest $request): RedirectResponse

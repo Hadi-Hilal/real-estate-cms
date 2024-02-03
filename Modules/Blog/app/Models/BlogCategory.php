@@ -13,4 +13,9 @@ class BlogCategory extends Model
 
     public $translatable = ['name'];
     protected $fillable = ['name', 'slug'];
+
+    public function posts()
+    {
+        return $this->hasMany(BlogPost::class, 'category_id');
+    }
 }

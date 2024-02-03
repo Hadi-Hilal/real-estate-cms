@@ -1,36 +1,37 @@
 <?php
 
-namespace Modules\Page\app\Repositories;
+namespace Modules\Blog\app\Repositories;
 
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Notification;
+use Modules\Blog\app\Http\Requests\BlogPostRequest;
+use Modules\Blog\app\Models\BlogPost;
+use Modules\Blog\app\Notifications\NotifySubscribers;
 use Modules\Core\app\Traits\FileTrait;
-use Modules\Page\app\Http\Requests\PageRequest;
 use Modules\Page\app\Models\Page;
+use Modules\Subscriber\app\Models\Subscriber;
 
-class PageModelRepository implements PageRepository
+class PostModelRepository implements PostRepository
 {
     use FileTrait;
 
-    private string $pageUploadPath = 'pages';
+    private string $postUploadPath = 'posts';
 
     public function paginate(Request $request, array $columns = ['*']): LengthAwarePaginator
     {
-        return Page::select($columns)
+        return BlogPost::select($columns)
             ->when($request->has('publish') and $request->query('publish'), function ($q) use ($request) {
                 $q->where('publish', $request->query('publish'));
-            })
-            ->when($request->has('type') and $request->query('type'), function ($q) use ($request) {
-                $q->where('type', $request->query('type'));
             })->paginate(Config::get('core.page_size'));
     }
 
-    public function store(PageRequest $request): bool
+    public function store(BlogPostRequest $request): bool
     {
         if ($request->has('img')) {
-            $path = $this->upload($request->file('img'), $this->pageUploadPath, $request->input('slug'));
+            $path = $this->upload($request->file('img'), $this->postUploadPath, $request->input('slug'));
         } else {
             session()->flash('error', __('The Client Image Is Required'));
             return false;
@@ -47,8 +48,12 @@ class PageModelRepository implements PageRepository
             'featured' => $request->has('featured') ? 1 : 0,
         ]);
         try {
-            Page::create($request->all());
-            cache()->forget('pages');
+            $blogPost = BlogPost::create($request->all());
+            if ($request->has('notification')) {
+                $subscribers = Subscriber::all();
+                Notification::send($subscribers, new NotifySubscribers($blogPost));
+            }
+            cache()->forget('posts');
             return true;
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
@@ -56,10 +61,10 @@ class PageModelRepository implements PageRepository
         return false;
     }
 
-    public function update(PageRequest $request, Page $page): bool
+    public function update(BlogPostRequest $request, BlogPost $post): bool
     {
         if ($request->has('img')) {
-            $path = $this->upload($request->file('img'), $this->pageUploadPath, $request->input('slug'), $page->image);
+            $path = $this->upload($request->file('img'), $this->postUploadPath, $request->input('slug'), $post->image);
             $request->merge([
                 'image' => $path,
             ]);
@@ -75,8 +80,8 @@ class PageModelRepository implements PageRepository
             'featured' => $request->has('featured') ? 1 : 0,
         ]);
         try {
-            $page->update($request->all());
-            cache()->forget('pages');
+            $post->update($request->all());
+            cache()->forget('posts');
             return true;
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
@@ -87,10 +92,10 @@ class PageModelRepository implements PageRepository
     public function deleteMulti(array $ids): bool
     {
         try {
-            $pageImages = Page::whereIn('id', $ids)->pluck('image')->toArray();
-            Page::destroy($ids);
-            $this->deleteFile($pageImages);
-            cache()->forget('pages');
+            $postImages = Page::whereIn('id', $ids)->pluck('image')->toArray();
+            BlogPost::destroy($ids);
+            $this->deleteFile($postImages);
+            cache()->forget('posts');
             return true;
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());

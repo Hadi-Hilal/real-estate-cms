@@ -8,24 +8,24 @@
         }
     </style>
 @endsection
-@section('title' , __('Custom Pages'))
+@section('title' , __('Posts'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
-            ['label' => 'Custom Pages'],
+            ['label' => 'Posts'],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Custom Pages')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb :pageTitle="__('Posts')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{route('admin.pages.create')}}" class="btn btn-light-primary me-3">
+        <a href="{{route('admin.blogs.posts.create')}}" class="btn btn-light-primary me-3">
             <i class="ki-duotone ki-message-add fs-2">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 <span class="path3"></span>
             </i>
-            {{__('New Custom Page')}}</a>
+            {{__('Add New Post')}}</a>
 
         <!--begin::Filter-->
         <button type="button" class="btn btn-sm btn-primary me-3" data-kt-menu-trigger="click"
@@ -41,7 +41,7 @@
             <!--end::Svg Icon-->{{__('Filter')}}</button>
         <!--begin::Menu 1-->
         <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
-            <form method="GET" action="{{route('admin.pages.index')}}">
+            <form method="GET" action="{{route('admin.blogs.posts.index')}}">
                 <!--begin::Header-->
                 <div class="px-7 py-5">
                     <div class="fs-5 text-dark fw-bolder">{{__('Filter Options')}}</div>
@@ -94,8 +94,8 @@
 @endsection
 
 @section('content')
-    <x-admin.table :model="$pages" search="Search In Pages"
-                   :formUrl="route('admin.pages.deleteMulti')">
+    <x-admin.table :model="$posts" search="Search In Posts"
+                   :formUrl="route('admin.blogs.posts.deleteMulti')">
         <!--begin::Table head-->
         <thead>
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
@@ -108,9 +108,9 @@
 
             <th class="min-w-200px"></th>
             <th class="min-w-200px">{{__('Title')}}</th>
+            <th class="min-w-150px">{{__('Category')}}</th>
             <th class="min-w-150px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
-            <th class="min-w-150px">{{__('Type')}}</th>
             <th class="min-w-150px">{{__('Created At')}}</th>
             <th class="min-w-150px"><i class="bi bi-eye text-primary fa-2x"></i></th>
             <th class="min-w-200px text-end rounded-end"></th>
@@ -119,30 +119,33 @@
         <!--end::Table head-->
         <!--begin::Table body-->
         <tbody class="text-gray-600 fw-semibold">
-        @foreach($pages as $page)
+        @foreach($posts as $post)
             <tr>
                 <td>
                     <div class="form-check form-check-sm form-check-custom form-check-solid">
-                        <input class="form-check-input" type="checkbox" name="ids[]" value="{{$page->id}}"/>
+                        <input class="form-check-input" type="checkbox" name="ids[]" value="{{$post->id}}"/>
                     </div>
                 </td>
 
                 <td>
                     <div class="d-flex align-items-center">
-                        <a href="{{$page->image_link}}" target="_blank" class="symbol me-5">
-                            <img src="{{$page->image_link}}" class=""
-                                 alt="{{$page->title}}"/>
+                        <a href="{{$post->image_link}}" target="_blank" class="symbol me-5">
+                            <img src="{{$post->image_link}}" class=""
+                                 alt="{{$post->title}}"/>
                         </a>
                     </div>
                 </td>
                 <td>
                     <h5 class="">
-                        <a href="#" class=" fw-bolder text-hover-primary mb-1 fs-6">{{$page->title}}</a>
+                        <a href="#" class=" fw-bolder text-hover-primary mb-1 fs-6">{{$post->title}}</a>
                     </h5>
                 </td>
                 <td>
-                    {{$page->featured ? __('Yes') : __('No') }}
-                    @if($page->featured)
+                    <strong> {{$post->category->name }} </strong>
+                </td>
+                <td>
+                    {{$post->featured ? __('Yes') : __('No') }}
+                    @if($post->featured)
                         <i class="bi bi-check-circle-fill text-success"></i>
                     @else
                         <i class="bi bi-x-circle-fill text-danger"></i>
@@ -150,19 +153,17 @@
                 </td>
                 <td>
                     <span
-                        class="badge badge-light-{{$page->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($page->publish)}}</span>
+                        class="badge badge-light-{{$post->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($post->publish)}}</span>
+                </td>
+
+                <td>
+                    {{$post->created_at->diffForHumans() }}
                 </td>
                 <td>
-                    <strong> {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }} </strong>
+                    {{$post->visites }}
                 </td>
                 <td>
-                    {{$page->created_at->diffForHumans() }}
-                </td>
-                <td>
-                    {{$page->visites }}
-                </td>
-                <td>
-                    <a href="{{route('admin.pages.edit' , $page->id)}}"
+                    <a href="{{route('admin.blogs.posts.edit' , $post->id)}}"
                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                         <i class="ki-duotone ki-message-edit fs-1">
                             <span class="path1"></span>

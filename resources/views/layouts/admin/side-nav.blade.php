@@ -57,6 +57,17 @@
                     </a>
                 </div>
             </div>
+             <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['posts']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['posts']) ? 'active' : '' }}"
+                        href="{{ route('admin.blogs.posts.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Posts') }}</span>
+                    </a>
+                </div>
+            </div>
         </div>
     @endcan
 

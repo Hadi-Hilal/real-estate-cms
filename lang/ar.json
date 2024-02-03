@@ -57,6 +57,7 @@
     "Content" : "المحتوى",
     "Featured" : "مميز" ,
     "Image" : "الصورة" ,
+    "Intro": "المقدمة",
     "Price" : "السعر" ,
     "Duration" : "المدة الزمنية" ,
     "Features" : "الميزات والفوائد" ,
@@ -67,7 +68,6 @@
     "Message" : "الرسالة" ,
     "Country" : "البلد" ,
     "Show" : "عرض" ,
-
     "Complete Reading" : "قراءة كاملة" ,
     "The Slug Should Be English" : "يجب أن يكون عنوان URL بالأحرف الإنجليزية ",
     "Thanks For Subscription" : "شكرا للاشتراك في النشرة الإخبارية لدينا" ,
@@ -82,6 +82,6 @@
     "Url": "عنوان URL",
     "Brief Description" : "وصف مختصر",
     "Character": "حرف",
-    "Visites" : "عدد الزيارات"
-
+    "Visites" : "عدد الزيارات",
+    "Send Notification To Subscribers?" : "إرسال إشعار للمشتركين؟"
 }

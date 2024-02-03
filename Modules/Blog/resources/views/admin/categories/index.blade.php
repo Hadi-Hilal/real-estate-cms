@@ -104,11 +104,12 @@
 
                 <td>
                     <h5 class="text-muted">
-                         {{$category->name}}
+                        {{$category->name}}
                     </h5>
                 </td>
                 <td>
-                    <a href="#" class=" fw-bolder text-hover-primary mb-1 fs-6">/articles/?category={{$category->slug}}</a>
+                    <a href="#"
+                       class=" fw-bolder text-hover-primary mb-1 fs-6">/articles/?category={{$category->slug}}</a>
                 </td>
                 <td>
                     {{$category->created_at->diffForHumans() }}

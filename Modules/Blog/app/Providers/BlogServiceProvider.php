@@ -4,6 +4,8 @@ namespace Modules\Blog\app\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Blog\app\Repositories\PostModelRepository;
+use Modules\Blog\app\Repositories\PostRepository;
 
 class BlogServiceProvider extends ServiceProvider
 {
@@ -102,6 +104,7 @@ class BlogServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(PostRepository::class, PostModelRepository::class);
     }
 
     /**
