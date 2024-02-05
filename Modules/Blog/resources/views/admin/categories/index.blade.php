@@ -11,7 +11,8 @@
     @endphp
     <x-admin.breadcrumb :pageTitle="__('Categories')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_1">
+        <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_1"
+                id="addNewBtn">
             <i class="ki-duotone ki-message-add fs-2">
                 <span class="path1"></span>
                 <span class="path2"></span>
@@ -84,10 +85,11 @@
                 </div>
             </th>
 
-            <th class="min-w-300px">{{__('Name')}}</th>
-            <th class="min-w-300px">{{__('Url')}}</th>
-            <th class="min-w-300px">{{__('Created At')}}</th>
-            <th class="min-w-300px text-end rounded-end"></th>
+            <th class="min-w-200px">{{__('Name')}}</th>
+            <th class="min-w-200px">{{__('Url')}}</th>
+            <th class="min-w-150px">{{__('Number Of Posts')}}</th>
+            <th class="min-w-200px">{{__('Created At')}}</th>
+            <th class="min-w-200px text-end rounded-end"></th>
         </tr>
         </thead>
         <!--end::Table head-->
@@ -100,23 +102,30 @@
                         <input class="form-check-input" type="checkbox" name="ids[]" value="{{$category->id}}"/>
                     </div>
                 </td>
-
-
                 <td>
                     <h5 class="text-muted">
                         {{$category->name}}
                     </h5>
                 </td>
+
                 <td>
                     <a href="#"
                        class=" fw-bolder text-hover-primary mb-1 fs-6">/articles/?category={{$category->slug}}</a>
+                </td>
+                <td>
+                    <h5 class="text-muted">
+                        {{$category->posts()->count()}}
+                    </h5>
                 </td>
                 <td>
                     {{$category->created_at->diffForHumans() }}
                 </td>
 
                 <td>
-                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                    <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 editBtn"
+                       data-id="{{$category->id}}"
+                       data-name="{{$category->name}}"
+                       data-slug="{{$category->slug}}">
                         <i class="ki-duotone ki-message-edit fs-1">
                             <span class="path1"></span>
                             <span class="path2"></span>
@@ -154,6 +163,44 @@
                     .replace(/--+/g, '-') // Replace multiple dashes with a single dash
                     .trim(); // Trim leading/trailing whitespace and dashes
             }
+
+            function resetForm() {
+                $('#method').val('POST');
+                $('form').attr('action', "{{ route('admin.blogs.categories.store') }}");
+                $('#gslug').prop('disabled', false);
+                $('#gslug, #method ,  #slug, input[name="name"]').val('');
+            }
+
+            // Event handler for the "Add New" button
+            $('#addNewBtn').on('click', function () {
+                // Reset the form and show the modal
+                resetForm();
+                $('.modal-title').text("{{__('Add New Category')}}");
+                $('#kt_modal_1').modal('show');
+            });
+
+            $('.editBtn').on('click', function () {
+                var categoryId = $(this).data('id');
+                var categoryName = $(this).data('name');
+                var categorySlug = $(this).data('slug');
+
+                // Update modal title
+                $('.modal-title').text("{{__('Edit Category')}}");
+
+                // Update form action
+                var updateUrl = "{{ route('admin.blogs.categories.update', ':category') }}";
+                updateUrl = updateUrl.replace(':category', categoryId);
+                $('form').attr('action', updateUrl).append('<input type="hidden" id="method" name="_method" value="PUT">');
+
+
+                // Fill form fields with data
+                $('#gslug').val(categorySlug);
+                $('#slug').val(categorySlug).prop('disabled', true);
+                $('input[name="name"]').val(categoryName);
+
+                // Show the modal
+                $('#kt_modal_1').modal('show');
+            });
 
         })
 

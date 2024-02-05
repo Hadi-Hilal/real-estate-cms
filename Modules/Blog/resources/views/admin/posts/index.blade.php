@@ -53,10 +53,23 @@
                 <!--begin::Content-->
                 <div class="px-7 py-5" data-kt-user-table-filter="form">
                     <div class="mb-10">
+                        <label class="form-label fs-6 fw-bold">{{__('Category')}}:</label>
+                        <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
+                                data-hide-search="true" name="category_id">
+                            <option value=""></option>
+                            @foreach($categories as $category)
+                                <option
+                                    @selected(request()->query('category_id') == $category->id) value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Publish')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="Select option" data-allow-clear="true"
-                                data-kt-user-table-filter="featured" data-hide-search="true" name="publish">
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
+                                data-hide-search="true" name="publish">
                             <option value="" selected></option>
                             <option
                                 @selected(request()->query('publish') == 'published') value="published">{{__('published')}}</option>
@@ -64,18 +77,7 @@
                                 @selected(request()->query('publish') == 'archived') value="archived">{{__('archived')}}</option>
                         </select>
                     </div>
-                    <div class="mb-10">
-                        <label class="form-label fs-6 fw-bold">{{__('Type')}}:</label>
-                        <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="Select option" data-allow-clear="true"
-                                data-kt-user-table-filter="featured" data-hide-search="true" name="type">
-                            <option value="" selected></option>
-                            <option
-                                @selected(request()->query('type') == 'custom')  value="custom">{{__('Custom Page')}}</option>
-                            <option
-                                @selected(request()->query('type') == 'service') value="service">{{__('Service Page')}}</option>
-                        </select>
-                    </div>
+
                     <!--begin::Actions-->
                     <div class="d-flex justify-content-end">
                         <button type="reset" class="btn btn-light btn-active-light-primary fw-bold me-2 px-6"

@@ -39,7 +39,7 @@
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Role Name')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="Select option" data-allow-clear="true"
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
                                 data-kt-user-table-filter="role" data-hide-search="true" name="role">
                             <option value=""></option>
                             @foreach($roles as $role)

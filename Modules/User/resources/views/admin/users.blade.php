@@ -40,7 +40,7 @@
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Verified')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true" name="fVerified"
-                                data-placeholder="Select option" data-allow-clear="true"
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
                                 data-kt-user-table-filter="two-step" data-hide-search="true">
                             <option></option>
                             <option value="1">{{__('Yes')}}</option>

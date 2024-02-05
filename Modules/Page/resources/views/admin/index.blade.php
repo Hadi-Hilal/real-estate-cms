@@ -25,7 +25,7 @@
                 <span class="path2"></span>
                 <span class="path3"></span>
             </i>
-            {{__('New Custom Page')}}</a>
+            {{__('New Page')}}</a>
 
         <!--begin::Filter-->
         <button type="button" class="btn btn-sm btn-primary me-3" data-kt-menu-trigger="click"
@@ -55,7 +55,7 @@
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Publish')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="Select option" data-allow-clear="true"
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
                                 data-kt-user-table-filter="featured" data-hide-search="true" name="publish">
                             <option value="" selected></option>
                             <option
@@ -67,7 +67,7 @@
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Type')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="Select option" data-allow-clear="true"
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
                                 data-kt-user-table-filter="featured" data-hide-search="true" name="type">
                             <option value="" selected></option>
                             <option

@@ -31,10 +31,10 @@ class CategoreyController extends Controller
     }
 
 
-    public function update(BlogCategoryRequest $request, BlogCategory $blogCategory): RedirectResponse
+    public function update(BlogCategoryRequest $request, BlogCategory $category): RedirectResponse
     {
         try {
-            $blogCategory->update($request->all());
+            $category->update($request->all());
             $this->flushMessage(true);
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());

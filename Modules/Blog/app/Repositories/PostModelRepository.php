@@ -6,13 +6,10 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Notification;
 use Modules\Blog\app\Http\Requests\BlogPostRequest;
+use Modules\Blog\app\Jobs\NotifySubscribersJob;
 use Modules\Blog\app\Models\BlogPost;
-use Modules\Blog\app\Notifications\NotifySubscribers;
 use Modules\Core\app\Traits\FileTrait;
-use Modules\Page\app\Models\Page;
-use Modules\Subscriber\app\Models\Subscriber;
 
 class PostModelRepository implements PostRepository
 {
@@ -25,7 +22,11 @@ class PostModelRepository implements PostRepository
         return BlogPost::select($columns)
             ->when($request->has('publish') and $request->query('publish'), function ($q) use ($request) {
                 $q->where('publish', $request->query('publish'));
-            })->paginate(Config::get('core.page_size'));
+            })
+            ->when($request->has('category_id') and $request->query('category_id'), function ($q) use ($request) {
+                $q->where('category_id', $request->query('category_id'));
+            })
+            ->paginate(Config::get('core.page_size'));
     }
 
     public function store(BlogPostRequest $request): bool
@@ -49,9 +50,8 @@ class PostModelRepository implements PostRepository
         ]);
         try {
             $blogPost = BlogPost::create($request->all());
-            if ($request->has('notification')) {
-                $subscribers = Subscriber::all();
-                Notification::send($subscribers, new NotifySubscribers($blogPost));
+            if ($request->has('notification') && $request->input('notification') == '1') {
+                NotifySubscribersJob::dispatch($blogPost);
             }
             cache()->forget('posts');
             return true;
@@ -81,6 +81,9 @@ class PostModelRepository implements PostRepository
         ]);
         try {
             $post->update($request->all());
+            if ($request->has('notification') && $request->input('notification') == '1') {
+                NotifySubscribersJob::dispatch($post);
+            }
             cache()->forget('posts');
             return true;
         } catch (Exception $exception) {
@@ -92,7 +95,7 @@ class PostModelRepository implements PostRepository
     public function deleteMulti(array $ids): bool
     {
         try {
-            $postImages = Page::whereIn('id', $ids)->pluck('image')->toArray();
+            $postImages = BlogPost::whereIn('id', $ids)->pluck('image')->toArray();
             BlogPost::destroy($ids);
             $this->deleteFile($postImages);
             cache()->forget('posts');

@@ -178,6 +178,28 @@
                 </div>
             </div>
         </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Send Notification To Subscribers?')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input notification" type="radio" name="notification" id="inlineRadio1"
+                           checked
+                           value="1">
+                    <label class="form-check-label" for="inlineRadio1">{{__('Yes')}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input notification" type="radio" name="notification" id="inlineRadio2"
+                           value="0">
+                    <label class="form-check-label" for="inlineRadio2">{{__('No')}}</label>
+                </div>
+
+            </div>
+        </div>
     </x-admin.create-card>
 @endsection
 
@@ -213,7 +235,7 @@
                 } else {
                     $('.notification').attr('disabled', false)
                 }
-            })
+            }).trigger('change');
         })
 
     </script>
