@@ -1,0 +1,11 @@
+{
+    "name": "Property",
+    "alias": "property",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Property\\app\\Providers\\PropertyServiceProvider"
+    ],
+    "files": []
+}

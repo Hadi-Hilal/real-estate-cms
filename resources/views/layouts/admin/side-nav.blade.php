@@ -37,6 +37,41 @@
         </div>
     @endcan
 
+     @can('Manage Properties')
+        <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ isset($active['properties']) ? 'show hover' : '' }}">
+            <span class="menu-link">
+                <span class="menu-icon">
+                    <i class="bi bi-buildings"></i>
+                </span>
+                <span class="menu-title">{{ __('Properties') }}</span>
+                <span class="menu-arrow"></span>
+            </span>
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['types']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['types']) ? 'active' : '' }}"
+                        href="{{ route('admin.properties.types.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Properties Types') }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['features']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['features']) ? 'active' : '' }}"
+                        href="{{ route('admin.properties.features.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Properties Features') }}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    @endcan
+
       @can('Manage Blogs')
         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ isset($active['blogs']) ? 'show hover' : '' }}">
             <span class="menu-link">
