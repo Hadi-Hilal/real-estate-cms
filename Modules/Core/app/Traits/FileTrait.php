@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 trait FileTrait
 {
-    public function upload(UploadedFile $file, string $dir, string $name = null, string $old = null, string $disk = 'public'): ?string
+    public function upload(UploadedFile $file, string $dir, string $name = null, mixed $old = null, string $disk = 'public'): ?string
     {
         if (!$file->isValid()) {
             session()->flash('error', $file->getClientOriginalName() . " is not valid");
@@ -30,6 +30,15 @@ trait FileTrait
     {
         try {
             Storage::disk($disk)->delete($filename);
+        } catch (FileException $exception) {
+            session()->flash('error', $exception->getMessage());
+        }
+    }
+
+    public function deleteDir(string $dir, string $disk = 'public'): void
+    {
+        try {
+            Storage::disk($disk)->deleteDirectory($dir);
         } catch (FileException $exception) {
             session()->flash('error', $exception->getMessage());
         }

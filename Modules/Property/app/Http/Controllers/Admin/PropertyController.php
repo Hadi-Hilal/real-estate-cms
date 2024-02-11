@@ -9,6 +9,7 @@ use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
 use Modules\Core\app\Models\State;
 use Modules\Property\app\Http\Requests\PropertyRequest;
+use Modules\Property\app\Models\Property;
 use Modules\Property\app\Models\PropertyFeature;
 use Modules\Property\app\Models\PropertyType;
 use Modules\Property\app\Repositories\PropertyRepository;
@@ -27,36 +28,50 @@ class PropertyController extends Controller
         return view('property::admin.properties.index', compact('properties'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
         $propertiesTypes = PropertyType::all();
         $propertiesFeatures = PropertyFeature::all();
         $countries = Country::all();
-        return view('property::admin.properties.create', compact('countries' , 'propertiesTypes' , 'propertiesFeatures'));
+        return view('property::admin.properties.create', compact('countries', 'propertiesTypes', 'propertiesFeatures'));
     }
 
     public function store(PropertyRequest $request): RedirectResponse
     {
-
         $this->flushMessage($this->propertyRepository->store($request));
         return redirect()->to(route('admin.properties.lists.index'));
     }
 
-    public function update(PropertyRequest $request, PropertyType $type): RedirectResponse
+    public function edit(Property $list)
     {
+        $property = $list;
+        $propertiesTypes = PropertyType::all();
+        $propertiesFeatures = PropertyFeature::all();
+        $countries = Country::all();
+        return view('property::admin.properties.edit', compact('property', 'countries', 'propertiesTypes', 'propertiesFeatures'));
+    }
+
+    public function update(PropertyRequest $request, Property $list): RedirectResponse
+    {
+        $this->flushMessage($this->propertyRepository->update($request, $list));
+        return redirect()->to(route('admin.properties.lists.index'));
     }
 
 
     public function deleteMulti()
     {
         $ids = request()->input('ids');
+        $this->flushMessage($this->propertyRepository->deleteMulti($ids));
+        return redirect()->to(route('admin.properties.lists.index'));
     }
 
-    public function getStates(){
-        return State::where('country_id' , request()->input('countryId'))->pluck('name' , 'id');
+    public function getStates()
+    {
+        return State::where('country_id', request()->input('countryId'))->pluck('name', 'id');
     }
 
-    public function getCities(){
-        return City::where('state_id' , request()->input('stateId'))->pluck('name' , 'id');
+    public function getCities()
+    {
+        return City::where('state_id', request()->input('stateId'))->pluck('name', 'id');
     }
 }

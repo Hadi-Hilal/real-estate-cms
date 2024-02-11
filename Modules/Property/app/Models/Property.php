@@ -3,8 +3,8 @@
 namespace Modules\Property\app\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
@@ -16,7 +16,8 @@ class Property extends Model
     use HasFactory;
     use HasTranslations;
 
-      protected $fillable = [
+    public $translatable = ['title', 'description', 'keywords', 'content'];
+    protected $fillable = [
         'title',
         'slug',
         'description',
@@ -37,8 +38,8 @@ class Property extends Model
         'featured',
         'visits',
     ];
-    public $translatable = ['title' , 'description' , 'keywords' , 'content'];
-
+    protected $appends = ['image_link'];
+    protected $with = ['features'];
 
     protected static function boot()
     {
@@ -48,10 +49,30 @@ class Property extends Model
             $property->created_by = Auth::id();
         });
     }
-   public function features()
+
+    public function getImageLinkAttribute()
     {
-        return $this->belongsToMany(PropertyFeature::class , 'property_feature_pivot');
+        if ($this->attributes['image']) {
+            $path = asset('storage/' . $this->attributes['image']);
+        } else {
+            $path = asset('images/blank.png');
+        }
+        return $path;
     }
+
+    public function getSlidesAttribute()
+    {
+        if ($this->attributes['slides']) {
+            return json_decode($this->attributes['slides']);
+        }
+        return null;
+    }
+
+    public function features()
+    {
+        return $this->belongsToMany(PropertyFeature::class, 'property_feature_pivot');
+    }
+
     public function propertyType()
     {
         return $this->belongsTo(PropertyType::class, 'property_type_id');

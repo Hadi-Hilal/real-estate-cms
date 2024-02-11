@@ -27,7 +27,7 @@ return new class extends Migration {
             $table->foreignId('state_id')->unsigned()->constrained('states');
             $table->foreignId('city_id')->unsigned()->constrained('cities');
             $table->foreignId('created_by')->unsigned()->constrained('users');
-            $table->enum('category', ['project', 'land' ,'resale'])->default('project');
+            $table->enum('category', ['project', 'land', 'resale'])->default('project');
             $table->enum('publish', ['published', 'archived'])->default('published');
             $table->boolean('featured')->default(true);
             $table->bigInteger('visites')->default(0);

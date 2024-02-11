@@ -29,15 +29,15 @@ class PropertyModelRepository implements PropertyRepository
     {
         $dir = $this->propertyUploadPath . '/' . $request->input('slug');
         if ($request->has('img')) {
-            $path = $this->upload($request->file('img'), $dir);
+            $path = $this->upload($request->file('img'), $dir, 'main-image');
         } else {
             session()->flash('error', __('The Client Image Is Required'));
             return false;
         }
         $slides = [];
         if ($request->has('img_slides')) {
-            foreach ($request->file('img_slides') as $slide) {
-                $slides[] = $this->upload($slide, $dir);
+            foreach ($request->file('img_slides') as $key => $slide) {
+                $slides[] = $this->upload($slide, $dir, $key + 1);
             }
         }
 
@@ -69,12 +69,25 @@ class PropertyModelRepository implements PropertyRepository
 
     public function update(PropertyRequest $request, Property $property): bool
     {
+        $dir = $this->propertyUploadPath . '/' . $property->slug;
         if ($request->has('img')) {
-            $path = $this->upload($request->file('img'), $this->propertyUploadPath, $request->input('slug'), $property->image);
+            $path = $this->upload($request->file('img'), $dir, 'main-image', $property->image);
             $request->merge([
                 'image' => $path,
             ]);
         }
+
+        if ($request->has('img_slides')) {
+            $slides = [];
+            $this->deleteFile($property->slides);
+            foreach ($request->file('img_slides') as $key => $slide) {
+                $slides[] = $this->upload($slide, $dir, $key + 1);
+            }
+            $request->merge([
+                'slides' => json_encode($slides),
+            ]);
+        }
+
         $keywordsInput = $request->input('keywords');
         $decodedData = json_decode($keywordsInput, true);
         $valuesArray = array_column($decodedData, 'value');
@@ -87,6 +100,7 @@ class PropertyModelRepository implements PropertyRepository
         ]);
         try {
             $property->update($request->all());
+            $property->features()->attach($request->input('property_features'));
             cache()->forget('properties');
             return true;
         } catch (Exception $exception) {
@@ -98,14 +112,24 @@ class PropertyModelRepository implements PropertyRepository
     public function deleteMulti(array $ids): bool
     {
         try {
-            $propertyDirImages = Property::whereIn('id', $ids)->pluck('slug')->toArray();
-            Property::destroy($ids);
-            $this->deleteFile($this->propertyUploadPath . '/' . $propertyDirImages);
+            $properties = Property::whereIn('id', $ids)->get();
+
+            foreach ($properties as $property) {
+                if ($property->features()->exists()) {
+                    $property->features()->detach();
+                }
+                $this->deleteDir($this->propertyUploadPath . '/' . $property->slug);
+                $property->delete();
+            }
+
             cache()->forget('properties');
+
             return true;
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
         }
+
         return false;
     }
+
 }

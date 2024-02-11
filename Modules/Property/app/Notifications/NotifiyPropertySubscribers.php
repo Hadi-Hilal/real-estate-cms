@@ -3,9 +3,8 @@
 namespace Modules\Property\app\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 use Modules\Property\app\Models\Property;
 
 class NotifiyPropertySubscribers extends Notification
@@ -15,7 +14,7 @@ class NotifiyPropertySubscribers extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(Protected Property $property)
+    public function __construct(protected Property $property)
     {
         //
     }

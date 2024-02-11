@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Property\app\Http\Controllers\Admin\PropertyController;
 use Modules\Property\app\Http\Controllers\Admin\PropertyFeatureController;
 use Modules\Property\app\Http\Controllers\Admin\PropertyTypeController;
-use Modules\Property\app\Http\Controllers\Admin\PropertyController;
 
 Route::prefix('admin/properties')->name('admin.properties.')->middleware(['auth', 'admin', 'verified', 'can:Manage Properties'])->group(function () {
 

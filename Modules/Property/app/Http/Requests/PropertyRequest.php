@@ -10,7 +10,7 @@ class PropertyRequest extends FormRequest
     {
         return [
             'img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'slides'=> 'nullable|array',
+            'slides' => 'nullable|array',
             'title' => 'required|string|min:4',
             'slug' => 'sometimes|string|min:4|unique:pages,slug',
             'description' => 'required|string|min:10',
