@@ -69,6 +69,18 @@
                 </div>
             </div>
 
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['properties_lists']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['properties_lists']) ? 'active' : '' }}"
+                        href="{{ route('admin.properties.lists.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Properties Lists') }}</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     @endcan
 

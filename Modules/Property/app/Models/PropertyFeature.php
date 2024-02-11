@@ -13,4 +13,9 @@ class PropertyFeature extends Model
 
     public $translatable = ['name'];
     protected $fillable = ['name'];
+
+     public function properties()
+    {
+        return $this->belongsToMany(Property::class ,'property_feature_pivot');
+    }
 }

@@ -1,5 +1,9 @@
 {
     "Properties": "العقارات",
+    "Properties Lists": "جميع العقارات",
+    "Add New Property": "إضافة عقار جديد",
+    "Edit Property": "تعديل العقار",
+    "Search In Properties": "البحث في العقارات",
     "Properties Types": "أنواع العقارات",
     "Add New Property Type": "إضافة نوع عقار جديد",
     "Edit Property Type": "تعديل نوع العقار",
@@ -8,5 +12,12 @@
     "Properties Features": "مميزات العقارات",
     "Add New Property Feature": "إضافة ميزة جديدة",
     "Edit Property Feature": "تعديل ميزة العقار",
-    "Search In Properties Features": "البحث في مميزات العقارات"
+    "Search In Properties Features": "البحث في مميزات العقارات",
+    "Image & Slides" : "الصور والسلايدات",
+    "Country & State & City": "الدولة والولاية والمدينة",
+    "Property Type": "نوع العقار",
+    "Property Features": "مميزات العقار",
+    "project" : "مشروع",
+    "land" : "أرض",
+    "resale" : "إعادة بيع"
 }

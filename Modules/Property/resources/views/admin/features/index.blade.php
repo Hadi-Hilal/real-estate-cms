@@ -45,7 +45,7 @@
                                 </div>
                                 <input type="text" class="form-control form-control-solid" name="name" id="name"
                                        value="{{old('name')}}"
-                                       placeholder="example: Villa"/>
+                                       placeholder="example: Sea View"/>
                             </div>
                         </div>
 

@@ -4,6 +4,8 @@ namespace Modules\Property\app\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Property\app\Repositories\PropertyModelRepository;
+use Modules\Property\app\Repositories\PropertyRepository;
 
 class PropertyServiceProvider extends ServiceProvider
 {
@@ -102,6 +104,7 @@ class PropertyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(PropertyRepository::class, PropertyModelRepository::class);
     }
 
     /**

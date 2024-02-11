@@ -13,7 +13,7 @@ interface PageRepository
 
     function store(PageRequest $request): bool;
 
-    function update(PageRequest $request, Page $testimonial): bool;
+    function update(PageRequest $request, Page $page): bool;
 
     function deleteMulti(array $ids): bool;
 }
