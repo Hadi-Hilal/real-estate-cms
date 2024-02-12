@@ -8,7 +8,7 @@
     "Add New Property Type": "إضافة نوع عقار جديد",
     "Edit Property Type": "تعديل نوع العقار",
     "Search In Properties Types": "البحث في أنواع العقارات",
-    "Number Of Properties": "عدد العقارات",
+    "Number Of Properties Use It": "عدد العقارات التي تستخدمها",
     "Properties Features": "مميزات العقارات",
     "Add New Property Feature": "إضافة ميزة جديدة",
     "Edit Property Feature": "تعديل ميزة العقار",
@@ -19,5 +19,6 @@
     "Property Features": "مميزات العقار",
     "project": "مشروع",
     "land": "أرض",
-    "resale": "إعادة بيع"
+    "resale": "إعادة بيع",
+    "A New Property Just Added!": "عقار جديد أضيف للتو!"
 }

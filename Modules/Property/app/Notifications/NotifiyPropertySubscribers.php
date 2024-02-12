@@ -33,7 +33,8 @@ class NotifiyPropertySubscribers extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line($this->property->title)
+            ->subject(__('A New Property Just Added!'))
+            ->line($this->property->title . ' ' . $this->property->code)
             ->line($this->property->description)
             ->action(__('Complete Reading'), 'https://laravel.com')
             ->line(__('Thanks For Subscription'));

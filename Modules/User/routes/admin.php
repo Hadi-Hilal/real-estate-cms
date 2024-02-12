@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\User\app\Http\Controllers\Admin\AdminController;
 use Modules\User\app\Http\Controllers\Admin\UserController;
+use Modules\User\app\Http\Controllers\Admin\DashboardController;
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified', 'can:Manage Users & Admins'])->group(function () {
     Route::prefix('users')->name('users.')->group(function () {
@@ -18,3 +19,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified',
     });
 
 });
+
+ Route::get('admin/dashboard', [DashboardController::class , 'index'])->name('admin.dashboard');

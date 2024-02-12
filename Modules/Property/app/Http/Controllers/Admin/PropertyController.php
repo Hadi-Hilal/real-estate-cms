@@ -24,8 +24,9 @@ class PropertyController extends Controller
 
     public function index(Request $request)
     {
+        $countries = Country::all();
         $properties = $this->propertyRepository->paginate($request);
-        return view('property::admin.properties.index', compact('properties'));
+        return view('property::admin.properties.index', compact('properties' , 'countries'));
     }
 
     public function create()

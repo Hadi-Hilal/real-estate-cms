@@ -22,7 +22,14 @@ class PropertyModelRepository implements PropertyRepository
         return Property::select($columns)
             ->when($request->has('publish') and $request->query('publish'), function ($q) use ($request) {
                 $q->where('publish', $request->query('publish'));
-            })->paginate(Config::get('core.page_size'));
+            })
+            ->when($request->has('country_id') and $request->query('country_id'), function ($q) use ($request) {
+                $q->where('country_id', $request->query('country_id'));
+            })
+            ->when($request->has('category') and $request->query('category'), function ($q) use ($request) {
+                $q->where('category', $request->query('category'));
+            })
+            ->paginate(Config::get('core.page_size'));
     }
 
     public function store(PropertyRequest $request): bool
@@ -100,7 +107,7 @@ class PropertyModelRepository implements PropertyRepository
         ]);
         try {
             $property->update($request->all());
-            $property->features()->attach($request->input('property_features'));
+            $property->features()->sync($request->input('property_features'));
             cache()->forget('properties');
             return true;
         } catch (Exception $exception) {

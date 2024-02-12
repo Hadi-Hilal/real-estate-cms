@@ -74,7 +74,7 @@
                 </div>
             </th>
             <th class="min-w-200px">{{__('Name')}}</th>
-            <th class="min-w-150px">{{__('Number Of Properties')}}</th>
+            <th class="min-w-150px">{{__('Number Of Properties Use It')}}</th>
             <th class="min-w-200px">{{__('Created At')}}</th>
             <th class="min-w-200px text-end rounded-end"></th>
         </tr>
@@ -96,7 +96,7 @@
                 </td>
 
                 <td>
-                    0
+                    {{$type->properties->count()}}
                 </td>
                 <td>
                     {{$type->created_at->diffForHumans() }}

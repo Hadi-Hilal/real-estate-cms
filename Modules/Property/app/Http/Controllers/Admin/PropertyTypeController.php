@@ -18,7 +18,7 @@ class PropertyTypeController extends Controller
 
     public function index()
     {
-        $types = PropertyType::paginate($this->pageSize());
+        $types = PropertyType::with('properties')->paginate($this->pageSize());
         return view('property::admin.types.index', compact('types'));
     }
 

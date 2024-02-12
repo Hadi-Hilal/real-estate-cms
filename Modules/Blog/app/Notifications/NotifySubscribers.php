@@ -33,6 +33,7 @@ class NotifySubscribers extends Notification
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
+            ->subject(__('A New Post Added!'))
             ->line($this->post->title)
             ->line($this->post->description)
             ->action(__('Complete Reading'), 'https://laravel.com')

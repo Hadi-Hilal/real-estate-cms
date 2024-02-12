@@ -13,4 +13,9 @@ class PropertyType extends Model
 
     public $translatable = ['name'];
     protected $fillable = ['name'];
+
+    public function properties()
+    {
+        return $this->belongsTo(Property::class)->withDefault();
+    }
 }

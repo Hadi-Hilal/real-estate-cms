@@ -18,7 +18,8 @@ class PropertyFeatureController extends Controller
 
     public function index()
     {
-        $features = PropertyFeature::paginate($this->pageSize());
+        $features = PropertyFeature::with('properties')->paginate($this->pageSize());
+
         return view('property::admin.features.index', compact('features'));
     }
 
