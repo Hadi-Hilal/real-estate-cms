@@ -66,13 +66,5 @@ class PropertyController extends Controller
         return redirect()->to(route('admin.properties.lists.index'));
     }
 
-    public function getStates()
-    {
-        return State::where('country_id', request()->input('countryId'))->pluck('name', 'id');
-    }
 
-    public function getCities()
-    {
-        return City::where('state_id', request()->input('stateId'))->pluck('name', 'id');
-    }
 }

@@ -35,10 +35,10 @@ class PropertyFeatureController extends Controller
         return back();
     }
 
-    public function update(PropertyFeatureRequest $request, PropertyFeature $type): RedirectResponse
+    public function update(PropertyFeatureRequest $request, PropertyFeature $feature): RedirectResponse
     {
         try {
-            $type->update($request->all());
+            $feature->update($request->all());
             $this->flushMessage(true);
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
@@ -59,3 +59,4 @@ class PropertyFeatureController extends Controller
         return back();
     }
 }
+

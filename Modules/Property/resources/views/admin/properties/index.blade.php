@@ -58,7 +58,6 @@
                                 data-hide-search="true" name="category">
                             <option value=""></option>
                             <option @selected(request()->query('category') == 'project') value="project">{{__('project')}}</option>
-                            <option @selected(request()->query('category') == 'land') value="land">{{__('land')}}</option>
                             <option @selected(request()->query('category') == 'resale') value="resale">{{__('resale')}}</option>
 
                         </select>

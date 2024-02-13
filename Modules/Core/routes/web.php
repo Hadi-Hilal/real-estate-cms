@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
+use Modules\Core\app\Http\Controllers\CountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +18,10 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     require __DIR__ . '/admin.php';
+
+    Route::get('getStates', [CountryController::class, 'getStates'])->name('getStates');
+
+    Route::get('getCities', [CountryController::class, 'getCities'])->name('getCities');
+
 });
 

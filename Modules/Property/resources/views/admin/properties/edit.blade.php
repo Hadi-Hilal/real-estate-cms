@@ -160,7 +160,7 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Catgeory')}} <span class="text-danger">*</span></div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Category')}} <span class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
@@ -169,11 +169,6 @@
                     <input class="form-check-input" @checked($property->category == 'project') type="radio"
                            name="category" id="project" value="project">
                     <label class="form-check-label" for="project">{{__('project')}}</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" @checked($property->category == 'land') type="radio" name="category"
-                           id="land" value="land">
-                    <label class="form-check-label" for="land">{{__('land')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" @checked($property->category == 'resale') type="radio"
@@ -274,20 +269,20 @@
                 </div>
             </div>
         </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <div class="input-group mb-5">
-                    <input type="number" name="space" value="{{old('space' , $property->space)}}" class="form-control"/>
-                    <span class="input-group-text">m2</span>
-                </div>
-            </div>
-        </div>
+{{--        <div class="row mb-8">--}}
+{{--            <!--begin::Col-->--}}
+{{--            <div class="col-xl-3">--}}
+{{--                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>--}}
+{{--            </div>--}}
+{{--            <!--end::Col-->--}}
+{{--            <!--begin::Col-->--}}
+{{--            <div class="col-xl-9 fv-row">--}}
+{{--                <div class="input-group mb-5">--}}
+{{--                    <input type="number" name="space" value="{{old('space' , $property->space)}}" class="form-control"/>--}}
+{{--                    <span class="input-group-text">m2</span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -389,7 +384,7 @@
 
             $('#country_id').on('change', function () {
                 var countryId = $(this).val();
-                $.get("{{ route('admin.properties.getStates') }}", {countryId: countryId})
+                $.get("{{ route('getStates') }}", {countryId: countryId})
                     .done(function (response) {
                         $('#state_id').empty();
                         $.each(response, function (index, state) {
@@ -406,7 +401,7 @@
 
             $('#state_id').on('change', function () {
                 var stateId = $(this).val();
-                $.get("{{ route('admin.properties.getCities') }}", {stateId: stateId})
+                $.get("{{ route('getCities') }}", {stateId: stateId})
                     .done(function (response) {
                         $('#city_id').empty();
                         $.each(response, function (index, city) {

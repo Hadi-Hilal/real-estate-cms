@@ -21,13 +21,12 @@ return new class extends Migration {
             $table->json('slides')->nullable();
             $table->foreignId('property_type_id')->nullable()->constrained('property_types')->nullOnDelete();
             $table->double('price')->nullable();
-            $table->double('space')->nullable();
             $table->string('code')->nullable();
             $table->foreignId('country_id')->unsigned()->constrained('countries');
             $table->foreignId('state_id')->unsigned()->constrained('states');
             $table->foreignId('city_id')->unsigned()->constrained('cities');
             $table->foreignId('created_by')->unsigned()->constrained('users');
-            $table->enum('category', ['project', 'land', 'resale'])->default('project');
+            $table->enum('category', ['project', 'resale'])->default('project');
             $table->enum('publish', ['published', 'archived'])->default('published');
             $table->boolean('featured')->default(true);
             $table->bigInteger('visites')->default(0);

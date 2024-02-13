@@ -16,9 +16,7 @@ Route::prefix('admin/properties')->name('admin.properties.')->middleware(['auth'
     Route::resource('lists', PropertyController::class)->except('destroy', 'show');
     Route::delete('lists/deleteMulti', [PropertyController::class, 'deleteMulti'])->name('lists.deleteMulti');
 
-    Route::get('getStates', [PropertyController::class, 'getStates'])->name('getStates');
 
-    Route::get('getCities', [PropertyController::class, 'getCities'])->name('getCities');
 
 
 });

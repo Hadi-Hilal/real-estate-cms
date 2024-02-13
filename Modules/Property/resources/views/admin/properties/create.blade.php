@@ -174,7 +174,7 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Catgeory')}} <span class="text-danger">*</span></div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Category')}} <span class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
@@ -182,10 +182,6 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" checked type="radio" name="category" id="project" value="project">
                     <label class="form-check-label" for="project">{{__('project')}}</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="category" id="land" value="land">
-                    <label class="form-check-label" for="land">{{__('land')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="category" id="resale" value="resale">
@@ -280,20 +276,6 @@
                     <input type="number" name="price" value="{{old('price')}}" class="form-control" required
                            aria-label="Amount (to the nearest dollar)"/>
                     <span class="input-group-text">.00</span>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <div class="input-group mb-5">
-                    <input type="number" name="space" value="{{old('space')}}" class="form-control"/>
-                    <span class="input-group-text">m2</span>
                 </div>
             </div>
         </div>
@@ -437,7 +419,7 @@
 
             $('#country_id').on('change', function () {
                 var countryId = $(this).val();
-                $.get("{{ route('admin.properties.getStates') }}", {countryId: countryId})
+                $.get("{{ route('getStates') }}", {countryId: countryId})
                     .done(function (response) {
                         $('#state_id').empty();
                         $.each(response, function (index, state) {
@@ -454,7 +436,7 @@
 
             $('#state_id').on('change', function () {
                 var stateId = $(this).val();
-                $.get("{{ route('admin.properties.getCities') }}", {stateId: stateId})
+                $.get("{{ route('getCities') }}", {stateId: stateId})
                     .done(function (response) {
                         $('#city_id').empty();
                         $.each(response, function (index, city) {
