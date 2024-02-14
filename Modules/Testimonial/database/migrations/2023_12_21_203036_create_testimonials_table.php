@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->enum('publish', ['published', 'archived'])->default('published');
             $table->string('link')->nullable();
             $table->string('avatar')->nullable();
+            $table->boolean('citizenship')->default(false);
             $table->timestamps();
         });
     }

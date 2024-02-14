@@ -28,6 +28,7 @@ return new class extends Migration {
             $table->foreignId('created_by')->unsigned()->constrained('users');
             $table->enum('category', ['project', 'resale'])->default('project');
             $table->enum('publish', ['published', 'archived'])->default('published');
+            $table->boolean('citizenship')->default(false);
             $table->boolean('featured')->default(true);
             $table->bigInteger('visites')->default(0);
             $table->timestamps();

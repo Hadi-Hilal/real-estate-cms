@@ -59,6 +59,7 @@ class PropertyModelRepository implements PropertyRepository
             'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'published' : 'archived',
             'featured' => $request->has('featured') ? 1 : 0,
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $property = Property::create($request->all());
@@ -104,6 +105,7 @@ class PropertyModelRepository implements PropertyRepository
             'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'published' : 'archived',
             'featured' => $request->has('featured') ? 1 : 0,
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $property->update($request->all());

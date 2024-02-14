@@ -269,20 +269,20 @@
                 </div>
             </div>
         </div>
-{{--        <div class="row mb-8">--}}
-{{--            <!--begin::Col-->--}}
-{{--            <div class="col-xl-3">--}}
-{{--                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>--}}
-{{--            </div>--}}
-{{--            <!--end::Col-->--}}
-{{--            <!--begin::Col-->--}}
-{{--            <div class="col-xl-9 fv-row">--}}
-{{--                <div class="input-group mb-5">--}}
-{{--                    <input type="number" name="space" value="{{old('space' , $property->space)}}" class="form-control"/>--}}
-{{--                    <span class="input-group-text">m2</span>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        {{--        <div class="row mb-8">--}}
+        {{--            <!--begin::Col-->--}}
+        {{--            <div class="col-xl-3">--}}
+        {{--                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>--}}
+        {{--            </div>--}}
+        {{--            <!--end::Col-->--}}
+        {{--            <!--begin::Col-->--}}
+        {{--            <div class="col-xl-9 fv-row">--}}
+        {{--                <div class="input-group mb-5">--}}
+        {{--                    <input type="number" name="space" value="{{old('space' , $property->space)}}" class="form-control"/>--}}
+        {{--                    <span class="input-group-text">m2</span>--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -327,6 +327,21 @@
                     <input class="form-check-input h-30px w-50px"
                            @checked($property->publish == 'published') type="checkbox" name="publish"
                            id="publish"/>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Add To Citizenship Page')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="form-check form-switch form-check-custom form-check-solid me-10">
+                    <input class="form-check-input h-30px w-50px"
+                           @checked($property->citizenship == '1') type="checkbox" name="citizenship"
+                           id="citizenship"/>
                 </div>
             </div>
         </div>

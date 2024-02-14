@@ -5,9 +5,7 @@ namespace Modules\Property\app\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
-use Modules\Core\app\Models\State;
 use Modules\Property\app\Http\Requests\PropertyRequest;
 use Modules\Property\app\Models\Property;
 use Modules\Property\app\Models\PropertyFeature;
@@ -26,7 +24,7 @@ class PropertyController extends Controller
     {
         $countries = Country::all();
         $properties = $this->propertyRepository->paginate($request);
-        return view('property::admin.properties.index', compact('properties' , 'countries'));
+        return view('property::admin.properties.index', compact('properties', 'countries'));
     }
 
     public function create()

@@ -17,6 +17,4 @@ Route::prefix('admin/properties')->name('admin.properties.')->middleware(['auth'
     Route::delete('lists/deleteMulti', [PropertyController::class, 'deleteMulti'])->name('lists.deleteMulti');
 
 
-
-
 });

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->foreignId('category_id')->nullable()->constrained('blog_categories')->nullOnDelete();
             $table->enum('publish', ['published', 'archived'])->default('published');
             $table->boolean('featured')->default(true);
+            $table->boolean('citizenship')->default(false);
             $table->bigInteger('visites')->default(0);
             $table->timestamps();
         });

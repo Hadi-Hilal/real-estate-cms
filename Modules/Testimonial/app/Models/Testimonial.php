@@ -13,7 +13,7 @@ class Testimonial extends Model
 
     public $translatable = ['name', 'position', 'comment'];
     protected $appends = ['image'];
-    protected $fillable = ['name', 'position', 'comment', 'publish', 'link', 'avatar'];
+    protected $fillable = ['name', 'position', 'comment', 'publish', 'link', 'avatar', 'citizenship'];
 
     public function getImageAttribute()
     {

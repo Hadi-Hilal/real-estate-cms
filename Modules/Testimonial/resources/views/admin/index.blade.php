@@ -37,6 +37,7 @@
             <th class="ps-4 min-w-325px rounded-start">{{__('Client Details')}}</th>
             <th class="min-w-200px">{{__('Client Comment')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
+            <th class="min-w-150px">{{__('Added To Citizenship Page')}}</th>
             <th class="min-w-200px text-end rounded-end"></th>
         </tr>
         </thead>
@@ -71,6 +72,10 @@
                 <td>
                         <span
                             class="badge badge-light-{{$testimonial->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($testimonial->publish)}}</span>
+                </td>
+                <td>
+                    <span
+                        class="badge badge-light-{{$testimonial->citizenship == '1' ? 'primary' : 'danger'}} fs-7 fw-bold">{{$testimonial->citizenship == 1? __('Yes'): __('No')}}</span>
                 </td>
                 <td>
                     <a href="{{route('admin.testimonials.edit' , $testimonial->id)}}"

@@ -24,7 +24,8 @@ class FaqController extends Controller
     public function store(FaqRequest $request): RedirectResponse
     {
         $request->merge([
-            'publish' => $request->has('publish') ? 'published' : 'archived'
+            'publish' => $request->has('publish') ? 'published' : 'archived',
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             Faq::create($request->all());
@@ -50,7 +51,8 @@ class FaqController extends Controller
     public function update(FaqRequest $request, Faq $faq): RedirectResponse
     {
         $request->merge([
-            'publish' => $request->has('publish') ? 'published' : 'archived'
+            'publish' => $request->has('publish') ? 'published' : 'archived',
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $faq->update($request->all());

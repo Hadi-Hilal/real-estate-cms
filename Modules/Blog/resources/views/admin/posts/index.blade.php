@@ -110,9 +110,10 @@
 
             <th class="min-w-200px"></th>
             <th class="min-w-200px">{{__('Title')}}</th>
-            <th class="min-w-150px">{{__('Category')}}</th>
-            <th class="min-w-150px">{{__('Featured')}}</th>
+            <th class="min-w-200px">{{__('Category')}}</th>
+            <th class="min-w-200px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
+            <th class="min-w-200px">{{__('Added To Citizenship Page')}}</th>
             <th class="min-w-150px">{{__('Created At')}}</th>
             <th class="min-w-150px"><i class="bi bi-eye text-primary fa-2x"></i></th>
             <th class="min-w-200px text-end rounded-end"></th>
@@ -157,10 +158,14 @@
                     <span
                         class="badge badge-light-{{$post->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($post->publish)}}</span>
                 </td>
-
+                <td>
+                    <span
+                        class="badge badge-light-{{$post->citizenship == '1' ? 'primary' : 'danger'}} fs-7 fw-bold">{{$post->citizenship == 1? __('Yes'): __('No')}}</span>
+                </td>
                 <td>
                     {{$post->created_at->diffForHumans() }}
                 </td>
+
                 <td>
                     {{$post->visites }}
                 </td>

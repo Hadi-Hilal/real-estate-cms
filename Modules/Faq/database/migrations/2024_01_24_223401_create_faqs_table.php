@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->json('content');
             $table->string('link')->nullable();
             $table->enum('publish', ['published', 'archived'])->default('published');
+            $table->boolean('citizenship')->default(false);
             $table->timestamps();
         });
     }

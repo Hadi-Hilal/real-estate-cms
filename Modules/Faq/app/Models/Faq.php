@@ -12,5 +12,5 @@ class Faq extends Model
     use HasTranslations;
 
     public $translatable = ['title', 'content'];
-    protected $fillable = ['title', 'content', 'link', 'publish'];
+    protected $fillable = ['title', 'content', 'link', 'publish', 'citizenship'];
 }

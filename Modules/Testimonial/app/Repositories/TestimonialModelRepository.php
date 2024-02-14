@@ -32,7 +32,8 @@ class TestimonialModelRepository implements TestimonialRepository
         }
         $request->merge([
             'avatar' => $path,
-            'publish' => $request->has('publish') ? 'published' : 'archived'
+            'publish' => $request->has('publish') ? 'published' : 'archived',
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             Testimonial::create($request->all());
@@ -53,7 +54,8 @@ class TestimonialModelRepository implements TestimonialRepository
             ]);
         }
         $request->merge([
-            'publish' => $request->has('publish') ? 'published' : 'archived'
+            'publish' => $request->has('publish') ? 'published' : 'archived',
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $testimonial->update($request->all());

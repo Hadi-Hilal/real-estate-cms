@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $categories = BlogCategory::all();
-        $posts = $this->postRepository->paginate($request, ['id', 'title', 'slug', 'image', 'publish', 'featured', 'category_id', 'visites', 'created_at']);
+        $posts = $this->postRepository->paginate($request, ['id', 'title', 'slug', 'image', 'publish', 'featured', 'category_id', 'citizenship', 'visites', 'created_at']);
         return view('blog::admin.posts.index', compact('posts', 'categories'));
     }
 

@@ -21,7 +21,8 @@
 @section('content')
 
     <!--begin::Alert-->
-    <div class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-3 mb-10">
+    <div
+        class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-3 mb-10">
         <h3 class="fw-bold p-3"><span class="mx-1"
                                       style='font-size:20px;'>&#128075;</span> {{__('Welcome Back Mr') . ' ' . auth()->user()->name}}
         </h3>

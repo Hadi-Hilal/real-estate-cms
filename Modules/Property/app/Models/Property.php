@@ -35,6 +35,7 @@ class Property extends Model
         'created_by',
         'category',
         'publish',
+        'citizenship',
         'featured',
         'visits',
     ];

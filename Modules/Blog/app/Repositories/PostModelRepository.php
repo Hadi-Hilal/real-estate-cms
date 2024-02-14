@@ -47,6 +47,7 @@ class PostModelRepository implements PostRepository
             'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'published' : 'archived',
             'featured' => $request->has('featured') ? 1 : 0,
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $blogPost = BlogPost::create($request->all());
@@ -78,6 +79,7 @@ class PostModelRepository implements PostRepository
             'keywords' => $keywords,
             'publish' => $request->has('publish') ? 'published' : 'archived',
             'featured' => $request->has('featured') ? 1 : 0,
+            'citizenship' => $request->has('citizenship') ? 1 : 0
         ]);
         try {
             $post->update($request->all());

@@ -26,7 +26,7 @@
             </i>
             {{__('Add New Property')}}
         </a>
-                <!--begin::Filter-->
+        <!--begin::Filter-->
         <button type="button" class="btn btn-sm btn-primary me-3" data-kt-menu-trigger="click"
                 data-kt-menu-placement="bottom-end">
             <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
@@ -57,8 +57,10 @@
                                 data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
                                 data-hide-search="true" name="category">
                             <option value=""></option>
-                            <option @selected(request()->query('category') == 'project') value="project">{{__('project')}}</option>
-                            <option @selected(request()->query('category') == 'resale') value="resale">{{__('resale')}}</option>
+                            <option
+                                @selected(request()->query('category') == 'project') value="project">{{__('project')}}</option>
+                            <option
+                                @selected(request()->query('category') == 'resale') value="resale">{{__('resale')}}</option>
 
                         </select>
                     </div>
@@ -71,7 +73,7 @@
                             <option value="" selected></option>
                             @foreach($countries as $country)
                                 <option
-                                @selected(request()->query('country_id') == $country->id) value="{{$country->id}}">{{$country->name}}</option>
+                                    @selected(request()->query('country_id') == $country->id) value="{{$country->id}}">{{$country->name}}</option>
                             @endforeach
 
                         </select>

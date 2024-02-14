@@ -161,18 +161,29 @@
             </div>
         </div>
 
-
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Publish')}}</div>
             </div>
-            <!--end::Col-->
-            <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
                     <input class="form-check-input h-30px w-50px" checked type="checkbox" name="publish"
                            id="publish"/>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Add To Citizenship Page')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="form-check form-switch form-check-custom form-check-solid me-10">
+                    <input class="form-check-input h-30px w-50px" type="checkbox" name="citizenship"
+                           id="citizenship"/>
                 </div>
             </div>
         </div>

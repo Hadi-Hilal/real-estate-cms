@@ -13,7 +13,7 @@ class BlogPost extends Model
 
     public $translatable = ['title', 'description', 'content', 'keywords'];
     protected $appends = ['image_link'];
-    protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'category_id', 'publish', 'keywords', 'featured', 'visites'];
+    protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'category_id', 'publish', 'keywords', 'featured', 'citizenship', 'visites'];
     protected $with = ['category'];
 
     public function getImageLinkAttribute()

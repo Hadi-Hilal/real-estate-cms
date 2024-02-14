@@ -64,8 +64,7 @@
                        value="{{old('link',$faq->link)}}"/>
             </div>
         </div>
-        <!--end::Row-->
-        <!--begin::Row-->
+
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -75,13 +74,27 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" @checked($faq->publish == 'publish') type="checkbox"
+                    <input class="form-check-input h-30px w-50px" @checked($faq->publish == 'published') type="checkbox"
                            name="publish"
                            id="flexSwitch30x50"/>
                 </div>
             </div>
         </div>
-        <!--end::Row-->
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Add To Citizenship Page')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="form-check form-switch form-check-custom form-check-solid me-10">
+                    <input class="form-check-input h-30px w-50px" @checked($faq->citizenship == '1') type="checkbox"
+                           name="citizenship"
+                           id="citizenship"/>
+                </div>
+            </div>
+        </div>
     </x-admin.create-card>
 @endsection
 
