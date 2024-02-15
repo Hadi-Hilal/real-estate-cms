@@ -19,6 +19,7 @@ class PropertyRequest extends FormRequest
             'country_id' => 'required|numeric',
             'state_id' => 'required|numeric',
             'city_id' => 'required|numeric',
+            'property_type_id' => 'required|numeric',
             'category' => 'required',
             'price' => 'required',
         ];

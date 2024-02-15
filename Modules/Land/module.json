@@ -1,0 +1,11 @@
+{
+    "name": "Land",
+    "alias": "land",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Land\\app\\Providers\\LandServiceProvider"
+    ],
+    "files": []
+}

@@ -1,20 +1,23 @@
 <?php
 
-namespace Modules\Property\app\Models;
+namespace Modules\Land\app\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
+use Modules\Core\app\Models\District;
 use Modules\Core\app\Models\State;
+use Modules\Property\app\Models\PropertyFeature;
+use Modules\Property\app\Models\PropertyType;
 use Spatie\Translatable\HasTranslations;
 
-class Property extends Model
+class Land extends Model
 {
     use HasFactory;
-    use HasTranslations;
+     use HasTranslations;
 
     public $translatable = ['title', 'description', 'keywords', 'content'];
     protected $fillable = [
@@ -25,16 +28,22 @@ class Property extends Model
         'content',
         'image',
         'slides',
-        'property_type_id',
+        '3d' ,
+        'tapu',
+        'land_type_id',
+        'regulation',
+        'ratio',
         'price',
+        'space',
+        'net_space',
+        'deduction',
         'code',
         'country_id',
         'state_id',
         'city_id',
+        'district_id',
         'created_by',
-        'category',
         'publish',
-        'citizenship',
         'featured',
         'visits',
     ];
@@ -45,8 +54,8 @@ class Property extends Model
     {
         parent::boot();
 
-        static::creating(function ($property) {
-            $property->created_by = Auth::id();
+        static::creating(function ($land) {
+            $land->created_by = Auth::id();
         });
     }
 
@@ -70,12 +79,12 @@ class Property extends Model
 
     public function features()
     {
-        return $this->belongsToMany(PropertyFeature::class, 'property_feature_pivot');
+        return $this->belongsToMany(LandFeature::class, 'land_feature_pivot');
     }
 
-    public function propertyType()
+    public function landType()
     {
-        return $this->belongsTo(PropertyType::class, 'property_type_id');
+        return $this->belongsTo(LandType::class, 'land_type_id');
     }
 
     public function country()
@@ -93,8 +102,13 @@ class Property extends Model
         return $this->belongsTo(City::class, 'city_id');
     }
 
+      public function district()
+    {
+        return $this->belongsTo(District::class, 'district_id');
+    }
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
 }

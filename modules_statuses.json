@@ -10,5 +10,6 @@
     "FileManger": true,
     "Page": true,
     "Blog": true,
-    "Property": true
+    "Property": true,
+    "Land": true
 }

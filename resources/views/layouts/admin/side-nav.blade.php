@@ -37,6 +37,53 @@
         </div>
     @endcan
 
+    @can('Manage Lands')
+        <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ isset($active['lands']) ? 'show hover' : '' }}">
+            <span class="menu-link">
+                <span class="menu-icon">
+                    <i class="bi bi-map"></i>
+                </span>
+                <span class="menu-title">{{ __('Lands') }}</span>
+                <span class="menu-arrow"></span>
+            </span>
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['lands_types']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['lands_types']) ? 'active' : '' }}"
+                        href="{{ route('admin.lands.types.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Lands Types') }}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['lands_features']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['lands_features']) ? 'active' : '' }}"
+                        href="{{ route('admin.lands.features.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Lands Features') }}</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['lands_list']) ? 'show' : '' }}">
+                <div class="menu-item">
+                    <a class="menu-link {{ isset($active['lands_list']) ? 'active' : '' }}"
+                        href="{{ route('admin.lands.lists.index') }}">
+                        <span class="menu-bullet">
+                            <span class="bullet bullet-dot"></span>
+                        </span>
+                        <span class="menu-title">{{ __('Lands Lists') }}</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    @endcan
+
      @can('Manage Properties')
         <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ isset($active['properties']) ? 'show hover' : '' }}">
             <span class="menu-link">

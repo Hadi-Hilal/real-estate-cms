@@ -1,0 +1,31 @@
+{
+    "name": "hadi/land",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Land\\": "",
+            "Modules\\Land\\App\\": "app/",
+            "Modules\\Land\\Database\\Factories\\": "database/factories/",
+            "Modules\\Land\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Land\\Tests\\": "tests/"
+        }
+    }
+}
