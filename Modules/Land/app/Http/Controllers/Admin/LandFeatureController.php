@@ -35,14 +35,14 @@ class LandFeatureController extends Controller
         return back();
     }
 
-    public function update(LandFeature $request, LandFeature $feature): RedirectResponse
+    public function update(LandFeatureRequest $request, LandFeature $feature): RedirectResponse
     {
-     //   try {
+        try {
             $feature->update($request->all());
             $this->flushMessage(true);
-//        } catch (Exception $exception) {
-//            session()->flash('error', $exception->getMessage());
-//        }
+        } catch (Exception $exception) {
+            session()->flash('error', $exception->getMessage());
+        }
         return back();
     }
 

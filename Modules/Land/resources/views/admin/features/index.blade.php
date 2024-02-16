@@ -143,8 +143,9 @@
 
                 $('.modal-title').text("{{__('Edit Land Feature')}}");
 
-                var updateUrl = "{{ route('admin.lands.features.update', ':feature') }}";
+                var updateUrl = "{{ route('admin.lands.features.update', ['feature' => ':feature']) }}";
                 updateUrl = updateUrl.replace(':feature', featureId);
+
                 $('form').attr('action', updateUrl).append('<input type="hidden" id="method" name="_method" value="PUT">');
 
                 $('#name').val(typeName);

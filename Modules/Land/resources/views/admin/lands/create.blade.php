@@ -1,22 +1,21 @@
 @extends('layouts.admin.base')
 
-@section('title' , __('Edit Property'))
+@section('title' , __('Add New Land'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
-            ['label' => 'Properties' , 'url' => route('admin.properties.lists.index')],
-            ['label' => 'Edit Property'],
+            ['label' => 'Properties' , 'url' => route('admin.lands.lists.index')],
+            ['label' => 'Add New Land'],
         ];
     @endphp
-    <x-admin.breadcrumb pageTitle="Edit Property" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb pageTitle="Add New Land" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
 @endsection
 
 @section('content')
-    <x-admin.create-card title="Edit Property" :formUrl="route('admin.properties.lists.update', $property->id)">
-        @method('PUT')
+    <x-admin.create-card title="Add New Land" :formUrl="route('admin.lands.lists.store')">
         <div class="row mb-8">
 
             <!--begin::Col-->
@@ -32,10 +31,10 @@
                     <div class="col-xl-3">
                         <!--begin::Image input-->
                         <div class="image-input image-input-outline " data-kt-image-input="true"
-                             style="background-image: url('{{ $property->image_link }}')">
+                             style="background-image: url('{{asset('images/default.jpg')}}')">
                             <!--begin::Preview existing avatar-->
                             <div class="image-input-wrapper w-125px h-125px bgi-position-center"
-                                 style="background-size: 75%; background-image: url('{{ $property->image_link }}')"></div>
+                                 style="background-size: 75%; background-image: url({{asset('images/default.jpg')}})"></div>
                             <!--end::Preview existing avatar-->
                             <!--begin::Label-->
                             <label
@@ -43,7 +42,7 @@
                                 data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                 <i class="bi bi-pencil-fill fs-7"></i>
                                 <!--begin::Inputs-->
-                                <input type="file" name="img" accept=".png, .jpg, .jpeg, .webp"/>
+                                <input type="file" name="img" accept=".png, .jpg, .jpeg, .webp" required/>
                                 <input type="hidden" name="avatar_remove"/>
                                 <!--end::Inputs-->
                             </label>
@@ -101,9 +100,7 @@
                         </div>
                         <!--end::Image input-->
                         <!--begin::Hint-->
-                        <div class="form-text">{{__('Slides')}}: 900px * 600px
-                            <br/>
-                            <b class="text-success">{{count($property->slides)}} Files</b></div>
+                        <div class="form-text">{{__('Slides')}}: 900px * 600px</div>
                         <!--end::Hint-->
                     </div>
                 </div>
@@ -114,13 +111,42 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('3D')}} </div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" value="{{old('virtual_tour')}}" name="virtual_tour">
+            </div>
+
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Url')}} <span class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" id="gslug"
+                       placeholder="example: Spring Homes"/>
+                <input type="hidden" name="slug" value="{{old('slug')}}" id="slug">
+                <div class="my-3" id="link">{{old('slug')}}</div>
+                <div class="my-3" id="error"></div>
+            </div>
+
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Code')}}</div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="code"
-                       value="{{old('code', $property->code)}}"
+                <input type="text" class="form-control form-control-solid" name="code" value="{{old('code')}}"
                        placeholder="Example: 854 - IMT"/>
             </div>
         </div>
@@ -135,8 +161,9 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="title"
-                       value="{{old('title', $property->title)}}" required/>
+                <input type="text" class="form-control form-control-solid" name="title" value="{{old('title')}}"
+                       required
+                       placeholder="Spring Homes"/>
             </div>
         </div>
         <div class="row mb-8">
@@ -151,7 +178,7 @@
             <div class="col-xl-9 fv-row">
                 <p class="text-success fw-bold mb-1">{{__('This Description Very Important For SEO Should Be Between 150-160 characters')}}</p>
                 <input type="text" class="form-control form-control-solid" name="description" id="description" required
-                       value="{{old('description', $property->description)}}">
+                       value="{{old('description')}}" placeholder="Luxury apartments for sale..."/>
                 <small class="text-muted" id="wordCountDisplay"></small>
 
             </div>
@@ -160,20 +187,18 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Category')}} <span class="text-danger">*</span></div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Tapu Type')}} <span class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" @checked($property->category == 'project') type="radio"
-                           name="category" id="project" value="project">
-                    <label class="form-check-label" for="project">{{__('project')}}</label>
+                    <input class="form-check-input" checked type="radio" name="tapu" value="agricultural">
+                    <label class="form-check-label" for="agricultural">{{__('agricultural')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" @checked($property->category == 'resale') type="radio"
-                           name="category" id="resale" value="resale">
-                    <label class="form-check-label" for="resale">{{__('resale')}}</label>
+                    <input class="form-check-input" type="radio" name="tapu" value="construction">
+                    <label class="form-check-label" for="construction">{{__('construction')}}</label>
                 </div>
             </div>
         </div>
@@ -181,18 +206,18 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Property Type')}}</div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Land Type')}}</div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
 
-                <select class="form-select" name="property_type_id" data-control="select2"
+                <select class="form-select" name="land_type_id" data-control="select2"
                         data-placeholder="{{__('Please Chose One')}}">
                     <option></option>
-                    @foreach($propertiesTypes as $type)
+                    @foreach($landTypes as $type)
                         <option
-                            @selected(old('property_type_id', $property->property_type_id) == $type->id ) value="{{$type->id }}">{{$type->name}}</option>
+                            @selected(old('land_type_id') == $type->id ) value="{{$type->id }}">{{$type->name}}</option>
                     @endforeach
                 </select>
 
@@ -208,28 +233,34 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="row">
-                    <div class="col-xl-4">
+                    <div class="col-xl-3">
                         <select class="form-select" name="country_id" data-control="select2" id="country_id" required
                                 data-placeholder="{{__('Please Chose One')}}">
                             <option></option>
                             @foreach($countries as $country)
-                                <option
-                                    @selected($property->country_id == $country->id )  value="{{$country->id }}">{{$country->name}}</option>
+                                <option value="{{$country->id }}">{{$country->name}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="col-xl-4">
+                    <div class="col-xl-3">
                         <select class="form-select" name="state_id" data-control="select2" id="state_id" required
                                 data-placeholder="{{__('Please Chose One')}}">
-                            <option value="{{$property->state_id}}"> {{$property->state->name}}</option>
+                            <option></option>
                         </select>
                     </div>
 
-                    <div class="col-xl-4">
+                    <div class="col-xl-3">
                         <select class="form-select" name="city_id" data-control="select2" id="city_id" required
                                 data-placeholder="{{__('Please Chose One')}}">
-                            <option value="{{$property->city_id}}"> {{$property->city->name}}</option>
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <div class="col-xl-3">
+                        <select class="form-select" name="district_id" data-control="select2" id="district_id" required
+                                data-placeholder="{{__('Please Chose One')}}">
+                            <option></option>
                         </select>
                     </div>
                 </div>
@@ -247,7 +278,7 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <textarea name="content" class="form-control form-control-solid "
-                          id="tinymce">{!! old('content' , $property->content) !!}</textarea>
+                          id="tinymce">{!! old('content') !!}</textarea>
             </div>
         </div>
 
@@ -262,44 +293,108 @@
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
                     <span class="input-group-text">$</span>
-                    <input type="number" name="price" value="{{old('price' , $property->price)}}" class="form-control"
-                           required
+                    <input type="number" name="price" value="{{old('price')}}" class="form-control" required
                            aria-label="Amount (to the nearest dollar)"/>
                     <span class="input-group-text">.00</span>
                 </div>
             </div>
         </div>
-        {{--        <div class="row mb-8">--}}
-        {{--            <!--begin::Col-->--}}
-        {{--            <div class="col-xl-3">--}}
-        {{--                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}}</div>--}}
-        {{--            </div>--}}
-        {{--            <!--end::Col-->--}}
-        {{--            <!--begin::Col-->--}}
-        {{--            <div class="col-xl-9 fv-row">--}}
-        {{--                <div class="input-group mb-5">--}}
-        {{--                    <input type="number" name="space" value="{{old('space' , $property->space)}}" class="form-control"/>--}}
-        {{--                    <span class="input-group-text">m2</span>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
+
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Property Features')}}</div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}} <span
+                        class="text-danger">*</span> </div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <select class="form-select" name="property_features[]" multiple
+                <div class="input-group mb-5">
+                    <input type="number" name="space" value="{{old('space')}}" class="form-control" required/>
+                    <span class="input-group-text">m2</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Net Space')}} <span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="input-group mb-5">
+                    <input type="number" name="net_space" value="{{old('net_space')}}" class="form-control" required/>
+                    <span class="input-group-text">m2</span>
+                </div>
+            </div>
+        </div>
+
+         <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Deduction percentage')}} <span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="input-group mb-5">
+                    <input type="number" name="deduction" value="{{old('deduction' , 45)}}" class="form-control" required/>
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Building Ratio')}}<span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <div class="input-group mb-5">
+                    <input type="number" name="ratio" value="{{old('ratio' , 50)}}" class="form-control" required/>
+                    <span class="input-group-text">%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Land Regulation')}} <span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                    <input type="text" name="regulation" value="{{old('regulation')}}" class="form-control" required/>
+            </div>
+        </div>
+
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Land Features')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+
+                <select class="form-select" name="land_features[]" multiple
                         data-placeholder="{{__('Please Chose One')}}">
-                    @foreach($propertiesFeatures as $feature)
+                    @foreach($landFeatures as $feature)
                         <option
-                            value="{{ $feature->id }}" {{ in_array($feature->id, $property->features->pluck('id')->toArray()) ? 'selected' : '' }}>
-                            {{ $feature->name }}
-                        </option>
+                            @selected(old('land_features') == $feature->id ) value="{{$feature->id }}">{{$feature->name}}</option>
                     @endforeach
                 </select>
+
             </div>
         </div>
         <div class="row mb-8">
@@ -308,10 +403,8 @@
                 <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1 "></i>{{__('Keywords')}}
                     <span class="text-danger">*</span></div>
             </div>
-            <!--end::Col-->
-            <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input class="form-control" value="{{old('keywords' , $property->keywords)}}" name="keywords"
+                <input class="form-control" value="{{old('keywords' , 'Real Estate,')}}" name="keywords"
                        id="kt_tagify_1"/>
             </div>
         </div>
@@ -324,8 +417,7 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px"
-                           @checked($property->publish == 'published') type="checkbox" name="publish"
+                    <input class="form-check-input h-30px w-50px" checked type="checkbox" name="publish"
                            id="publish"/>
                 </div>
             </div>
@@ -339,8 +431,7 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px"
-                           @checked($property->citizenship == '1') type="checkbox" name="citizenship"
+                    <input class="form-check-input h-30px w-50px" type="checkbox" name="citizenship"
                            id="citizenship"/>
                 </div>
             </div>
@@ -354,12 +445,10 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" @checked($property->featured == '1') type="checkbox"
-                           name="featured" id="flexSwitch30x50"/>
+                    <input class="form-check-input h-30px w-50px" type="checkbox" name="featured" id="flexSwitch30x50"/>
                 </div>
             </div>
         </div>
-
     </x-admin.create-card>
 @endsection
 
@@ -371,12 +460,32 @@
             var input1 = document.querySelector("#kt_tagify_1");
             new Tagify(input1);
 
+            $('#gslug').on('input', function () {
+                var val = $(this).val();
+                var slug = generateSlug(val);
+                if (slug !== '') {
+                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/lands" + slug);
+                    $('#slug').val(slug);
+                } else {
+                    $('#link').addClass('text-danger').text("{{__('The Slug Should Be English')}}");
+                }
+
+            });
+
             $("#description").on("input", function () {
                 var text = $(this).val();
                 var charCount = text.length;
                 $("#wordCountDisplay").text(charCount + ' ' + '{{__('Character')}}');
-            }).trigger('input');
+            });
 
+            function generateSlug(text) {
+                return text
+                    .toLowerCase()
+                    .replace(/[^\w\s-]/g, '') // Remove non-word characters
+                    .replace(/\s+/g, '-') // Replace whitespace with dashes
+                    .replace(/--+/g, '-') // Replace multiple dashes with a single dash
+                    .trim(); // Trim leading/trailing whitespace and dashes
+            }
 
             tinymce.init({
                 selector: 'textarea',
@@ -388,14 +497,6 @@
                 @if(app()->getLocale() == 'ar') language: 'ar', @endif
                 ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
             });
-
-            $('#publish').on('change', function () {
-                if (!$(this).is(':checked')) {
-                    $('.notification').attr('disabled', true)
-                } else {
-                    $('.notification').attr('disabled', false)
-                }
-            })
 
             $('#country_id').on('change', function () {
                 var countryId = $(this).val();
@@ -431,7 +532,22 @@
                     });
             });
 
-
+            $('#city_id').on('change', function () {
+                var cityId = $(this).val();
+                $.get("{{ route('getDistricts') }}", {cityId: cityId})
+                    .done(function (response) {
+                        $('#district_id').empty();
+                        $.each(response, function (index, city) {
+                            $('#district_id').append($('<option>', {
+                                value: index,
+                                text: city
+                            }));
+                        });
+                    })
+                    .fail(function (error) {
+                        alert(error);
+                    });
+            });
         })
 
     </script>

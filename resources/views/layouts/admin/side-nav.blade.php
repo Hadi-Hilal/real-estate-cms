@@ -69,9 +69,9 @@
                 </div>
             </div>
 
-            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['lands_list']) ? 'show' : '' }}">
+            <div class="menu-sub menu-sub-accordion menu-active-bg {{ isset($active['lands_lists']) ? 'show' : '' }}">
                 <div class="menu-item">
-                    <a class="menu-link {{ isset($active['lands_list']) ? 'active' : '' }}"
+                    <a class="menu-link {{ isset($active['lands_lists']) ? 'active' : '' }}"
                         href="{{ route('admin.lands.lists.index') }}">
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>

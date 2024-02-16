@@ -23,5 +23,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('getCities', [CountryController::class, 'getCities'])->name('getCities');
 
+    Route::get('getDistricts', [CountryController::class, 'getDistricts'])->name('getDistricts');
+
 });
 

@@ -10,8 +10,6 @@ use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
 use Modules\Core\app\Models\District;
 use Modules\Core\app\Models\State;
-use Modules\Property\app\Models\PropertyFeature;
-use Modules\Property\app\Models\PropertyType;
 use Spatie\Translatable\HasTranslations;
 
 class Land extends Model
@@ -19,7 +17,7 @@ class Land extends Model
     use HasFactory;
      use HasTranslations;
 
-    public $translatable = ['title', 'description', 'keywords', 'content'];
+    public $translatable = ['title', 'description', 'keywords', 'content' , 'regulation'];
     protected $fillable = [
         'title',
         'slug',
@@ -28,7 +26,7 @@ class Land extends Model
         'content',
         'image',
         'slides',
-        '3d' ,
+        'virtual_tour' ,
         'tapu',
         'land_type_id',
         'regulation',

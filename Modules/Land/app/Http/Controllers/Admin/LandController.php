@@ -5,63 +5,62 @@ namespace Modules\Land\app\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Modules\Core\app\Models\Country;
+use Modules\Land\app\Http\Requests\LandRequest;
+use Modules\Land\app\Models\Land;
+use Modules\Land\app\Models\LandFeature;
+use Modules\Land\app\Models\LandType;
+use Modules\Land\app\Repositories\LandRepository;
 
 class LandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct(protected LandRepository $landRepository)
     {
-        return view('land::admin.index');
+        $this->setActive('lands');
+        $this->setActive('lands_lists');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index(Request $request)
+    {
+        $countries = Country::all();
+        $lands = $this->landRepository->paginate($request);
+        return view('land::admin.lands.index', compact('lands', 'countries'));
+    }
+
     public function create()
     {
-        return view('land::admin.create');
+        $landTypes = LandType::all();
+        $landFeatures = LandFeature::all();
+        $countries = Country::all();
+        return view('land::admin.lands.create', compact('countries', 'landTypes', 'landFeatures'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(LandRequest $request): RedirectResponse
     {
-        //
+        $this->flushMessage($this->landRepository->store($request));
+        return redirect()->to(route('admin.lands.lists.index'));
     }
 
-    /**
-     * Show the specified resource.
-     */
-    public function show($id)
+    public function edit(Land $list)
     {
-        return view('land::admin.show');
+        $land = $list;
+        $landTypes = LandType::all();
+        $landFeatures = LandFeature::all();
+        $countries = Country::all();
+        return view('land::admin.lands.edit', compact('land', 'countries', 'landTypes', 'landFeatures'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    public function update(LandRequest $request, Land $list): RedirectResponse
     {
-        return view('land::admin.edit');
+        $this->flushMessage($this->landRepository->update($request, $list));
+        return redirect()->to(route('admin.lands.lists.index'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
+    public function deleteMulti()
     {
-        //
+        $ids = request()->input('ids');
+        $this->flushMessage($this->landRepository->deleteMulti($ids));
+        return redirect()->to(route('admin.lands.lists.index'));
     }
 }

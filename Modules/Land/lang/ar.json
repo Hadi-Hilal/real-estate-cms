@@ -17,5 +17,12 @@
     "Country & State & City": "الدولة والولاية والمدينة",
     "Land Type": "نوع الأرض",
     "Land Features": "مميزات الأرض",
-    "A New Land Just Added!": "أرض جديد أضيف للتو!"
+    "A New Land Just Added!": "أرض جديدة أضيفت للتو!",
+    "Tapu Type": "نوع الطابو",
+    "agricultural": "زراعي",
+    "construction": "إعماري",
+    "Space": "المساحة",
+    "Net Space": "المساحة الصافية",
+    "Building Ratio": "نسبة الاعمار",
+    "Land Regulation": "تنظيم الأرض"
 }

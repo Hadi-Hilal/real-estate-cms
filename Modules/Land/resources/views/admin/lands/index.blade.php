@@ -7,24 +7,24 @@
         }
     </style>
 @endsection
-@section('title' , __('Properties'))
+@section('title' , __('Lands'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
-            ['label' => 'Properties'],
+            ['label' => 'Lands'],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Properties')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb :pageTitle="__('Lands')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
-        <a href="{{route('admin.properties.lists.create')}}" class="btn btn-light-primary me-3">
+        <a href="{{route('admin.lands.lists.create')}}" class="btn btn-light-primary me-3">
             <i class="ki-duotone ki-message-add fs-2">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 <span class="path3"></span>
             </i>
-            {{__('Add New Property')}}
+            {{__('Add New Land')}}
         </a>
         <!--begin::Filter-->
         <button type="button" class="btn btn-sm btn-primary me-3" data-kt-menu-trigger="click"
@@ -40,7 +40,7 @@
             <!--end::Svg Icon-->{{__('Filter')}}</button>
         <!--begin::Menu 1-->
         <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
-            <form method="GET" action="{{route('admin.properties.lists.index')}}">
+            <form method="GET" action="{{route('admin.lands.lists.index')}}">
                 <!--begin::Header-->
                 <div class="px-7 py-5">
                     <div class="fs-5 text-dark fw-bolder">{{__('Filter Options')}}</div>
@@ -51,20 +51,6 @@
                 <!--end::Separator-->
                 <!--begin::Content-->
                 <div class="px-7 py-5" data-kt-user-table-filter="form">
-                    <div class="mb-10">
-                        <label class="form-label fs-6 fw-bold">{{__('Category')}}:</label>
-                        <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
-                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
-                                data-hide-search="true" name="category">
-                            <option value=""></option>
-                            <option
-                                @selected(request()->query('category') == 'project') value="project">{{__('project')}}</option>
-                            <option
-                                @selected(request()->query('category') == 'resale') value="resale">{{__('resale')}}</option>
-
-                        </select>
-                    </div>
-
                     <div class="mb-10">
                         <label class="form-label fs-6 fw-bold">{{__('Country')}}:</label>
                         <select class="form-select form-select-solid fw-bolder" data-kt-select2="true"
@@ -109,8 +95,8 @@
 @endsection
 
 @section('content')
-    <x-admin.table :model="$properties" search="Search In Properties"
-                   :formUrl="route('admin.properties.lists.deleteMulti')">
+    <x-admin.table :model="$lands" search="Search In Lands"
+                   :formUrl="route('admin.lands.lists.deleteMulti')">
         <!--begin::Table head-->
         <thead>
         <tr class="text-start text-muted fw-bold fs-7 gs-0">
@@ -134,38 +120,37 @@
         <!--end::Table head-->
         <!--begin::Table body-->
         <tbody class="text-gray-600 fw-semibold">
-        @foreach($properties as $property)
+        @foreach($lands as $land)
             <tr>
                 <td>
                     <div class="form-check form-check-sm form-check-custom form-check-solid">
-                        <input class="form-check-input" type="checkbox" name="ids[]" value="{{$property->id}}"/>
+                        <input class="form-check-input" type="checkbox" name="ids[]" value="{{$land->id}}"/>
                     </div>
                 </td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <a href="{{$property->image_link}}" target="_blank" class="symbol me-5">
-                            <img src="{{$property->image_link}}" class=""
-                                 alt="{{$property->title}}"/>
+                        <a href="{{$land->image_link}}" target="_blank" class="symbol me-5">
+                            <img src="{{$land->image_link}}" class=""
+                                 alt="{{$land->title}}"/>
                         </a>
                     </div>
                 </td>
                 <td>
 
                     <h5 class="text-muted">
-                        {{$property->title}}
+                        {{$land->title}}
                     </h5>
-                       <span class="badge badge-light-primary">{{__($property->category)}} </span>
                 </td>
 
                 <td>
                     <h5 class="text-muted">
-                        {{$property->country->name}}
+                        {{$land->country->name}}
                     </h5>
-                    <small>{{$property->state->name}} - {{$property->city->name}}</small>
+                    <small>{{$land->state->name}} - {{$land->city->name}} - {{$land->district->name}}</small>
                 </td>
                 <td>
-                    {{$property->featured ? __('Yes') : __('No') }}
-                    @if($property->featured)
+                    {{$land->featured ? __('Yes') : __('No') }}
+                    @if($land->featured)
                         <i class="bi bi-check-circle-fill text-success"></i>
                     @else
                         <i class="bi bi-x-circle-fill text-danger"></i>
@@ -173,27 +158,27 @@
                 </td>
                 <td>
                     <span
-                        class="badge badge-light-{{$property->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($property->publish)}}</span>
+                        class="badge badge-light-{{$land->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($land->publish)}}</span>
                 </td>
 
                 <td>
                     <!--begin::User details-->
                     <div class="d-flex flex-column">
-                        <p class="text-gray-800 mb-1">{{$property->createdBy->name}}
+                        <p class="text-gray-800 mb-1">{{$land->createdBy->name}}
                         </p>
                     </div>
                     <!--begin::User details-->
                 </td>
                 <td>
-                    {{$property->created_at->diffForHumans() }}
+                    {{$land->created_at->diffForHumans() }}
                 </td>
                 <td>
-                    {{$property->visites }}
+                    {{$land->visites }}
                 </td>
 
                 <td>
                     <a class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 editBtn"
-                       href="{{route('admin.properties.lists.edit' , $property->id)}}">
+                       href="{{route('admin.lands.lists.edit' , $land->id)}}">
                         <i class="ki-duotone ki-message-edit fs-1">
                             <span class="path1"></span>
                             <span class="path2"></span>
