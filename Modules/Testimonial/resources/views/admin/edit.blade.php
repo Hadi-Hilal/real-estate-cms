@@ -138,7 +138,7 @@
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
                     <input class="form-check-input h-30px w-50px"
-                           @checked($testimonial->publish == 'Published')  type="checkbox" name="publish"
+                           @checked($testimonial->publish == 'published')  type="checkbox" name="publish"
                            id="flexSwitch30x50"/>
                 </div>
             </div>

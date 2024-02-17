@@ -142,15 +142,16 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Page Type')}}</div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Page Type')}} <span
+                        class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1"
+                    <input class="form-check-input" checked type="radio" name="type" id="inlineRadio1"
                            value="custom">
-                    <label class="form-check-label" for="inlineRadio1">{{__('Custom Page')}}</label>
+                    <label class="form-check-label" for="inlineRadio1">{{__('General Page')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="type" id="inlineRadio2"
@@ -184,7 +185,7 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" type="checkbox" name="featured" id="flexSwitch30x50"/>
+                    <input class="form-check-input h-30px w-50px" checked type="checkbox" name="featured" id="flexSwitch30x50"/>
                 </div>
             </div>
         </div>

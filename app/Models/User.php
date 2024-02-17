@@ -25,6 +25,7 @@ class User extends Authenticatable implements  MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'last_login',
         'password',
     ];
 
@@ -47,6 +48,7 @@ class User extends Authenticatable implements  MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login' => 'datetime',
     ];
 
     /**
@@ -56,10 +58,17 @@ class User extends Authenticatable implements  MustVerifyEmail
      */
     protected $appends = [
         'profile_photo_url',
+        'last_login_human'
     ];
 
     public function scopeType(Builder $query, string $type = 'user'): Builder
     {
        return $query->where('type' , $type);
+    }
+
+    public function getLastLoginHumanAttribute(){
+        if ($this->last_login){
+            return $this->last_login->diffForHumans();
+        }
     }
 }

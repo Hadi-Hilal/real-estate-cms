@@ -181,7 +181,7 @@
                         <span class="menu-bullet">
                             <span class="bullet bullet-dot"></span>
                         </span>
-                        <span class="menu-title">{{ __('Custom Pages') }}</span>
+                        <span class="menu-title">{{ __('General Pages') }}</span>
                     </a>
                 </div>
             </div>

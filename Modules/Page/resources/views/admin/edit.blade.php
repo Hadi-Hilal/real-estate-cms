@@ -139,7 +139,7 @@
                     <input class="form-check-input" @checked($page->type == 'custom') type="radio" name="type"
                            id="inlineRadio1"
                            value="custom">
-                    <label class="form-check-label" for="inlineRadio1">{{__('Custom Page')}}</label>
+                    <label class="form-check-label" for="inlineRadio1">{{__('General Page')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" @checked($page->type == 'service') type="radio" name="type"

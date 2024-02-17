@@ -122,7 +122,7 @@
                 <!--begin::Last login=-->
                 <td>
                     <div class="badge badge-light fw-bolder">
-                        {{$admin->last_login_html}}
+                        {{$admin->last_login_human}}
                     </div>
                 </td>
                 <!--end::Last login=-->

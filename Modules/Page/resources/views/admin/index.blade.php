@@ -8,16 +8,16 @@
         }
     </style>
 @endsection
-@section('title' , __('Custom Pages'))
+@section('title' , __('General Pages'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard')],
-            ['label' => 'Custom Pages'],
+            ['label' => 'General Pages'],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Custom Pages')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb :pageTitle="__('General Pages')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3">
         <a href="{{route('admin.pages.create')}}" class="btn btn-light-primary me-3">
             <i class="ki-duotone ki-message-add fs-2">
@@ -71,7 +71,7 @@
                                 data-kt-user-table-filter="featured" data-hide-search="true" name="type">
                             <option value="" selected></option>
                             <option
-                                @selected(request()->query('type') == 'custom')  value="custom">{{__('Custom Page')}}</option>
+                                @selected(request()->query('type') == 'custom')  value="custom">{{__('General Page')}}</option>
                             <option
                                 @selected(request()->query('type') == 'service') value="service">{{__('Service Page')}}</option>
                         </select>
@@ -153,7 +153,7 @@
                         class="badge badge-light-{{$page->publish == 'published' ? 'success' : 'warning'}} fs-7 fw-bold">{{__($page->publish)}}</span>
                 </td>
                 <td>
-                    <strong> {{$page->type == 'custom' ? __('Custom Page') : __('Service Page') }} </strong>
+                    <strong> {{$page->type == 'custom' ? __('General Page') : __('Service Page') }} </strong>
                 </td>
                 <td>
                     {{$page->created_at->diffForHumans() }}
