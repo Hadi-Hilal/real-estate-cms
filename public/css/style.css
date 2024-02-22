@@ -1,0 +1,330 @@
+:root {
+    --main-color: #cb9e2c;
+    --second-color: #717172;
+    --gradiant-main-color: #fffbf0;
+    --font-size: 1rem;
+    --line-hight: 1.5;
+}
+
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: var(--font-size);
+    line-height: var(--line-hight);
+    font-family: Poppins, sans-serif;
+}
+
+.text-main-color {
+    color: var(--main-color);
+}
+.bg-main-color {
+    background-color: var(--main-color);
+}
+.text-second-color {
+    color: var(--second-color);
+}
+.bg-second-color {
+    background-color: var(--second-color);
+}
+.card-text {
+    color: var(--second-color);
+}
+.btn-main-color{
+    background-color: var(--main-color);
+    color: #ffffff;
+
+}
+.btn-main-color:hover {
+    color: var(--main-color);
+    border-color: var(--main-color);
+}
+.card-shadow{
+    box-shadow: 10px 10px 10px 10px #ccc;
+}
+.dropdown .dropdown-menu {
+    transform: translate3d(-20%, 36px, 0);
+    padding: 1rem;
+    border: none;
+}
+
+.dropdown .dropdown-menu .parent {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    max-height: 150px;
+    overflow-y: auto;
+    gap: 1rem;
+}
+
+.dropdown .dropdown-menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    padding: .35rem;
+    color: #2b2b2b;
+}
+
+.border-btns .dropdown-menu a {
+    border-radius: 2rem;
+    border: 1px solid #eaeaea;
+}
+
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+    border-color: transparent;
+}
+
+.dropdown-menu a:hover {
+    color: var(--main-color);
+    background: var(--gradiant-main-color);
+}
+
+.border-btns .dropdown-menu a:checked, .dropdown-menu a:active {
+    border: 1px solid var(--main-color);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+.custom-select2 {
+   width: 100%;
+}
+
+/* Remove border and make background transparent */
+.select2-container .select2-selection--single {
+   border: none;
+   background-color: transparent;
+}
+
+
+/* Customize hover color */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color:  var(--gradiant-main-color);
+    color:var(--main-color);
+}
+
+/* Other rules */
+
+#fixedNav {
+    transition: 0.3s;
+}
+.trans-nav {
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    position: relative;
+    background-color: transparent;
+}
+.home .trans-nav .btn{
+    color: #ffffff;
+}
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    background-color: #ffffff;
+}
+
+.home-bg {
+    transform: translateY(-70px);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    max-height: 650px;
+    position: relative;
+}
+.home-filter {
+    padding: 16px;
+    border-radius: 60px;
+    background-color: #fcfcfc;
+    transform: translateY(-110px);
+    margin-bottom: -15px;
+}
+.home-filter-sections {
+    padding: 12px 32px;
+    background-color: #fcfcfc;
+    border-radius: 60px;
+    border: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.home-filter-sections .filter-separator {
+    width: 1px;
+    height: 32px;
+    background: #bdbdbd;
+}
+.sections-margin{
+    margin-top: 75px;
+}
+.global-title{
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.choose-country .countries {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.choose-country .countries .country {
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 352px;
+    align-self: stretch;
+}
+.choose-country .countries .country .flag-name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+}
+.choose-country .countries .country .flag-name .flag-img {
+    width: 64px;
+}
+
+ .choose-country .countries .country .flag-name p {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.choose-country .countries .country .other-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.choose-country .countries .country .other-info p {
+    color: var(--second-color);;
+    margin-bottom: 0;
+}
+.choose-country .countries .country .other-info .view-all {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.blur-up.lazyloaded {
+    filter: blur(0);
+}
+.blur-up {
+    filter: blur(5px);
+    transition: filter .4s;
+}
+a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--second-color);
+}
+.project-card{
+    border: none;
+}
+.project-card img {
+    border-radius: 8px;
+    height: 380px;
+    object-fit: cover;
+}
+.project-card .property-country {
+    display: flex;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    gap: 6px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: 3;
+    box-shadow: 2px 4px 8px var(--second-color);
+}
+.project-card .home .country-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.login-card {
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer .subscribe-form {
+    position: relative;
+    width: fit-content;
+}
+
+footer .subscribe-form .email-input {
+    max-width: 440px;
+    width: 100%;
+    padding-inline-end: 140px;
+    padding-inline-start: 16px;
+    padding-block: 16px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+}
+footer .subscribe-form .subscribe-button {
+    position: absolute;
+    right: 16px;
+    font-weight: 500;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 16px;
+    background-color: #555;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    color: #fcfcfc;
+}

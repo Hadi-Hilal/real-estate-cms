@@ -27,14 +27,17 @@ class SettingsController extends Controller
 
     public function store(Request $request)
     {
-        if ($request->hasFile('imgs')) {
+
+        if ($request->has('imgs')) {
             $files = $request->file('imgs');
             foreach ($files as $key => $file) {
                 $old_file = null;
                 if (Settings::get($key)) {
                     $old_file = Settings::get($key);
                 }
+
                 $path = $this->upload($file, 'settings', $key, $old_file);
+
                 Settings::set($key, $path);
             }
         }

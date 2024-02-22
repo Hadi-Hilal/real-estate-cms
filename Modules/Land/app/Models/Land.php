@@ -45,7 +45,7 @@ class Land extends Model
         'featured',
         'visits',
     ];
-    protected $appends = ['image_link'];
+    protected $appends = ['image_link' , 'land_location'];
     protected $with = ['features'];
 
     protected static function boot()
@@ -57,6 +57,14 @@ class Land extends Model
         });
     }
 
+    public function scopeFeatured($q){
+        $q->where('publish' , 'published')->where('featured' , 1);
+    }
+
+    public function scopeCardData($q){
+        $q->select('id' , 'slug' ,'title' ,'description' ,'image' ,'land_type_id' ,'price' ,'country_id' ,'state_id' , 'tapu', 'district_id'  , 'city_id'
+            ,'publish' ,'featured');
+    }
     public function getImageLinkAttribute()
     {
         if ($this->attributes['image']) {
@@ -67,6 +75,9 @@ class Land extends Model
         return $path;
     }
 
+    public function getLandLocationAttribute(){
+        return $this->district->name . ',' . $this->city->name . ',' .$this->state->name;
+    }
     public function getSlidesAttribute()
     {
         if ($this->attributes['slides']) {
@@ -80,7 +91,7 @@ class Land extends Model
         return $this->belongsToMany(LandFeature::class, 'land_feature_pivot');
     }
 
-    public function landType()
+    public function type()
     {
         return $this->belongsTo(LandType::class, 'land_type_id');
     }

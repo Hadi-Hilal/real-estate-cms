@@ -33,7 +33,7 @@
                         title="{{__('Change avatar')}}">
                         <i class="bi bi-pencil-fill fs-7"></i>
                         <!--begin::Inputs-->
-                        <input type="file" name="imgs[white_logo]" accept=".png, .jpg, .jpeg"/>
+                        <input type="file" name="imgs[white_logo]" accept=".png, .jpg, .jpeg, .webp"/>
                         <input type="hidden" name="avatar_remove"/>
                         <!--end::Inputs-->
                     </label>
@@ -55,7 +55,7 @@
                 </div>
                 <!--end::Image input-->
                 <!--begin::Hint-->
-                <div class="form-text"> 142px * 50px</div>
+                <div class="form-text"> 125px * 40px</div>
                 <!--end::Hint-->
             </div>
             <!--end::Col-->
@@ -76,7 +76,7 @@
                         title="{{__('Change avatar')}}">
                         <i class="bi bi-pencil-fill fs-7"></i>
                         <!--begin::Inputs-->
-                        <input type="file" name="imgs[black_logo]" accept=".png, .jpg, .jpeg"/>
+                        <input type="file" name="imgs[black_logo]" accept=".png, .jpg, .jpeg, .webp"/>
                         <input type="hidden" name="avatar_remove"/>
                         <!--end::Inputs-->
                     </label>
@@ -98,10 +98,53 @@
                 </div>
                 <!--end::Image input-->
                 <!--begin::Hint-->
-                <div class="form-text"> 142px * 50px</div>
+                <div class="form-text"> 125px * 40px</div>
                 <!--end::Hint-->
             </div>
             <!--end::Col-->
+                        <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Home Page Image')}}</div>
+                <!--begin::Image input-->
+                <div class="image-input image-input-outline" data-kt-image-input="true">
+                    <!--begin::Preview existing avatar-->
+                    <div class="image-input-wrapper w-125px h-125px bgi-position-center"
+                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('home_img' ,'default.jpg') )}}')"></div>
+                    <!--end::Preview existing avatar-->
+                    <!--begin::Label-->
+                    <label
+                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                        title="{{__('Change avatar')}}">
+                        <i class="bi bi-pencil-fill fs-7"></i>
+                        <!--begin::Inputs-->
+                        <input type="file" name="imgs[home_img]" accept=".png, .jpg, .jpeg, .webp"/>
+                        <input type="hidden" name="avatar_remove"/>
+                        <!--end::Inputs-->
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Cancel-->
+                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                          data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                          title="{{__('Cancel avatar')}}">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                    <!--end::Cancel-->
+                    <!--begin::Remove-->
+                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
+                          data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                          title="{{__('Remove avatar')}}">
+                                <i class="bi bi-x fs-2"></i>
+                            </span>
+                    <!--end::Remove-->
+                </div>
+                <!--end::Image input-->
+                <!--begin::Hint-->
+                <div class="form-text"> 1400px * 500px</div>
+                <!--end::Hint-->
+            </div>
+            <!--end::Col-->
+
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-5">{{__('Meta Img')}}</div>
@@ -118,7 +161,7 @@
                         title="{{__('Change avatar')}}">
                         <i class="bi bi-pencil-fill fs-7"></i>
                         <!--begin::Inputs-->
-                        <input type="file" name="imgs[meta_img]" accept=".png, .jpg, .jpeg"/>
+                        <input type="file" name="imgs[meta_img]" accept=".png, .jpg, .jpeg, .webp"/>
                         <input type="hidden" name="avatar_remove"/>
                         <!--end::Inputs-->
                     </label>
@@ -140,7 +183,7 @@
                 </div>
                 <!--end::Image input-->
                 <!--begin::Hint-->
-                <div class="form-text"> 120px * 600px</div>
+                <div class="form-text"> 1200px * 600px</div>
                 <!--end::Hint-->
             </div>
             <!--end::Col-->
