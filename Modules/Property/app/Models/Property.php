@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
 use Modules\Core\app\Models\State;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Spatie\Translatable\HasTranslations;
 
 class Property extends Model
@@ -38,8 +40,8 @@ class Property extends Model
         'featured',
         'visits',
     ];
-    protected $appends = ['image_link'];
-    protected $with = ['features'];
+    protected $appends = ['image_link', 'location', 'price_currency'];
+    protected $with = ['features', 'propertyType'];
 
     protected static function boot()
     {
@@ -48,6 +50,16 @@ class Property extends Model
         static::creating(function ($property) {
             $property->created_by = Auth::id();
         });
+    }
+
+    public function scopeFeatured($q)
+    {
+        $q->where('publish', 'published')->where('featured', 1);
+    }
+
+    public function scopeCardData($q)
+    {
+        $q->select('id', 'slug', 'title', 'description', 'image', 'property_type_id', 'category', 'price', 'country_id', 'state_id', 'city_id', 'publish', 'featured');
     }
 
     public function getImageLinkAttribute()
@@ -60,6 +72,26 @@ class Property extends Model
         return $path;
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function getPriceCurrencyAttribute()
+    {
+
+        $currencyVal = session()->get('currencyVal');
+        if (is_null($currencyVal)) {
+            return number_format($this->price) . ' USD';
+        }
+
+        return number_format(round($this->price / $currencyVal)) . ' ' . session()->get('currencyCode');
+    }
+
+    public function getLocationAttribute()
+    {
+        return $this->city->name . ',' . $this->state->name;
+    }
+
     public function getSlidesAttribute()
     {
         if ($this->attributes['slides']) {
@@ -67,6 +99,7 @@ class Property extends Model
         }
         return null;
     }
+
 
     public function features()
     {

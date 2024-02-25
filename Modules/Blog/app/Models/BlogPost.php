@@ -16,6 +16,16 @@ class BlogPost extends Model
     protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'category_id', 'publish', 'keywords', 'featured', 'citizenship', 'visites'];
     protected $with = ['category'];
 
+    public function scopeFeatured($q)
+    {
+        $q->where('publish', 'published')->where('featured', 1);
+    }
+
+    public function scopeCardData($q)
+    {
+        $q->select('id', 'slug', 'title', 'description', 'image', 'visites', 'created_at', 'publish', 'featured');
+    }
+
     public function getImageLinkAttribute()
     {
         if ($this->attributes['image']) {

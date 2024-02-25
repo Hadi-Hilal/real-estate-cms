@@ -8,14 +8,12 @@
         </div>
     </div>
 
-
-
     <div class="container">
-         <div class="home-filter ">
-        <form>
-            <div class="home-filter-sections">
+        <div class="home-filter ">
+            <form class="home-filter-sections">
                 <div class="w-100">
                     <select name="country" class="form-control select2">
+                        <option selected disabled>{{__('Country')}}</option>
                         @foreach($countries->where('active' , 1) as $country)
                             <option value="{{$country->id}}">
                                 {{$country->name}}
@@ -23,20 +21,21 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="filter-separator"></div>
+                <div class="filter-separator d-md-block d-none"></div>
                 <div class="w-100">
                     <select name="city" class="form-control select2">
-                        @foreach($cities as $city)
-                            <option value="{{$city->id}}">
-                                {{$city->name}}
-                            </option>
-                        @endforeach
+                        <option selected disabled>{{__('Tapu Type')}}</option>
+                        <option value="agricultural">{{__('agricultural')}}</option>
+                        <option value="agricultural">{{__('construction')}}</option>
+                        <option value="agricultural">{{__('portion')}}</option>
+                        <option value="agricultural">{{__('independent')}}</option>
                     </select>
                 </div>
-                <div class="filter-separator"></div>
+                <div class="filter-separator d-md-block d-none"></div>
                 <div class="w-100">
                     <select name="landType" class="form-control select2">
-                        @foreach($landsTypes as $type)
+                        <option selected disabled>{{__('Land Type')}}</option>
+                        @foreach($landTypes as $type)
                             <option value="{{$type->id}}">
                                 {{$type->name}}
                             </option>
@@ -44,21 +43,16 @@
                     </select>
 
                 </div>
-                <div class="filter-search-icon">
-                    <button class="btn" type="submit">
-                        <i class="bi bi-search fs-3"></i>
-                    </button>
-
-                </div>
-            </div>
-        </form>
-
-    </div>
+                <button class="btn filter-search-btn btn-main-color" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
         <div class="choose-country">
             <p class="global-title text-center">{{__('Choose your desired country for real estate investment')}}</p>
             <div class="countries">
-                <div class="country">
-                    <div  class="flag-name">
+                <div class="country mb-3">
+                    <div class="flag-name">
                         <div class="flag-img">
                             <img class="blur-up lazyloaded" width="64" loading="lazy"
                                  src="{{asset('images/flags/turkey.svg')}}"
@@ -72,15 +66,15 @@
                             {{__('View all')}}
                         </a>
                     </div>
-                      <div class="other-info">
+                    <div class="other-info">
                         <p>+357 {{__('Properties')}}</p>
                         <a href="#" class="view-all">
                             {{__('View all')}}
                         </a>
                     </div>
                 </div>
-                <div class="country">
-                    <div  class="flag-name">
+                <div class="country mb-3">
+                    <div class="flag-name">
                         <div class="flag-img">
                             <img class="blur-up lazyloaded" width="64" loading="lazy"
                                  src="{{asset('images/flags/algeria.svg')}}"
@@ -91,13 +85,13 @@
                     <div class="other-info">
                         <p>+357 {{__('Lands')}}</p>
                         <a href="#" class="view-all">
-                             {{__('View all')}}
+                            {{__('View all')}}
                         </a>
                     </div>
-                      <div class="other-info">
+                    <div class="other-info">
                         <p>+357 {{__('Properties')}}</p>
                         <a href="#" class="view-all">
-                             {{__('View all')}}
+                            {{__('View all')}}
                         </a>
                     </div>
                 </div>
@@ -108,27 +102,30 @@
         <div class="sections-margin">
             <h2 class="global-title h3">{{__('Discover Our Featured Selection of Land Options')}}</h2>
             <div class="owl-carousel">
-                @foreach($featuredLands as $land)
-                <div class="card project-card">
-                    <a  class="property-country">
-                        <span class="country-name">
-                        {{$land->country->name}}
-                        </span>
-                        </a>
-                    <img src="{{$land->image_link}}" class=" blur-up lazyloaded" alt="{{$land->title}}">
-                  <div class="card-body">
-                    <h5 class="card-title fw-bold h4">{{$land->title}}</h5>
-                    <p class="card-text">{{$land->land_location}}</p>
-                      <hr/>
-                      <div class="d-flex justify-content-between">
-                          <p>{{$land->type->name}}</p>
-                          <p>{{__($land->tapu)}}</p>
-                      </div>
-                  </div>
-                </div>
+                @foreach($lands as $land)
+                    <x-land-card :land="$land"></x-land-card>
                 @endforeach
             </div>
         </div>
+
+        <div class="sections-margin">
+            <h2 class="global-title h3">{{__('Discover Our Featured Properties')}}</h2>
+            <div class="owl-carousel">
+                @foreach($properties as $property)
+                    <x-property-card :property="$property"></x-property-card>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="sections-margin mb-5">
+            <h2 class="global-title h3">{{__('Real Estate Blog Posts')}}</h2>
+            <div class="owl-carousel">
+                @foreach($posts as $post)
+                    <x-post-card :post="$post"></x-post-card>
+                @endforeach
+            </div>
+        </div>
+
     </div>
 
 

@@ -12,7 +12,7 @@ use Modules\Land\app\Models\Land;
 
 class LandModelRepository implements LandRepository
 {
-     use FileTrait;
+    use FileTrait;
 
     private string $landUploadPath = 'lands';
 
@@ -103,7 +103,7 @@ class LandModelRepository implements LandRepository
         try {
             $land->update($request->all());
             $land->features()->sync($request->input('land_features'));
-            cache()->forget('properties');
+            cache()->forget('lands');
             return true;
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());

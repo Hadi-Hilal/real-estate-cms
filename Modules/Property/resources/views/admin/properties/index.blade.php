@@ -154,7 +154,7 @@
                     <h5 class="text-muted">
                         {{$property->title}}
                     </h5>
-                       <span class="badge badge-light-primary">{{__($property->category)}} </span>
+                    <span class="badge badge-light-primary">{{__($property->category)}} </span>
                 </td>
 
                 <td>

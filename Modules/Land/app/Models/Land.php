@@ -10,14 +10,16 @@ use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
 use Modules\Core\app\Models\District;
 use Modules\Core\app\Models\State;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Spatie\Translatable\HasTranslations;
 
 class Land extends Model
 {
     use HasFactory;
-     use HasTranslations;
+    use HasTranslations;
 
-    public $translatable = ['title', 'description', 'keywords', 'content' , 'regulation'];
+    public $translatable = ['title', 'description', 'keywords', 'content', 'regulation'];
     protected $fillable = [
         'title',
         'slug',
@@ -26,7 +28,7 @@ class Land extends Model
         'content',
         'image',
         'slides',
-        'virtual_tour' ,
+        'virtual_tour',
         'tapu',
         'land_type_id',
         'regulation',
@@ -45,7 +47,7 @@ class Land extends Model
         'featured',
         'visits',
     ];
-    protected $appends = ['image_link' , 'land_location'];
+    protected $appends = ['image_link', 'location', 'price_currency'];
     protected $with = ['features'];
 
     protected static function boot()
@@ -57,14 +59,17 @@ class Land extends Model
         });
     }
 
-    public function scopeFeatured($q){
-        $q->where('publish' , 'published')->where('featured' , 1);
+    public function scopeFeatured($q)
+    {
+        $q->where('publish', 'published')->where('featured', 1);
     }
 
-    public function scopeCardData($q){
-        $q->select('id' , 'slug' ,'title' ,'description' ,'image' ,'land_type_id' ,'price' ,'country_id' ,'state_id' , 'tapu', 'district_id'  , 'city_id'
-            ,'publish' ,'featured');
+    public function scopeCardData($q)
+    {
+        $q->select('id', 'slug', 'title', 'description', 'image', 'land_type_id', 'price', 'country_id', 'state_id', 'tapu', 'district_id', 'city_id'
+            , 'space', 'publish', 'featured');
     }
+
     public function getImageLinkAttribute()
     {
         if ($this->attributes['image']) {
@@ -75,9 +80,26 @@ class Land extends Model
         return $path;
     }
 
-    public function getLandLocationAttribute(){
-        return $this->district->name . ',' . $this->city->name . ',' .$this->state->name;
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function getPriceCurrencyAttribute()
+    {
+
+        $currencyVal = session()->get('currencyVal');
+        if (is_null($currencyVal)) {
+            return number_format($this->price) . ' USD';
+        }
+
+        return number_format(round($this->price / $currencyVal)) . ' ' . session()->get('currencyCode');
     }
+
+    public function getLocationAttribute()
+    {
+        return $this->district->name . ',' . $this->city->name . ',' . $this->state->name;
+    }
+
     public function getSlidesAttribute()
     {
         if ($this->attributes['slides']) {
@@ -111,10 +133,11 @@ class Land extends Model
         return $this->belongsTo(City::class, 'city_id');
     }
 
-      public function district()
+    public function district()
     {
         return $this->belongsTo(District::class, 'district_id');
     }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

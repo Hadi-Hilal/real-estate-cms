@@ -185,7 +185,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-switch form-check-custom form-check-solid me-10">
-                    <input class="form-check-input h-30px w-50px" checked type="checkbox" name="featured" id="flexSwitch30x50"/>
+                    <input class="form-check-input h-30px w-50px" checked type="checkbox" name="featured"
+                           id="flexSwitch30x50"/>
                 </div>
             </div>
         </div>

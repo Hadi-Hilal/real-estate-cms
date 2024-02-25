@@ -1,10 +1,11 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Modules\Land\app\Http\Controllers\Admin\LandController;
 use Modules\Land\app\Http\Controllers\Admin\LandTypeController;
 use Modules\Land\app\Http\Controllers\Admin\LandFeatureController;
 
-Route::prefix('admin/lands')->name('admin.lands.')->middleware(['auth', 'admin', 'verified' , 'can:Manage Lands'])->group(function () {
+Route::prefix('admin/lands')->name('admin.lands.')->middleware(['auth', 'admin', 'verified', 'can:Manage Lands'])->group(function () {
 
     Route::resource('types', LandTypeController::class)->only('index', 'store', 'update');
     Route::delete('types/deleteMulti', [LandTypeController::class, 'deleteMulti'])->name('types.deleteMulti');

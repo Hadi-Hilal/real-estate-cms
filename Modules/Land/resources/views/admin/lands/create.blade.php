@@ -116,7 +116,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" value="{{old('virtual_tour')}}" name="virtual_tour">
+                <input type="text" class="form-control form-control-solid" value="{{old('virtual_tour')}}"
+                       name="virtual_tour">
             </div>
 
         </div>
@@ -199,6 +200,14 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="tapu" value="construction">
                     <label class="form-check-label" for="construction">{{__('construction')}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tapu" value="portion">
+                    <label class="form-check-label" for="construction">{{__('portion')}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tapu" value="independent">
+                    <label class="form-check-label" for="construction">{{__('independent')}}</label>
                 </div>
             </div>
         </div>
@@ -304,7 +313,7 @@
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}} <span
-                        class="text-danger">*</span> </div>
+                        class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
@@ -332,7 +341,7 @@
             </div>
         </div>
 
-         <div class="row mb-8">
+        <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Deduction percentage')}} <span
@@ -342,7 +351,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
-                    <input type="number" name="deduction" value="{{old('deduction' , 45)}}" class="form-control" required/>
+                    <input type="number" name="deduction" value="{{old('deduction' , 45)}}" class="form-control"
+                           required/>
                     <span class="input-group-text">%</span>
                 </div>
             </div>
@@ -373,7 +383,7 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                    <input type="text" name="regulation" value="{{old('regulation')}}" class="form-control" required/>
+                <input type="text" name="regulation" value="{{old('regulation')}}" class="form-control" required/>
             </div>
         </div>
 

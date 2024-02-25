@@ -119,7 +119,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" value="{{old('virtual_tour' , $land->virtual_tour)}}" name="virtual_tour">
+                <input type="text" class="form-control form-control-solid"
+                       value="{{old('virtual_tour' , $land->virtual_tour)}}" name="virtual_tour">
             </div>
 
         </div>
@@ -179,12 +180,24 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" checked type="radio" name="tapu" @checked($land->tapu == 'agricultural') value="agricultural">
+                    <input class="form-check-input" checked type="radio" name="tapu"
+                           @checked($land->tapu == 'agricultural') value="agricultural">
                     <label class="form-check-label" for="agricultural">{{__('agricultural')}}</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="tapu"  @checked($land->tapu == 'construction') value="construction">
+                    <input class="form-check-input" type="radio" name="tapu"
+                           @checked($land->tapu == 'construction') value="construction">
                     <label class="form-check-label" for="construction">{{__('construction')}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tapu"
+                           @checked($land->tapu == 'portion') value="portion">
+                    <label class="form-check-label" for="construction">{{__('portion')}}</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="tapu"
+                           @checked($land->tapu == 'independent') value="independent">
+                    <label class="form-check-label" for="construction">{{__('independent')}}</label>
                 </div>
             </div>
         </div>
@@ -197,7 +210,7 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                 <select class="form-select" name="land_type_id" data-control="select2"
+                <select class="form-select" name="land_type_id" data-control="select2"
                         data-placeholder="{{__('Please Chose One')}}">
                     <option></option>
                     @foreach($landTypes as $type)
@@ -245,7 +258,7 @@
                     <div class="col-xl-3">
                         <select class="form-select" name="district_id" data-control="select2" id="district_id" required
                                 data-placeholder="{{__('Please Chose One')}}">
-                             <option value="{{$land->district_id}}"> {{$land->district->name}}</option>
+                            <option value="{{$land->district_id}}"> {{$land->district->name}}</option>
                         </select>
                     </div>
                 </div>
@@ -291,13 +304,14 @@
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Space')}} <span
-                        class="text-danger">*</span> </div>
+                        class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
-                    <input type="number" name="space" value="{{old('space' , $land->space)}}" class="form-control" required/>
+                    <input type="number" name="space" value="{{old('space' , $land->space)}}" class="form-control"
+                           required/>
                     <span class="input-group-text">m2</span>
                 </div>
             </div>
@@ -313,13 +327,14 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
-                    <input type="number" name="net_space" value="{{old('net_space' , $land->net_space)}}" class="form-control" required/>
+                    <input type="number" name="net_space" value="{{old('net_space' , $land->net_space)}}"
+                           class="form-control" required/>
                     <span class="input-group-text">m2</span>
                 </div>
             </div>
         </div>
 
-         <div class="row mb-8">
+        <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Deduction percentage')}} <span
@@ -329,7 +344,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
-                    <input type="number" name="deduction" value="{{old('deduction' , $land->deduction)}}" class="form-control" required/>
+                    <input type="number" name="deduction" value="{{old('deduction' , $land->deduction)}}"
+                           class="form-control" required/>
                     <span class="input-group-text">%</span>
                 </div>
             </div>
@@ -345,7 +361,8 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <div class="input-group mb-5">
-                    <input type="number" name="ratio" value="{{old('ratio' , $land->ratio)}}" class="form-control" required/>
+                    <input type="number" name="ratio" value="{{old('ratio' , $land->ratio)}}" class="form-control"
+                           required/>
                     <span class="input-group-text">%</span>
                 </div>
             </div>
@@ -360,11 +377,10 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                    <input type="text" name="regulation" value="{{old('regulation'  , $land->regulation)}}" class="form-control" required/>
+                <input type="text" name="regulation" value="{{old('regulation'  , $land->regulation)}}"
+                       class="form-control" required/>
             </div>
         </div>
-
-
 
 
         <div class="row mb-8">

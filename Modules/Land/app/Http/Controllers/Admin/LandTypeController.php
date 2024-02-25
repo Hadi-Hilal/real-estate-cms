@@ -27,6 +27,7 @@ class LandTypeController extends Controller
         try {
             LandType::create($request->all());
             $this->flushMessage(true);
+            cache()->forget('landTypes');
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
         }
@@ -38,17 +39,20 @@ class LandTypeController extends Controller
         try {
             $type->update($request->all());
             $this->flushMessage(true);
+            cache()->forget('landTypes');
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
         }
         return back();
     }
+
     public function deleteMulti()
     {
         $ids = request()->input('ids');
         try {
             LandType::destroy($ids);
             $this->flushMessage(true);
+            cache()->forget('landTypes');
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
         }

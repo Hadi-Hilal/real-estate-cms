@@ -21,7 +21,7 @@ class PropertyRequest extends FormRequest
             'city_id' => 'required|numeric',
             'property_type_id' => 'required|numeric',
             'category' => 'required',
-            'price' => 'required',
+            'price' => 'required|between:0,99.99',
         ];
     }
 

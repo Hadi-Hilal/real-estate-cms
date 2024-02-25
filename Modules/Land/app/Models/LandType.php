@@ -11,7 +11,7 @@ class LandType extends Model
 {
     use HasFactory;
 
-        use HasTranslations;
+    use HasTranslations;
 
     public $translatable = ['name'];
     protected $fillable = ['name'];

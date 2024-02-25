@@ -1,6 +1,6 @@
 @props(['title' => null , 'bodyTag' => null])
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html
     dir="{{LaravelLocalization::getCurrentLocaleDirection()}}"
     lang="{{ LaravelLocalization::getCurrentLocale() }}"
@@ -31,32 +31,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
           integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+          integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @if(LaravelLocalization::getCurrentLocaleDirection()  === 'rtl')
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+              rel="stylesheet">
+        <style>
+            html, body, span, p {
+                font-family: 'Tajawal', sans-serif !important;
+                line-height: 1.8;
+            }
+        </style>
+    @endif
 </head>
 
 <body class="{{$bodyTag}}">
 
 <header class="bg-white border-bottom">
     <div class="container">
-        <div id="top-nav" class="px-3 d-flex justify-content-between">
+        <div id="top-nav" class="px-3 d-flex justify-content-between align-items-center">
             <div class="m-1">
-                <a href="{{route('login')}}">
-                    <img src="{{asset('images/icons/profile.svg')}}" alt="login page" class="img-fluid">
-                </a>
+                @guest
+                    <a href="{{route('login')}}">
+                        <img src="{{asset('images/icons/profile.svg')}}" alt="login page" class="img-fluid">
+                    </a>
+                @endguest
+                @auth
+                    @if(auth()->user()->type == 'admin')
+                        <a href="{{route('admin.dashboard')}}" class="fw-bold">
+                            <i class="bi bi-door-open"></i>
+                            <span class="d-md-inline d-none"> {{__('Admin Panel')}}</span>
+                        </a>
+                    @endif
+                @endauth
             </div>
             <div class="m-1 d-flex">
                 <div class="dropdown border-btns">
                     <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownCurency"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        {{__('Currency')}} (USD)
+                        {{__('Currency')}} ({{session()->get('currencyCode' , 'USD')}})
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownCurency">
                         <div class="parent">
                             @foreach($currencies as $currency)
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{route('setCurrency' , $currency->id)}}">
                                     <img width="20" class="mx-1" src="{{$currency->image_link}}"
                                          alt="{{$currency->code}}">
                                     {{$currency->code}}
@@ -92,11 +115,10 @@
         <div class="d-flex p-3">
             <div class="logo mx-1">
                 <a href="{{url('/')}}">
-                       <img width="125" src="{{asset('storage/' . $settings->get('white_logo'))}}" alt="website logo">
+                    <img width="125" src="{{asset('storage/' . $settings->get('white_logo'))}}" alt="website logo">
                 </a>
-
             </div>
-            <div class="web-nav mx-2 d-lg-flex d-none ">
+            <div class="web-nav mx-2 d-lg-flex d-none">
                 <div class="dropdown">
                     <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownProperties"
                             data-bs-toggle="dropdown"
@@ -112,7 +134,6 @@
                                 Algeria
                             </a>
                         </div>
-
                     </div>
                 </div>
                 <div class="dropdown">
@@ -135,7 +156,6 @@
                                 Algeria
                             </a>
                         </div>
-
                     </div>
                 </div>
                 <div class="dropdown">
@@ -183,18 +203,18 @@
     <section class="bg-main-color p-3">
         <div class="container">
             <div class="d-flex justify-content-around flex-wrap">
-            <div class="text-white">
-                <h3 class="fw-bold">{{__("Don't miss out, subscribe now")}}</h3>
-                <p>{{__("Be the first to receive updates on our latest property and land listing")}}</p>
-            </div>
-            <div class="">
-                <form action="" method="post" class="subscribe-form">
-                    <input type="email" name="email" class="email-input" placeholder="Enter your email" >
-                    <button class="subscribe-button" type="submit">Subscribe
-                    </button>
+                <div class="text-white">
+                    <h3 class="fw-bold">{{__("Don't miss out, subscribe now")}}</h3>
+                    <p>{{__("Be the first to receive updates on our latest property and land listing")}}</p>
+                </div>
+                <div class="">
+                    <form action="" method="post" class="subscribe-form">
+                        <input type="email" name="email" class="email-input" placeholder="Enter your email">
+                        <button class="subscribe-button" type="submit">Subscribe
+                        </button>
                     </form>
+                </div>
             </div>
-        </div>
         </div>
 
     </section>
@@ -230,7 +250,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script>
@@ -239,13 +260,33 @@
     @elseif (session('error'))
     toastr.error('{{ session('error') }}');
     @elseif(session('status'))
-        toastr.info('{{ session('status') }}');
+    toastr.info('{{ session('status') }}');
     @endif
     @if ($errors->any())
     @foreach ($errors->all() as $error)
     toastr.error('{{ $error }}');
     @endforeach
     @endif
+
+    $(document).ready(function () {
+        $('.select2').select2();
+
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            @if(LaravelLocalization::getCurrentLocale() == 'ar') rtl: true, @endif
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1.5
+                }, 600: {
+                    items: 2.3
+                }, 1000: {
+                    items: 3
+                }
+            }
+        });
+
+    });
 </script>
 </body>
 

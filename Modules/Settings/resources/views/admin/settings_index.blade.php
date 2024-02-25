@@ -102,7 +102,7 @@
                 <!--end::Hint-->
             </div>
             <!--end::Col-->
-                        <!--begin::Col-->
+            <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-5">{{__('Home Page Image')}}</div>
                 <!--begin::Image input-->
