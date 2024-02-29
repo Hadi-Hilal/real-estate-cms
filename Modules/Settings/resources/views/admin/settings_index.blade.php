@@ -145,14 +145,58 @@
             </div>
             <!--end::Col-->
 
+            {{--            <!--begin::Col-->--}}
+            {{--            <div class="col-xl-3">--}}
+            {{--                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Meta Img')}}</div>--}}
+            {{--                <!--begin::Image input-->--}}
+            {{--                <div class="image-input image-input-outline" data-kt-image-input="true">--}}
+            {{--                    <!--begin::Preview existing avatar-->--}}
+            {{--                    <div class="image-input-wrapper w-125px h-125px bgi-position-center"--}}
+            {{--                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('meta_img' ,'default.jpg') )}}')"></div>--}}
+            {{--                    <!--end::Preview existing avatar-->--}}
+            {{--                    <!--begin::Label-->--}}
+            {{--                    <label--}}
+            {{--                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"--}}
+            {{--                        data-kt-image-input-action="change" data-bs-toggle="tooltip"--}}
+            {{--                        title="{{__('Change avatar')}}">--}}
+            {{--                        <i class="bi bi-pencil-fill fs-7"></i>--}}
+            {{--                        <!--begin::Inputs-->--}}
+            {{--                        <input type="file" name="imgs[meta_img]" accept=".png, .jpg, .jpeg, .webp"/>--}}
+            {{--                        <input type="hidden" name="avatar_remove"/>--}}
+            {{--                        <!--end::Inputs-->--}}
+            {{--                    </label>--}}
+            {{--                    <!--end::Label-->--}}
+            {{--                    <!--begin::Cancel-->--}}
+            {{--                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"--}}
+            {{--                          data-kt-image-input-action="cancel" data-bs-toggle="tooltip"--}}
+            {{--                          title="{{__('Cancel avatar')}}">--}}
+            {{--                                <i class="bi bi-x fs-2"></i>--}}
+            {{--                            </span>--}}
+            {{--                    <!--end::Cancel-->--}}
+            {{--                    <!--begin::Remove-->--}}
+            {{--                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"--}}
+            {{--                          data-kt-image-input-action="remove" data-bs-toggle="tooltip"--}}
+            {{--                          title="{{__('Remove avatar')}}">--}}
+            {{--                                <i class="bi bi-x fs-2"></i>--}}
+            {{--                            </span>--}}
+            {{--                    <!--end::Remove-->--}}
+            {{--                </div>--}}
+            {{--                <!--end::Image input-->--}}
+            {{--                <!--begin::Hint-->--}}
+            {{--                <div class="form-text"> 1200px * 600px</div>--}}
+            {{--                <!--end::Hint-->--}}
+            {{--            </div>--}}
+            {{--            <!--end::Col-->--}}
+
+
             <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Meta Img')}}</div>
+            <div class="col-xl-3 mt-3">
+                <div class="fs-6 fw-bold mt-2 mb-5">{{__('Citizenship Page Image')}}</div>
                 <!--begin::Image input-->
                 <div class="image-input image-input-outline" data-kt-image-input="true">
                     <!--begin::Preview existing avatar-->
                     <div class="image-input-wrapper w-125px h-125px bgi-position-center"
-                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('meta_img' ,'default.jpg') )}}')"></div>
+                         style="background-size: 75%; background-image: url('{{asset('storage/' .$settings->get('citizenship_main_img' ,'default.jpg') )}}')"></div>
                     <!--end::Preview existing avatar-->
                     <!--begin::Label-->
                     <label
@@ -161,7 +205,7 @@
                         title="{{__('Change avatar')}}">
                         <i class="bi bi-pencil-fill fs-7"></i>
                         <!--begin::Inputs-->
-                        <input type="file" name="imgs[meta_img]" accept=".png, .jpg, .jpeg, .webp"/>
+                        <input type="file" name="imgs[citizenship_main_img]" accept=".png, .jpg, .jpeg, .webp"/>
                         <input type="hidden" name="avatar_remove"/>
                         <!--end::Inputs-->
                     </label>
@@ -193,15 +237,16 @@
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-geo-fill mx-1 text-primary"></i> {{__('Website Address')}}</div>
+                        class="bi bi-phone mx-1 text-primary"></i> {{__('Website Phone')}}</div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[address]"
-                       value="{{$settings->get('address')}}" placeholder="California, TX 70240"/>
+                <input type="text" class="form-control form-control-solid" name="data[phone]"
+                       value="{{$settings->get('phone')}}" placeholder="00905234***"/>
             </div>
         </div>
+
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -215,6 +260,21 @@
                        value="{{$settings->get('email')}}" placeholder="support@validtheme.com"/>
             </div>
         </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3"><i
+                        class="bi bi-geo-fill mx-1 text-primary"></i> {{__('Website Address')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" name="data[address]"
+                       value="{{$settings->get('address')}}" placeholder="California, TX 70240"/>
+            </div>
+        </div>
+
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">

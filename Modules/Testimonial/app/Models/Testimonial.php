@@ -15,6 +15,11 @@ class Testimonial extends Model
     protected $appends = ['image'];
     protected $fillable = ['name', 'position', 'comment', 'publish', 'link', 'avatar', 'citizenship'];
 
+    public function scopePublished($q)
+    {
+        $q->where('publish', 'published');
+    }
+
     public function getImageAttribute()
     {
         if ($this->attributes['avatar']) {

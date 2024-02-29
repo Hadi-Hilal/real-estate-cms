@@ -1,0 +1,21 @@
+html, body, span, p {
+font-family: 'Tajawal', sans-serif !important;
+line-height: 1.8;
+}
+
+.testimonials-card  .item .testimonial {
+    padding-right: unset;
+    padding: 2rem;
+    padding-left: 5rem;
+
+}
+
+.testimonials-card .item .image {
+    right: unset;
+    left: 0;
+
+}
+footer .subscribe-form .subscribe-button {
+    right: unset;
+    left: 16px;
+}

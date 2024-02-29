@@ -11,5 +11,6 @@
     "Page": true,
     "Blog": true,
     "Property": true,
-    "Land": true
+    "Land": true,
+    "Contact": true
 }

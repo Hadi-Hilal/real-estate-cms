@@ -15,6 +15,12 @@ class Page extends Model
     protected $appends = ['image_link'];
     protected $fillable = ['title', 'slug', 'description', 'content', 'image', 'type', 'publish', 'keywords', 'featured', 'visites'];
 
+    public function scopeFeatured($q)
+    {
+        $q->where('publish', 'published')->where('featured', 1);
+    }
+
+
     public function getImageLinkAttribute()
     {
         if ($this->attributes['image']) {

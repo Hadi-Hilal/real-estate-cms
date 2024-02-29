@@ -1,26 +1,31 @@
-@props(['title' => null , 'bodyTag' => null])
-
+@props(['title' => null , 'bodyTag' => null , 'keywords' => null , 'desc' => null  , 'img'])
     <!DOCTYPE html>
 <html
     dir="{{LaravelLocalization::getCurrentLocaleDirection()}}"
-    lang="{{ LaravelLocalization::getCurrentLocale() }}"
-    style="{{LaravelLocalization::getCurrentLocaleDirection()=== 'rtl' ? 'direction: rtl' : ''}}">
+    lang="{{ LaravelLocalization::getCurrentLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ $seo->get('website_name') }} | {{$title}}</title>
-    <meta name="keywords" content="{{ $seo->get('website_keywords') }}">
-    <meta name="description" content="{{$seo->get('website_desc')}}">
+    <meta name="keywords" content="{{$keywords ?? $seo->get('website_keywords') }}">
+    <meta name="description" content="{{ $desc ?? $seo->get('website_desc')}}">
     <meta name="author" content="{{$seo->get('website_name')}}">
+    <meta name="audience" content="all" />
+    <meta name="theme-color" content="#cb9e2c">
+
+    <link rel="canonical" href="{{url()->current()}}" />
+    <meta property="og:title" content="{{$title}}" />
+    <meta property="og:description" content="{{ $desc ?? $seo->get('website_desc')}}" />
+    <meta property="og:image" content="{{$img ?? $settings->get('meta_img')}}" />
+    <meta property="og:url" content="{{url()->current()}}" />
+    <meta property="og:type" content="website" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/logo/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo/favicon-16x16.png')}}">
     <link rel="shortcut icon" href="{{asset('images/logo/favicon.ico')}}">
     <meta name="apple-mobile-web-app-title" content="{{$seo->get('website_name')}}">
     <meta name="application-name" content="{{$seo->get('website_name')}}">
-    <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="theme-color" content="#ffffff">
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
           integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
@@ -34,19 +39,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
           integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.css">
+
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @if(LaravelLocalization::getCurrentLocaleDirection()  === 'rtl')
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
               rel="stylesheet">
-        <style>
-            html, body, span, p {
-                font-family: 'Tajawal', sans-serif !important;
-                line-height: 1.8;
-            }
-        </style>
+        <link rel="stylesheet" href="{{asset('css/rtl.css')}}">
     @endif
+    {!! $settings->get('header_scripts') !!}
 </head>
 
 <body class="{{$bodyTag}}">
@@ -159,9 +162,10 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="btn fw-bold " href="#">
+                    <a class="btn fw-bold " href="{{route('citizenship')}}">
                         {{__('Turkish Citizenship')}}
                     </a>
+
                 </div>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownLands"
@@ -171,24 +175,44 @@
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
                         <div class="parent">
-                            <a class="dropdown-item" href="#">
-                                Turkey
+                            <a class="dropdown-item" href="{{route('faqs')}}">
+                                {{__('FAQs')}}
                             </a>
-                            <a class="dropdown-item" href="#">
-                                Algeria
+
+                            @foreach($pages->where('type' , 'custom') as $page)
+                                <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
                             </a>
+                            @endforeach
+                        </div>
+
+                    </div>
+                </div>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownLands"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        {{__('Our Services')}}
+                    </button>
+                    <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
+                        <div class="parent">
+                            @foreach($pages->where('type' , 'service') as $page)
+                                <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
+                            </a>
+                            @endforeach
                         </div>
 
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="btn fw-bold " href="#">
+                    <a class="btn fw-bold" href="{{route('contact-us')}}">
                         {{__('Contact Us')}}
                     </a>
                 </div>
             </div>
             <div class="mobile-nav d-lg-none d-block flex-end ms-auto">
-                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#navModal">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#navModal">
                     <i class="bi bi-list fs-3 fw-bold"></i>
                 </button>
             </div>
@@ -208,9 +232,10 @@
                     <p>{{__("Be the first to receive updates on our latest property and land listing")}}</p>
                 </div>
                 <div class="">
-                    <form action="" method="post" class="subscribe-form">
+                    <form action="{{route('subscribe')}}" method="post" class="subscribe-form">
+                        @csrf
                         <input type="email" name="email" class="email-input" placeholder="Enter your email">
-                        <button class="subscribe-button" type="submit">Subscribe
+                        <button class="subscribe-button" type="submit">{{__('Subscribe')}}
                         </button>
                     </form>
                 </div>
@@ -240,6 +265,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ <script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
@@ -287,6 +313,7 @@
         });
 
     });
+    {!! $settings->get('body_scripts') !!}
 </script>
 </body>
 

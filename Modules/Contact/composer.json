@@ -1,0 +1,30 @@
+{
+    "name": "hadi/contact",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Contact\\": "",
+            "Modules\\Contact\\App\\": "app/",
+            "Modules\\Contact\\Database\\Factories\\": "database/factories/",
+            "Modules\\Contact\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Contact\\Tests\\": "tests/"
+        }
+    }
+}

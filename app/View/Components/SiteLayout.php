@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\Component;
 use Modules\Currency\app\Models\Currency;
+use Modules\Page\app\Models\Page;
 use Modules\Settings\app\Models\Seo;
 use Modules\Settings\app\Models\Settings;
 
@@ -15,6 +16,7 @@ class SiteLayout extends Component
     public $seo;
     public $settings;
     public $currencies;
+    public $pages ;
 
     public function __construct()
     {
@@ -24,6 +26,7 @@ class SiteLayout extends Component
             $settings->setCollection(Settings::all());
         }));
 
+        $this->pages =  Page::featured()->select('slug' , 'title' , 'publish' , 'featured' ,'type')->get();
         $this->currencies = Currency::all();
 
     }

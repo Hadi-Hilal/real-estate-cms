@@ -13,4 +13,10 @@ class Faq extends Model
 
     public $translatable = ['title', 'content'];
     protected $fillable = ['title', 'content', 'link', 'publish', 'citizenship'];
+
+    public function scopePublished($q)
+    {
+        $q->where('publish', 'published');
+    }
+
 }

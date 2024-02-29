@@ -48,7 +48,7 @@
                 </button>
             </form>
         </div>
-        <div class="choose-country">
+        <section class="choose-country">
             <p class="global-title text-center">{{__('Choose your desired country for real estate investment')}}</p>
             <div class="countries">
                 <div class="country mb-3">
@@ -97,35 +97,64 @@
                 </div>
             </div>
 
-        </div>
+        </section>
 
-        <div class="sections-margin">
+        <section class="sections-margin">
             <h2 class="global-title h3">{{__('Discover Our Featured Selection of Land Options')}}</h2>
             <div class="owl-carousel">
                 @foreach($lands as $land)
                     <x-land-card :land="$land"></x-land-card>
                 @endforeach
             </div>
-        </div>
+        </section>
 
-        <div class="sections-margin">
+        <section class="sections-margin">
             <h2 class="global-title h3">{{__('Discover Our Featured Properties')}}</h2>
             <div class="owl-carousel">
                 @foreach($properties as $property)
                     <x-property-card :property="$property"></x-property-card>
                 @endforeach
             </div>
-        </div>
+        </section>
 
-        <div class="sections-margin mb-5">
+        <section class="sections-margin">
+            <h2 class="global-title h3">{{__('Our Valued Customers Reviews')}}</h2>
+            <div class="testimonials-card">
+                <ul class='slider'>
+                    @foreach($testimonials as $key=> $testimonial)
+                        <li class='item'>
+                            <div class='testimonial'>
+                                <blockquote>
+
+                                    {{ Str::length($testimonial->comment) < 235 ? $testimonial->comment : Str::limit($testimonial->comment, 235) . '...' }}
+                                </blockquote>
+                                <p><a target="_blank" href="{{$testimonial->link}}"> {{$testimonial->name}}</a></p>
+                            </div>
+                            <img class="img-fluid image" src="{{$testimonial->image}}" alt="{{$testimonial->name}}">
+                        </li>
+                    @endforeach
+                </ul>
+                <nav>
+                    @foreach($testimonials as $key=> $testimonial)
+                        <button class="btn testimonials-btn " data-index="{{$key}}"></button>
+                    @endforeach
+                </nav>
+            </div>
+        </section>
+
+        <section class="sections-margin">
             <h2 class="global-title h3">{{__('Real Estate Blog Posts')}}</h2>
             <div class="owl-carousel">
                 @foreach($posts as $post)
                     <x-post-card :post="$post"></x-post-card>
                 @endforeach
             </div>
-        </div>
+        </section>
 
+
+        <section class="sections-margin">
+            <x-custom-contact-form :countries="$countries"></x-custom-contact-form>
+        </section>
     </div>
 
 
