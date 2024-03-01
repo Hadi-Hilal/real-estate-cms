@@ -22,6 +22,6 @@ class PageController extends Controller
         }
 
         $countries = Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
-        return view('page::index', compact('page', 'countries'));
+        return view('page::show', compact('page', 'countries'));
     }
 }

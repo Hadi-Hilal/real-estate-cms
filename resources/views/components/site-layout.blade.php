@@ -11,15 +11,15 @@
     <meta name="keywords" content="{{$keywords ?? $seo->get('website_keywords') }}">
     <meta name="description" content="{{ $desc ?? $seo->get('website_desc')}}">
     <meta name="author" content="{{$seo->get('website_name')}}">
-    <meta name="audience" content="all" />
+    <meta name="audience" content="all"/>
     <meta name="theme-color" content="#cb9e2c">
 
-    <link rel="canonical" href="{{url()->current()}}" />
-    <meta property="og:title" content="{{$title}}" />
-    <meta property="og:description" content="{{ $desc ?? $seo->get('website_desc')}}" />
-    <meta property="og:image" content="{{$img ?? $settings->get('meta_img')}}" />
-    <meta property="og:url" content="{{url()->current()}}" />
-    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{url()->current()}}"/>
+    <meta property="og:title" content="{{$title}}"/>
+    <meta property="og:description" content="{{ $desc ?? $seo->get('website_desc')}}"/>
+    <meta property="og:image" content="{{$img ?? $settings->get('meta_img')}}"/>
+    <meta property="og:url" content="{{url()->current()}}"/>
+    <meta property="og:type" content="website"/>
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/logo/favicon-32x32.png')}}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/logo/favicon-16x16.png')}}">
@@ -175,20 +175,24 @@
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
                         <div class="parent">
+                            <a class="dropdown-item" href="{{route('articles.index')}}">
+                                {{__('Articles')}}
+                            </a>
+
                             <a class="dropdown-item" href="{{route('faqs')}}">
                                 {{__('FAQs')}}
                             </a>
 
                             @foreach($pages->where('type' , 'custom') as $page)
                                 <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
-                                {{$page->title}}
-                            </a>
+                                    {{$page->title}}
+                                </a>
                             @endforeach
                         </div>
 
                     </div>
                 </div>
-                  <div class="dropdown">
+                <div class="dropdown">
                     <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownLands"
                             data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -198,8 +202,8 @@
                         <div class="parent">
                             @foreach($pages->where('type' , 'service') as $page)
                                 <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
-                                {{$page->title}}
-                            </a>
+                                    {{$page->title}}
+                                </a>
                             @endforeach
                         </div>
 
@@ -224,6 +228,25 @@
 </main>
 
 <footer>
+    <section id="cookies">
+        <div class="wrapper">
+            <header>
+                <i class="bi bi-cookie"></i>
+                <h2>{{__('Cookies Consent')}}</h2>
+            </header>
+
+            <div class="data">
+                <p>{{__('This website use cookies to help you have a superior and more relevant browsing experience on the website.')}}
+                    <a href="{{$settings->get('privacy_policy_link' , '#')}}">{{__('Read More')}}</a>
+                </p>
+            </div>
+
+            <div class="buttons">
+                <button class="button" id="acceptBtn">{{__('Accept')}}</button>
+                <button class="button" id="declineBtn">{{__('Decline')}}</button>
+            </div>
+        </div>
+    </section>
     <section class="bg-main-color p-3">
         <div class="container">
             <div class="d-flex justify-content-around flex-wrap">
@@ -265,7 +288,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>

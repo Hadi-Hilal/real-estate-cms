@@ -21,6 +21,11 @@ class BlogPost extends Model
         $q->where('publish', 'published')->where('featured', 1);
     }
 
+    public function scopePublished($q)
+    {
+        $q->where('publish', 'published');
+    }
+
     public function scopeCardData($q)
     {
         $q->select('id', 'slug', 'title', 'description', 'image', 'visites', 'created_at', 'publish', 'featured');

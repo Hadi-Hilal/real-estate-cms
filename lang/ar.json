@@ -103,5 +103,9 @@
     "Resend Verification Email": "إعادة ارسال بريد التحقق",
     "A new verification link has been sent to the email address you provided during registration.":
     "تم إرسال رابط تحقق جديد إلى عنوان البريد الإلكتروني الذي قدمته أثناء التسجيل.",
-    "Reset Password": "إعادة تعيين كلمة المرور"
+    "Reset Password": "إعادة تعيين كلمة المرور",
+    "Accept": "قبول",
+    "Decline": "رفض",
+    "Read More": "قراءة المزيد",
+    "Privacy Policy Link": "رابط سياسة الخصوصية"
 }

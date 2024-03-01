@@ -1,7 +1,9 @@
 {
     "Blogs": "المدونات",
+    "Articles": "المقالات",
     "Categories": "التصنيفات",
     "Category": " التصنيف",
+    "Related Articles": "مقالات ذات صلة",
     "Add New Category": "إضافة تصنيف جديدة",
     "Edit Category": "تعديل التصنيف",
     "Search In Categories": "ابحث في أقسام المدونات",
@@ -10,5 +12,6 @@
     "Posts": "المنشورات",
     "Number Of Posts": "عدد المنشورات",
     "Search In Posts": "ابحث في أقسام المنشورات",
-    "A New Post Added!": "تمت إضافة منشور جديدة!"
+    "A New Post Added!": "تمت إضافة منشور جديدة!",
+    "Everything related real estate you can find it in our articles": "كل ما يتعلق بالعقارات يمكنك العثور عليه في مقالاتنا"
 }

@@ -205,7 +205,7 @@
                 var val = $(this).val();
                 var slug = generateSlug(val);
                 if (slug !== '') {
-                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/" + slug);
+                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/p/" + slug);
                     $('#slug').val(slug);
                 } else {
                     $('#link').addClass('text-danger').text("{{__('The Slug Should Be English')}}");

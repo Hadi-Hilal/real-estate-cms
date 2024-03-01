@@ -1,5 +1,6 @@
-<div class="d-flex align-items-center">
-    <div class="contact-form text-center p-5 mb-3" id="contact-form-modal">
+<div class="d-flex align-items-center flex-md-nowrap flex-wrap">
+    <div class="">
+          <div class="contact-form text-center p-5 mb-3" id="contact-form-modal">
         <h3 class=" head fw-bold">{{__('We Are Here To Help You')}}</h3>
         <p class="title">{{__("Let's Get In Touch")}}</p>
         <form action="{{route('contact-us')}}" method="post"
@@ -28,6 +29,8 @@
             </button>
         </form>
     </div>
+    </div>
+
     <div class="">
         <img src="{{asset('images/custom/contact-bannar.webp')}}" class="img-fluid" alt="{{__('Turkish Citizenship')}}">
     </div>

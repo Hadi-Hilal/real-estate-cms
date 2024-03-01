@@ -55,7 +55,7 @@ main{
 }
 
 .card-shadow {
-    box-shadow: 10px 10px 10px 10px #ccc;
+    box-shadow: 10px 10px 10px 10px var(--second-color);
 }
 
 .dropdown .dropdown-menu {
@@ -69,7 +69,7 @@ main{
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
-    max-height: 150px;
+    max-height: 450px;
     overflow-y: auto;
     gap: 1rem;
 }
@@ -125,14 +125,11 @@ main{
     width: 100%;
 }
 
-/* Remove border and make background transparent */
 .select2-container .select2-selection--single {
     border: none;
     background-color: transparent;
 }
 
-
-/* Customize hover color */
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
     background-color: var(--gradiant-main-color);
     color: var(--main-color);
@@ -239,7 +236,7 @@ a:hover {
 }
 
 .sections-margin {
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
 .global-title {
@@ -323,7 +320,6 @@ a:hover {
     background-color: #FFFFFF;
 }
 
-
 .project-card .property-country {
     display: flex;
     padding: 6px 12px;
@@ -387,7 +383,6 @@ a:hover {
   background-color: var(--second-color);
   color: #FFFFFF;
   border-radius: 0.75rem;
-
   opacity: 0;
   transform: translateX(125px);
 }
@@ -438,10 +433,6 @@ a:hover {
   animation: content 1s forwards 1s;
 }
 
-.testimonials-card  .animation .testimonial p:nth-of-type(3) {
-  animation: content 1s forwards 1.25s;
-}
-
 @keyframes image {
   100% {
     transform: translateX(0);
@@ -483,7 +474,7 @@ a:hover {
   width: 1.75rem;
 }
 
-.contact , .faq , .pages , .citizenship{
+.contact , .faq , .pages , .citizenship , .articles{
     background: #eee;
 }
 .sidebar {
@@ -543,6 +534,16 @@ a:hover {
     max-height: 600px;
 }
 
+.cats-nav {
+    padding: 0 15px;
+    gap: 15px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    position: relative;
+    padding-bottom: 5px;
+}
 
 
 footer .subscribe-form {
@@ -572,5 +573,104 @@ footer .subscribe-form .subscribe-button {
     border-radius: 8px;
     outline: none;
     border: none;
-    color: #fcfcfc;
+    color: #ffffff;
+}
+.pagination .page-item.active .page-link {
+    box-shadow: 0 2px 5px 0 var(--second-color);
+}
+.pagination .page-item.active .page-link {
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    border-radius: .125rem;
+    background-color: var(--main-color);
+    color: #ffffff;
+}
+
+.pagination .page-item .page-link {
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    font-size: .9rem;
+    color: var(--second-color);
+    font-weight: 700;
+}
+
+.pagination .page-item .page-link:hover {
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+    border-radius: .125rem;
+    background-color: #eee;
+}
+#cookies .wrapper {
+  position: fixed;
+  bottom: 50px;
+  right: -370px;
+  max-width: 345px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 15px 25px 22px;
+  transition: right 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+#cookies .wrapper.show {
+  right: 20px;
+}
+#cookies .wrapper header {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+#cookies header i {
+  color: var(--main-color);
+  font-size: 32px;
+}
+#cookies header h2 {
+  color: var(--main-color);
+  font-weight: 500;
+}
+#cookies .wrapper .data {
+  margin-top: 16px;
+}
+#cookies .wrapper .data p {
+  color: var(--second-color);;
+  font-size: 16px;
+}
+#cookies .data p a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+#cookies .data p a:hover {
+  text-decoration: underline;
+}
+#cookies .wrapper .buttons {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#cookies .buttons .button {
+  border: none;
+  color: #ffffff;
+  padding: 8px 0;
+  border-radius: 4px;
+  background: var(--main-color);
+  cursor: pointer;
+  width: calc(100% / 2 - 10px);
+  transition: all 0.2s ease;
+}
+#cookies .buttons #acceptBtn:hover {
+  opacity: .9;
+}
+#cookies #declineBtn {
+  border: 2px solid var(--main-color);
+  background-color: #fff;
+  color: var(--main-color);
+}
+#cookies #declineBtn:hover {
+  opacity: .63;
 }
