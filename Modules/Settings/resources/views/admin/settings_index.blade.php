@@ -284,7 +284,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <textarea name="data[map]" class="form-control form-control-solid h-100px">{{$settings->get('map')}}</textarea>
+                <textarea name="data[map]"
+                          class="form-control form-control-solid h-100px">{{$settings->get('map')}}</textarea>
             </div>
             <!--begin::Col-->
         </div>
@@ -317,7 +318,7 @@
             <!--begin::Col-->
         </div>
 
-            <div class="row mb-8">
+        <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i
@@ -327,7 +328,7 @@
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <input type="url" class="form-control form-control-solid" name="data[privacy_policy_link]"
-                       value="{{$settings->get('privacy_policy_link')}}" />
+                       value="{{$settings->get('privacy_policy_link')}}"/>
             </div>
         </div>
 

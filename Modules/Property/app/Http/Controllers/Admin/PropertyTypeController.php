@@ -27,6 +27,7 @@ class PropertyTypeController extends Controller
     {
         try {
             PropertyType::create($request->all());
+            cache()->forget('propertyTypes');
             $this->flushMessage(true);
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
@@ -38,6 +39,7 @@ class PropertyTypeController extends Controller
     {
         try {
             $type->update($request->all());
+            cache()->forget('propertyTypes');
             $this->flushMessage(true);
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());
@@ -51,6 +53,7 @@ class PropertyTypeController extends Controller
         $ids = request()->input('ids');
         try {
             PropertyType::destroy($ids);
+            cache()->forget('propertyTypes');
             $this->flushMessage(true);
         } catch (Exception $exception) {
             session()->flash('error', $exception->getMessage());

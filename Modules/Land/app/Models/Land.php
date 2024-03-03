@@ -3,8 +3,9 @@
 namespace Modules\Land\app\Models;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\app\Models\City;
 use Modules\Core\app\Models\Country;
@@ -59,6 +60,21 @@ class Land extends Model
         });
     }
 
+    public function scopePublished($q)
+    {
+        $q->where('publish', 'published');
+    }
+
+
+    public function scopeCountry($q, string $country)
+    {
+        if ($country == 'turkey') {
+            $q->where('country_id', '223');
+        } else {
+            $q->where('country_id', '!=', '223');
+        }
+    }
+
     public function scopeFeatured($q)
     {
         $q->where('publish', 'published')->where('featured', 1);
@@ -68,6 +84,30 @@ class Land extends Model
     {
         $q->select('id', 'slug', 'title', 'description', 'image', 'land_type_id', 'price', 'country_id', 'state_id', 'tapu', 'district_id', 'city_id'
             , 'space', 'publish', 'featured');
+    }
+
+    public function scopeFilter($q, Request $request)
+    {
+        if ($request->has('title')) {
+            $q->where(function ($query) use ($request) {
+                $query->where('title', 'LIKE', "%{$request->query('title')}%")->orWhere('code', 'LIKE', "%{$request->query('title')}%")->orWhere('description', 'LIKE', "%{$request->query('title')}%")->orWhere('keywords', 'LIKE', "%{$request->query('title')}%")->orWhere('content', 'LIKE', "%{$request->query('title')}%");
+            });
+        }
+        if ($request->has('tapu')) {
+            $q->where('tapu', $request->query('tapu'));
+        }
+
+        if ($request->has('type')) {
+            $q->where('land_type_id', $request->query('type'));
+        }
+
+        if ($request->has('min_price')) {
+            $minPrice = (float)$request->query('min_price');
+            $q->where('price', '>', $minPrice);
+        }
+
+
+        return $q;
     }
 
     public function getImageLinkAttribute()

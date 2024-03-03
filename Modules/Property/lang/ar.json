@@ -20,5 +20,9 @@
     "project": "مشروع",
     "land": "أرض",
     "resale": "إعادة بيع",
+    "Resale": "إعادة بيع",
+    "Min Price": "الحد الأدنى للسعر",
+    "Max Price": "الحد الأقصى للسعر",
+    "Project Overview": "نظرة عامة عن المشروع",
     "A New Property Just Added!": "عقار جديد أضيف للتو!"
 }

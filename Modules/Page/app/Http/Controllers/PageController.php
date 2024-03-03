@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Modules\Core\app\Models\Country;
 use Modules\Page\app\Models\Page;
-use Modules\Settings\app\Models\Settings;
 
 class PageController extends Controller
 {
@@ -21,7 +20,9 @@ class PageController extends Controller
             session()->put('pages', $page->id);
         }
 
-        $countries = Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        $countries = Cache::rememberForever('countries', function () {
+            return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        });
         return view('page::show', compact('page', 'countries'));
     }
 }

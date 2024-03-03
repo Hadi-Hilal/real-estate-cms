@@ -40,6 +40,9 @@
           integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+          integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @if(LaravelLocalization::getCurrentLocaleDirection()  === 'rtl')
@@ -130,19 +133,33 @@
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownProperties">
                         <div class="parent">
-                            <a class="dropdown-item" href="#">
-                                Turkey
+                            <a class="dropdown-item" href="{{route('properties' , ['country' =>'turkey'])}}">
+                                {{__('Turkey')}}
                             </a>
-                            <a class="dropdown-item" href="#">
-                                Algeria
+                            <a class="dropdown-item" href="{{route('properties' , ['country' =>'algeria'])}}">
+                                {{__('Algeria')}}
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a class="btn fw-bold " href="#">
+                    <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownResale"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         {{__('Resale')}}
-                    </a>
+                    </button>
+                    <div class="dropdown-menu w-2" aria-labelledby="dropdownResale">
+                        <div class="parent">
+                            <a class="dropdown-item"
+                               href="{{route('properties' , ['country' =>'turkey' , 'type' =>'resale'])}}">
+                                {{__('Turkey')}}
+                            </a>
+                            <a class="dropdown-item"
+                               href="{{route('properties' , ['country' =>'algeria' , 'type' =>'resale'])}}">
+                                {{__('Algeria')}}
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle fw-bold " type="button" id="dropdownLands"
@@ -152,11 +169,11 @@
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
                         <div class="parent">
-                            <a class="dropdown-item" href="#">
-                                Turkey
+                            <a class="dropdown-item" href="{{route('lands' , ['country' =>'turkey' ])}}">
+                                {{__('Turkey')}}
                             </a>
-                            <a class="dropdown-item" href="#">
-                                Algeria
+                            <a class="dropdown-item" href="{{route('lands' , ['country' =>'algeria' ])}}">
+                                {{__('Algeria')}}
                             </a>
                         </div>
                     </div>
@@ -302,6 +319,63 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+@if($bodyTag == 'land' || $bodyTag == 'property')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        $("#detail .main-img-slider").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            arrows: true,
+            fade: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 300,
+            @if(LaravelLocalization::getCurrentLocaleDirection() == 'rtl') rtl: true, @endif
+            lazyLoad: "ondemand",
+            asNavFor: ".thumb-nav",
+            prevArrow:
+                '<div class="slick-prev"><i class="bi bi-chevron-compact-left"></i></div>',
+            nextArrow:
+                '<div class="slick-next"><i class="bi bi-chevron-compact-right"></i></div>'
+        });
+        $(".thumb-nav").slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: true,
+            centerPadding: "0px",
+            asNavFor: ".main-img-slider",
+            dots: false,
+            centerMode: false,
+            draggable: true,
+            speed: 200,
+            @if(LaravelLocalization::getCurrentLocaleDirection() == 'rtl') rtl: true, @endif
+            focusOnSelect: true,
+            prevArrow:
+                '<div class="slick-prev"><i class="bi bi-chevron-compact-left"></i></div>',
+            nextArrow:
+                '<div class="slick-next"><i class="bi bi-chevron-compact-right"></i></div>'
+        });
+        $(".main-img-slider").on(
+            "afterChange",
+            function (event, slick, currentSlide, nextSlide) {
+                //remove all active class
+                $(".thumb-nav .slick-slide").removeClass("slick-current");
+                //set active class for current slide
+                $(".thumb-nav .slick-slide:not(.slick-cloned)")
+                    .eq(currentSlide)
+                    .addClass("slick-current");
+            }
+        );
+
+    </script>
+@endif
+
 <script src="{{asset('js/main.js')}}"></script>
 <script>
     @if (session('success'))
@@ -336,8 +410,11 @@
         });
 
     });
-    {!! $settings->get('body_scripts') !!}
+
 </script>
+
+
+{!! $settings->get('body_scripts') !!}
 </body>
 
 </html>

@@ -21,7 +21,7 @@ class HomeController extends Controller
             return Settings::pluck('value', 'key');
         });
         $countries = Cache::rememberForever('countries', function () {
-            return Country::all();
+            return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
         });
         $landTypes = Cache::rememberForever('landTypes', function () {
             return LandType::all();
@@ -52,7 +52,9 @@ class HomeController extends Controller
         $properties = Property::where('citizenship', 1)->featured()->cardData()->get();
         $posts = BlogPost::where('citizenship', 1)->featured()->cardData()->get();
         $faqs = Faq::where('citizenship', 1)->published()->get();
-        $countries = Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        $countries = Cache::rememberForever('countries', function () {
+            return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        });
         $testimonials = Testimonial::where('citizenship', 1)->published()->get();
         return view('core::citizenship', compact('settings', 'properties', 'faqs', 'posts', 'countries', 'testimonials'));
     }

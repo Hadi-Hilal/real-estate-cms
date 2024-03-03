@@ -10,25 +10,28 @@
 
     <div class="container">
         <div class="home-filter ">
-            <form class="home-filter-sections">
+            <form class="home-filter-sections" method="GET" action="{{route('lands' , ['country' => 'turkey'])}}">
                 <div class="w-100">
                     <select name="country" class="form-control select2">
                         <option selected disabled>{{__('Country')}}</option>
-                        @foreach($countries->where('active' , 1) as $country)
-                            <option value="{{$country->id}}">
-                                {{$country->name}}
-                            </option>
-                        @endforeach
+                        <option>
+                            {{__('Turkey')}}
+                        </option>
+
                     </select>
                 </div>
                 <div class="filter-separator d-md-block d-none"></div>
                 <div class="w-100">
-                    <select name="city" class="form-control select2">
+                    <select name="tapu" class="form-control select2">
                         <option selected disabled>{{__('Tapu Type')}}</option>
-                        <option value="agricultural">{{__('agricultural')}}</option>
-                        <option value="agricultural">{{__('construction')}}</option>
-                        <option value="agricultural">{{__('portion')}}</option>
-                        <option value="agricultural">{{__('independent')}}</option>
+                        <option
+                            @selected(request()->query('tapu') == "agricultural")  value="agricultural">{{__('agricultural')}}</option>
+                        <option
+                            @selected(request()->query('tapu') == "construction") value="construction">{{__('construction')}}</option>
+                        <option
+                            @selected(request()->query('tapu') == "portion") value="portion">{{__('portion')}}</option>
+                        <option
+                            @selected(request()->query('tapu') == "independent") value="independent">{{__('independent')}}</option>
                     </select>
                 </div>
                 <div class="filter-separator d-md-block d-none"></div>

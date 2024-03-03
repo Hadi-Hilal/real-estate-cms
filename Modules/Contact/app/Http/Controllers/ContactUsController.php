@@ -15,7 +15,9 @@ class ContactUsController extends Controller
 {
     public function index()
     {
-        $countries = Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        $countries = Cache::rememberForever('countries', function () {
+            return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
+        });
         $settings = Cache::rememberForever('settings', fn() => tap(new Settings, function ($settings) {
             $settings->setCollection(Settings::all());
         }));
@@ -28,11 +30,21 @@ class ContactUsController extends Controller
         try {
             Contact::create($request->all());
             session()->flash('success', __('Thanks, We Will Contact You As Soon Possible'));
+            session()->put('form-submited', true);
+            return redirect()->to(route('thanks'));
         } catch (Exception $exception) {
             Log::error($exception->getMessage());
             $this->flushMessage(false);
         }
         return back();
+    }
 
+    public function thanks()
+    {
+        if (session()->has('form-submited')) {
+            session()->forget('form-submited');
+            return view('contact::thanks');
+        }
+        return redirect()->to(route('contact-us'));
     }
 }

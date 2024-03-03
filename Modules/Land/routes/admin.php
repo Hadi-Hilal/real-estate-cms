@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Land\app\Http\Controllers\Admin\LandController;
-use Modules\Land\app\Http\Controllers\Admin\LandTypeController;
 use Modules\Land\app\Http\Controllers\Admin\LandFeatureController;
+use Modules\Land\app\Http\Controllers\Admin\LandTypeController;
 
 Route::prefix('admin/lands')->name('admin.lands.')->middleware(['auth', 'admin', 'verified', 'can:Manage Lands'])->group(function () {
 

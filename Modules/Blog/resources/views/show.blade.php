@@ -17,8 +17,9 @@
                 <section class="custom-section mb-3">
                     <img style="width: 100%" class="img-fluid" src="{{$post->image_link}}" alt="{{$post->title}}"/>
                     <div class="d-flex justify-content-between mt-3">
-                        <p><i class="bi bi-calendar text-main-color"></i> {{$post->created_at->format('y-m-d')}}</p>
-                        <p><i class="bi bi-eye mx-1 text-main-color"></i> {{__($post->visites)}}</p>
+                        <p><i class="bi bi-calendar text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}
+                        </p>
+                        <p><i class="bi bi-eye text-main-color mx-1"></i> {{__($post->visites)}}</p>
                     </div>
                     <div class="mb-3">
                         {!! $post->content !!}
@@ -26,13 +27,13 @@
                 </section>
                 <section class="custom-section">
                     <h3 class="h4 fw-bold text-main-color mb-3">{{__('Related Articles')}} </h3>
-                     <div class="row">
-                @foreach($posts as $post)
-                    <div class="col-md-6">
-                        <x-post-card :post="$post"></x-post-card>
+                    <div class="row">
+                        @foreach($posts as $post)
+                            <div class="col-md-6">
+                                <x-post-card :post="$post"></x-post-card>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
                 </section>
             </div>
         </div>

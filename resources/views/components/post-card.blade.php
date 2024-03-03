@@ -8,8 +8,8 @@
         {{ Str::length($post->description) < 175 ? $post->description : Str::limit($post->description, 175) }}
         <hr/>
         <div class="d-flex justify-content-between">
-            <p><i class="bi bi-calendar text-main-color"></i> {{$post->created_at->format('y-m-d')}}</p>
-            <p><i class="bi bi-eye mx-1 text-main-color"></i> {{__($post->visites)}}</p>
+            <p><i class="bi bi-calendar text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}</p>
+            <p><i class="bi bi-eye text-main-color mx-1"></i> {{__($post->visites)}}</p>
         </div>
     </a>
 </div>

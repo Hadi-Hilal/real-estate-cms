@@ -10,5 +10,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact-us');
     Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact-us');
+    Route::get('thanks', [ContactUsController::class, 'thanks'])->name('thanks');
 });
 
