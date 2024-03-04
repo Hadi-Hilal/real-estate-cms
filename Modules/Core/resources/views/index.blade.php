@@ -64,14 +64,14 @@
                         <p class="country-name">{{__('Turkey')}}</p>
                     </div>
                     <div class="other-info">
-                        <p>+357 {{__('Lands')}}</p>
-                        <a href="#" class="view-all">
+                        <p>+{{$all_lands->where('country_id' , 223)->count()}} {{__('Lands')}}</p>
+                        <a href="{{route('lands' , ['country' => 'turkey'])}}" class="view-all">
                             {{__('View all')}}
                         </a>
                     </div>
                     <div class="other-info">
-                        <p>+357 {{__('Properties')}}</p>
-                        <a href="#" class="view-all">
+                        <p>+{{$all_props->where('country_id' , 223)->count()}} {{__('Properties')}}</p>
+                        <a href="{{route('properties' , ['country' => 'turkey'])}}" class="view-all">
                             {{__('View all')}}
                         </a>
                     </div>
@@ -86,14 +86,14 @@
                         <p class="country-name">{{__('Algeria')}}</p>
                     </div>
                     <div class="other-info">
-                        <p>+357 {{__('Lands')}}</p>
-                        <a href="#" class="view-all">
+                        <p>+{{$all_lands->where('country_id' , 3)->count()}} {{__('Lands')}}</p>
+                        <a href="{{route('lands' , ['country' => 'algeria'])}}" class="view-all">
                             {{__('View all')}}
                         </a>
                     </div>
                     <div class="other-info">
-                        <p>+357 {{__('Properties')}}</p>
-                        <a href="#" class="view-all">
+                        <p>+{{$all_props->where('country_id' , 3)->count()}} {{__('Properties')}}</p>
+                        <a href="{{route('properties' , ['country' => 'algeria'])}}" class="view-all">
                             {{__('View all')}}
                         </a>
                     </div>

@@ -63,7 +63,7 @@
                         </div>
                         <!--end::Image input-->
                         <!--begin::Hint-->
-                        <div class="form-text">{{__('Image')}}: 900px * 600px</div>
+                        <div class="form-text">{{__('Image')}}: 900px * 400px/div>
                         <!--end::Hint-->
                     </div>
 
@@ -101,7 +101,7 @@
                         </div>
                         <!--end::Image input-->
                         <!--begin::Hint-->
-                        <div class="form-text">{{__('Slides')}}: 900px * 600px
+                        <div class="form-text">{{__('Slides')}}: 900px * 400px
                             <br/>
                             <b class="text-success">{{count($property->slides)}} Files</b></div>
                         <!--end::Hint-->

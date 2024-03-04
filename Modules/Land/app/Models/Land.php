@@ -49,7 +49,7 @@ class Land extends Model
         'visits',
     ];
     protected $appends = ['image_link', 'location', 'price_currency'];
-    protected $with = ['features'];
+    protected $with = ['features' , 'type'];
 
     protected static function boot()
     {

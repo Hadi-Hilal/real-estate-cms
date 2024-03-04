@@ -152,9 +152,11 @@
                 <td>
 
                     <h5 class="text-muted">
-                        {{$property->title}}
+                     <a href="{{route('properties.show' , $property->slug)}}" target="_blank">
+                         {{$property->title}}
+                     </a>
                     </h5>
-                    <span class="badge badge-light-primary">{{__($property->category)}} </span>
+                    <span class="badge badge-light-success">{{__($property->category)}} </span>
                 </td>
 
                 <td>

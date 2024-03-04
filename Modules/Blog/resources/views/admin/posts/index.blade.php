@@ -140,7 +140,7 @@
                 </td>
                 <td>
                     <h5 class="">
-                        <a href="#" class=" fw-bolder text-hover-primary mb-1 fs-6">{{$post->title}}</a>
+                        <a href="{{route('articles.show' , $post->slug)}}" target="_blank" class=" fw-bolder text-hover-primary mb-1 fs-6">{{$post->title}}</a>
                     </h5>
                 </td>
                 <td>

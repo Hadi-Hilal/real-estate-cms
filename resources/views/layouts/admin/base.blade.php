@@ -123,7 +123,7 @@ Author: Hadi Hilal
                                  class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                 <!--begin:Menu link-->
                                 <span class="menu-link">
-											<span class="menu-title">Dashboards</span>
+											<span class="menu-title">Bagdad Invest</span>
 											<span class="menu-arrow d-lg-none"></span>
 										</span>
                                 <!--end:Menu link-->
@@ -332,9 +332,9 @@ Author: Hadi Hilal
 
                     <!--begin::Logo image-->
                     <a href="{{asset('storage/'. $settings->get('white_logo')) }}">
-                        <img alt="Logo" src="{{asset('storage/'. $settings->get('white_logo')) }}"
+                        <img alt="Logo" src="{{asset('images/logo/logo.png') }}"
                              class="h-50px app-sidebar-logo-default"/>
-                        <img alt="Logo" src="{{asset('storage/'. $settings->get('white_logo')) }}"
+                        <img alt="Logo" src="{{asset('images/logo/logo.png') }}"
                              class="h-20px app-sidebar-logo-minimize"/>
                     </a>
                     <!--end::Logo image-->
@@ -407,7 +407,7 @@ Author: Hadi Hilal
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
                             <span class="text-muted fw-bold me-1">2024©</span>
-                            <a href="https://www.linkedin.com/in/hadi-hilal-5793a5200/" target="_blank"
+                            <a href="https://www.linkedin.com/in/hadi-hilal" target="_blank"
                                class="text-gray-800 text-hover-primary">Hadi Hilal</a>
                         </div>
                         <!--end::Copyright-->

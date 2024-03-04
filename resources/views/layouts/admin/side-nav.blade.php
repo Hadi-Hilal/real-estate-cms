@@ -233,6 +233,18 @@
         </div>
     @endcan
 
+        @can('Manage Contacts')
+        <div class="menu-item">
+            <a class="menu-link {{ isset($active['contacts']) ? 'active' : '' }}"
+                href="{{ route('admin.contacts.index') }}">
+                <span class="menu-icon">
+                    <i class="bi bi-envelope-check"></i>
+                </span>
+                <span class="menu-title">{{ __('Contacts') }}</span>
+            </a>
+        </div>
+    @endcan
+
     @can('Manage Currencies')
         <div class="menu-item">
             <a class="menu-link {{ isset($active['currencies']) ? 'active' : '' }}"

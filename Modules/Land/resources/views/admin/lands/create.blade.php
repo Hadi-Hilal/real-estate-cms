@@ -62,7 +62,7 @@
                         </div>
                         <!--end::Image input-->
                         <!--begin::Hint-->
-                        <div class="form-text">{{__('Image')}}: 900px * 600px</div>
+                        <div class="form-text">{{__('Image')}}: 900px * 400px</div>
                         <!--end::Hint-->
                     </div>
 
@@ -100,7 +100,7 @@
                         </div>
                         <!--end::Image input-->
                         <!--begin::Hint-->
-                        <div class="form-text">{{__('Slides')}}: 900px * 600px</div>
+                        <div class="form-text">{{__('Slides')}}: 900px * 400px</div>
                         <!--end::Hint-->
                     </div>
                 </div>
@@ -460,7 +460,7 @@
                 var val = $(this).val();
                 var slug = generateSlug(val);
                 if (slug !== '') {
-                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/lands" + slug);
+                    $('#link').addClass('text-primary').text("{{env('APP_URL')}}/lands/" + slug);
                     $('#slug').val(slug);
                 } else {
                     $('#link').addClass('text-danger').text("{{__('The Slug Should Be English')}}");

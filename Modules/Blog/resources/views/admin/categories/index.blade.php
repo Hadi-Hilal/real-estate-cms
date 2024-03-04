@@ -109,8 +109,8 @@
                 </td>
 
                 <td>
-                    <a href="#"
-                       class=" fw-bolder text-hover-primary mb-1 fs-6">/articles/?category={{$category->slug}}</a>
+                    <a target="_blank" href="{{route('articles.index' , ['cat' => $category->slug] )}}"
+                       class=" fw-bolder text-hover-primary mb-1 fs-6">{{route('articles.index' , ['cat' => $category->slug] )}}</a>
                 </td>
                 <td>
                     <h5 class="text-muted">

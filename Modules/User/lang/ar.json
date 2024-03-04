@@ -10,5 +10,9 @@
     "Search In Users": "ابحث في المستخدمين",
     "Search In Admins": "ابحث في المشرفين",
     "User Type": "نوع المستخدم",
-    "Users Deleted Successfully": "تم حذف المستخدمين بنجاح"
+    "Users Deleted Successfully": "تم حذف المستخدمين بنجاح",
+    "Total Properties Count": "إجمالي عدد العقارات",
+    "Total Lands Count": "إجمالي عدد الأراضي",
+    "Total Posts Count": "إجمالي عدد المدونة",
+    "Total Pages Count": "إجمالي عدد الصفحات"
 }

@@ -37,10 +37,14 @@ class HomeController extends Controller
             return BlogPost::featured()->cardData()->get();
         });
 
+        $all_lands = Land::select('id' , 'publish' , 'country_id')->published()->get();
+
+        $all_props = Property::select('id' , 'publish' , 'country_id')->published()->get();
+
         $testimonials = Cache::rememberForever('testimonials ', function () {
             return Testimonial::published()->get();
         });
-        return view('core::index', compact('settings', 'countries', 'landTypes', 'lands',
+        return view('core::index', compact('settings', 'countries', 'landTypes', 'lands', 'all_lands' ,'all_props',
             'posts', 'properties', 'testimonials'));
     }
 
