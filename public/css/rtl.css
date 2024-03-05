@@ -19,3 +19,13 @@ footer .subscribe-form .subscribe-button {
     right: unset;
     left: 16px;
 }
+.accordion-nav {
+    text-align: right;
+}
+.modal-header .btn-close{
+    margin: 0;
+}
+.ms-auto {
+    margin-right: auto!important;
+    margin-left: unset!important;
+}

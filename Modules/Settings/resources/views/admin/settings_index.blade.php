@@ -345,6 +345,8 @@
                        value="{{$settings->get('whatsapp')}}" placeholder="0564xxxxxxx"/>
             </div>
         </div>
+        <h5 class="my-3 fw-bold text-primary ">LANDS Social media</h5>
+        <hr/>
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
@@ -354,8 +356,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[facebook]"
-                       value="{{$settings->get('facebook')}}" placeholder="https://www.facebook.com/xxxx"/>
+                <input type="text" class="form-control form-control-solid" name="data[lands_facebook]"
+                       value="{{$settings->get('lands_facebook')}}" placeholder="https://www.facebook.com/xxxx"/>
             </div>
         </div>
         <div class="row mb-8">
@@ -367,8 +369,8 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[instagram]"
-                       value="{{$settings->get('instagram')}}" placeholder="https://www.instagram.com/xxxx"/>
+                <input type="text" class="form-control form-control-solid" name="data[lands_instagram]"
+                       value="{{$settings->get('lands_instagram')}}" placeholder="https://www.instagram.com/xxxx"/>
             </div>
         </div>
         <div class="row mb-8">
@@ -380,23 +382,76 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[twitter]"
-                       value="{{$settings->get('twitter')}}" placeholder="https://www.twitter.com/xxxx"/>
+                <input type="text" class="form-control form-control-solid" name="data[lands_twitter]"
+                       value="{{$settings->get('lands_twitter')}}" placeholder="https://www.twitter.com/xxxx"/>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-tiktok mx-1 text-dark"></i> {{__('Tiktok')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" name="data[lands_tiktok]"
+                       value="{{$settings->get('lands_tiktok')}}" placeholder="https://www.tiktok.com/xxxx"/>
+            </div>
+        </div>
+                <h5 class="my-3 fw-bold text-primary ">Properties Social media</h5>
+        <hr/>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3"><i
+                        class="bi bi-facebook mx-1 text-primary"></i> {{__('Facebook')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" name="data[props_facebook]"
+                       value="{{$settings->get('props_facebook')}}" placeholder="https://www.facebook.com/xxxx"/>
             </div>
         </div>
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-linkedin mx-1 text-primary"></i> {{__('LinkedIn')}}</div>
+                        class="bi bi-instagram mx-1 text-danger"></i> {{__('Instagram')}}</div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[linkedin]"
-                       value="{{$settings->get('linkedin')}}" placeholder="https://www.linkedin.com/xxxx"/>
+                <input type="text" class="form-control form-control-solid" name="data[props_instagram]"
+                       value="{{$settings->get('props_instagram')}}" placeholder="https://www.instagram.com/xxxx"/>
             </div>
         </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3"><i
+                        class="bi bi-twitter mx-1 text-primary"></i> {{__('Twitter')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" name="data[props_twitter]"
+                       value="{{$settings->get('props_twitter')}}" placeholder="https://www.twitter.com/xxxx"/>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-tiktok mx-1 text-dark"></i> {{__('Tiktok')}}</div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" name="data[props_tiktok]"
+                       value="{{$settings->get('props_tiktok')}}" placeholder="https://www.tiktok.com/xxxx"/>
+            </div>
+        </div>
+
     </x-admin.create-card>
 @endsection
 

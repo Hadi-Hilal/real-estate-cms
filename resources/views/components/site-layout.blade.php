@@ -281,7 +281,40 @@
                 </div>
             </div>
         </div>
-
+    </section>
+    <section class="bg-second-color p-3 text-white">
+        <div class="container">
+            <div class="d-flex justify-content-around flex-md-nowrap flex-wrap p-3 mb-3">
+                <div class="text-center mb-1">
+                    <div class="h5 fw-bold mb-3">{{__('Lands Social Media')}}</div>
+                    <a href="{{$settings->get('lands_facebook')}}" target="_blank" class="social-links "><i
+                            class="bi bi-facebook mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('lands_instagram')}}" target="_blank" class="social-links "><i
+                            class="bi bi-instagram mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('lands_twitter')}}" target="_blank" class="social-links "><i
+                            class="bi bi-twitter mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('lands_tiktok')}}" target="_blank" class="social-links"><i
+                            class="bi bi-tiktok mx-2 fs-4"></i></a>
+                </div>
+                <div class="text-center mb-1">
+                    <div class="h5 fw-bold mb-3">{{__('Properties Social Media')}}</div>
+                    <a href="{{$settings->get('props_facebook')}}" target="_blank" class="social-links "><i
+                            class="bi bi-facebook mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('props_instagram')}}" target="_blank" class="social-links "><i
+                            class="bi bi-instagram mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('props_twitter')}}" target="_blank" class="social-links "><i
+                            class="bi bi-twitter mx-2 fs-4"></i></a>
+                    <a href="{{$settings->get('props_tiktok')}}" target="_blank" class="social-links"><i
+                            class="bi bi-tiktok mx-2 fs-4"></i></a>
+                </div>
+            </div>
+            <hr/>
+            <div class="d-flex justify-content-between flex-md-nowrap flex-wrap p-2">
+                <small class="fw-bold text-center mb-1">{{__('All Rights Reserved for Bagdad Invest ©2024')}}</small>
+                <small class="text-center mb-1">{{__('Powered By')}} <a href="https://www.linkedin.com/in/hadi-hilal/" target="_blank"
+                                               class="social-links fw-bold">Hadi Hilal</a> </small>
+            </div>
+        </div>
     </section>
 </footer>
 
@@ -289,15 +322,101 @@
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <div class="modal-title logo mx-1" id="exampleModalLabel">
+                    <a href="{{url('/')}}">
+                        <img width="125" src="{{asset('storage/' . $settings->get('white_logo'))}}" alt="website logo">
+                    </a>
+                </div>
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button class="accordion-nav "> {{__('Properties')}}</button>
+                <div class="panel">
+                    <p>
+                        <a class="dropdown-item" href="{{route('properties' , ['country' =>'turkey'])}}">
+                            {{__('Turkey')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('properties' , ['country' =>'algeria'])}}">
+                            {{__('Algeria')}}
+                        </a>
+                    </p>
+
+                </div>
+                <button class="accordion-nav "> {{__('Resale')}}</button>
+                <div class="panel">
+                    <p>
+                        <a class="dropdown-item"
+                           href="{{route('properties' , ['country' =>'turkey' , 'type' =>'resale'])}}">
+                            {{__('Turkey')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item"
+                           href="{{route('properties' , ['country' =>'algeria' , 'type' =>'resale'])}}">
+                            {{__('Algeria')}}
+                        </a>
+                    </p>
+
+                </div>
+                <button class="accordion-nav "> {{__('Lands')}}</button>
+                <div class="panel">
+                    <p>
+                        <a class="dropdown-item" href="{{route('lands' , ['country' =>'turkey' ])}}">
+                            {{__('Turkey')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('lands' , ['country' =>'algeria' ])}}">
+                            {{__('Algeria')}}
+                        </a>
+                    </p>
+
+                </div>
+                <button class="accordion-nav ">  {{__('Discover Bagdad Invest')}}</button>
+                <div class="panel">
+                    <p>
+                        <a class="dropdown-item"  href="{{route('citizenship')}}">
+                        {{__('Turkish Citizenship')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('articles.index')}}">
+                            {{__('Articles')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('faqs')}}">
+                            {{__('FAQs')}}
+                        </a>
+                    </p>
+                     <p>
+                        <a class="dropdown-item" href="{{route('contact-us')}}">
+                            {{__('Contact Us')}}
+                        </a>
+                    </p>
+                    @foreach($pages->where('type' , 'custom') as $page)
+                        <p>
+                            <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
+                            </a>
+                        </p>
+                    @endforeach
+
+                </div>
+                <button class="accordion-nav ">   {{__('Our Services')}}</button>
+                <div class="panel">
+                    @foreach($pages->where('type' , 'service') as $page)
+                        <p>
+                            <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
+                            </a>
+                        </p>
+                    @endforeach
+
+                </div>
             </div>
         </div>
     </div>
@@ -323,8 +442,8 @@
 
 @if($bodyTag == 'land' || $bodyTag == 'property')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
-        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
 
         $("#detail .main-img-slider").slick({
