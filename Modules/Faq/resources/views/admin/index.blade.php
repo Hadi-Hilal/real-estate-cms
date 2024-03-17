@@ -34,9 +34,10 @@
             </th>
 
             <th class="ps-4 min-w-200px rounded-start">{{__('Title')}}</th>
-            <th class="min-w-400px">{{__('Content')}}</th>
+            <th class="min-w-300px">{{__('Content')}}</th>
+            <th class="min-w-150px">{{__('Country')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
-            <th class="min-w-150px">{{__('Added To Citizenship Page')}}</th>
+            <th class="min-w-150px">{{__('Citizenship Page')}}</th>
             <th class="min-w-200px text-end rounded-end"></th>
         </tr>
         </thead>
@@ -56,6 +57,9 @@
                 <td>
                     {{$faq->content}} <br/>
                     <a href="{{$faq->link}}" target="_blank">{{$faq->link}} </a>
+                </td>
+                <td>
+                    {{$faq->country->name ?? '-'}}
                 </td>
                 <td>
                     <span

@@ -83,7 +83,7 @@
     "Visites" : "عدد الزيارات",
     "Created By" : "انشأ من قبل",
     "Add To Citizenship Page": "أضافة إلى صفحة الجنسية",
-    "Added To Citizenship Page": "مضافة إلى صفحة الجنسية",
+    "Citizenship Page": "مضاف لصفحة الجنسية",
     "Send Notification To Subscribers?" : "إرسال إشعار للمشتركين؟",
     "Currency" : "العملة",
      "Name" : "الاسم" ,
@@ -109,5 +109,7 @@
     "Read More": "قراءة المزيد",
     "Privacy Policy Link": "رابط سياسة الخصوصية",
     "Related Properties" : "العقارات ذات الصلة",
-    "Powered By": "طور من قبل"
+    "Powered By": "طور من قبل",
+    "Enter your email" : "أدخل بريدك الالكتروني",
+    "Home": "الصفحة الرئيسية"
 }

@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center flex-md-nowrap flex-wrap">
-    <div class="">
+      <div class="w-md-50 w-100">
           <div class="contact-form text-center p-5 mb-3" id="contact-form-modal">
         <h3 class=" head fw-bold">{{__('We Are Here To Help You')}}</h3>
         <p class="title">{{__("Let's Get In Touch")}}</p>
@@ -31,7 +31,7 @@
     </div>
     </div>
 
-    <div class="">
+    <div class="w-md-50 w-100">
         <img src="{{asset('images/custom/contact-bannar.webp')}}" class="img-fluid" alt="{{__('Turkish Citizenship')}}">
     </div>
 </div>

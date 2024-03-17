@@ -108,6 +108,7 @@
 
             <th class="min-w-200px"></th>
             <th class="min-w-200px">{{__('Title')}}</th>
+            <th class="min-w-150px">{{__('Country')}}</th>
             <th class="min-w-150px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
             <th class="min-w-150px">{{__('Type')}}</th>
@@ -140,6 +141,9 @@
                         <a href="{{route('page.show' , $page->slug)}}" target="_blank"
                            class=" fw-bolder text-hover-primary mb-1 fs-6">{{$page->title}}</a>
                     </h5>
+                </td>
+                <td>
+                    {{$page->country->name ?? '-' }}
                 </td>
                 <td>
                     {{$page->featured ? __('Yes') : __('No') }}

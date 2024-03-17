@@ -8,6 +8,6 @@ use Modules\Faq\app\Http\Controllers\FaqController;
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
     require __DIR__ . '/admin.php';
 
-    Route::get('faqs', [FaqController::class, 'index'])->name('faqs');
+    Route::get('{country}/faqs', [FaqController::class, 'index'])->name('faqs');
 });
 

@@ -5,6 +5,7 @@ namespace Modules\Faq\app\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\RedirectResponse;
+use Modules\Core\app\Models\Country;
 use Modules\Faq\app\Http\Requests\FaqRequest;
 use Modules\Faq\app\Models\Faq;
 
@@ -40,12 +41,14 @@ class FaqController extends Controller
 
     public function create()
     {
-        return view('faq::admin.create');
+        $countries = Country::all();
+        return view('faq::admin.create', compact('countries'));
     }
 
     public function edit(Faq $faq)
     {
-        return view('faq::admin.edit', compact('faq'));
+        $countries = Country::all();
+        return view('faq::admin.edit', compact('faq', 'countries'));
     }
 
     public function update(FaqRequest $request, Faq $faq): RedirectResponse

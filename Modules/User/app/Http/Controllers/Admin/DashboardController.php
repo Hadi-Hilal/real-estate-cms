@@ -20,10 +20,10 @@ class DashboardController extends Controller
         $pages = Property::all();
         $subscribers = Subscriber::count();
         $contacts = Contact::count();
-        $users  = User::count();
-        $admins  = User::type('admin')->count();
+        $users = User::count();
+        $admins = User::type('admin')->count();
 
-        return view('user::admin.dashboard' , compact('lands' ,'projects' , 'posts' , 'pages' , 'subscribers' , 'contacts' , 'users' , 'admins'));
+        return view('user::admin.dashboard', compact('lands', 'projects', 'posts', 'pages', 'subscribers', 'contacts', 'users', 'admins'));
     }
 
 }

@@ -65,6 +65,30 @@
             </div>
             <!--end::Col-->
         </div>
+
+        <!--begin::Row-->
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Country')}} <span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <select class="form-select" name="country_id" data-control="select2" id="country_id" required
+                        data-placeholder="{{__('Please Chose One')}}">
+                    <option></option>
+                    @foreach($countries as $country)
+                        <option
+                            @selected($country->id == $post->country_id) value="{{$country->id }}">{{$country->name}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+        </div>
+        <!--end::Row-->
+
         <!--begin::Row-->
         <div class="row mb-8">
             <!--begin::Col-->
@@ -75,7 +99,7 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
-                <select class="form-select" name="category_id" data-control="select2"
+                <select class="form-select" name="category_id" id="category_id" data-control="select2"
                         data-placeholder="{{__('Please Chose One')}}">
                     <option></option>
                     @foreach($categories as $category)
@@ -249,6 +273,23 @@
                     $('.notification').attr('disabled', false)
                 }
             }).trigger('change');
+
+            $('#country_id').on('change', function () {
+                var countryId = $(this).val();
+                $.get("{{ route('admin.blogs.getCat') }}", {countryId: countryId})
+                    .done(function (response) {
+                        $('#category_id').empty();
+                        $.each(response, function (index, state) {
+                            $('#category_id').append($('<option>', {
+                                value: index,
+                                text: state
+                            }));
+                        });
+                    })
+                    .fail(function (error) {
+                        alert(error);
+                    });
+            });
         })
 
     </script>

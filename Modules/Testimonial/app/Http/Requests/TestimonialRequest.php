@@ -16,6 +16,7 @@ class TestimonialRequest extends FormRequest
             'name' => 'required|string|min:3',
             'position' => 'required|string|min:3',
             'comment' => 'required|string|min:10',
+            'country_id' => 'required',
             'link' => 'nullable|url',
         ];
     }

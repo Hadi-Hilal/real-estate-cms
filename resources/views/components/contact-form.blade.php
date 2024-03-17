@@ -31,7 +31,7 @@
     <div class="contact-form ">
         <a href="{{route('citizenship')}}">
             <h3 class="h5 p-4 text-main-color text-center">{{__('Turkish Citizenship And How To Obtain It')}}</h3>
-            <img src="{{asset('images/custom/turkish-wallet.webp')}}" class="img-fluid"
+            <img src="{{asset('images/custom/passport-1.png')}}" class="img-fluid"
                  alt="{{__('Turkish Citizenship"')}}">
             <button class="btn btn-main-color w-100 d-block">
                 {{__('View More')}}

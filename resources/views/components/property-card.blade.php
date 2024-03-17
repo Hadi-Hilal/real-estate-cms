@@ -9,11 +9,11 @@
     <a href="{{route('properties.show' , $property->slug)}}" class="card-body">
         <h4 class="fw-bold text-main-color">{{$property->price_currency}}</h4>
         <h5 class="card-title fw-bold h4">{{$property->title . ' ' . $property->code }}</h5>
-        <p class="card-text">{{$property->location}}</p>
+        <p class="card-text"><i class="bi bi-geo text-main-color mx-1 fw-bold"></i>{{$property->location}}</p>
         <hr/>
         <div class="d-flex justify-content-between">
-            <p>{{$property->propertyType->name}}</p>
-            <p>{{__($property->category)}}</p>
+            <p class="fw-bold text-capitalize"><i class="bi bi-buildings text-main-color mx-1 fw-bold"></i> {{$property->propertyType->name}}</p>
+            <p class="fw-bold text-capitalize">{{__($property->category)}}</p>
         </div>
     </a>
 </div>

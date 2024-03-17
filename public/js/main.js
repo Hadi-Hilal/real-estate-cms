@@ -17,86 +17,85 @@ window.addEventListener('scroll', function () {
     }
 });
 
-function testimonial() {
-    const slider = document.querySelector('.slider');
-    const items = document.querySelectorAll('.item');
-    const btns = document.querySelectorAll('.testimonials-btn');
-    const isRTL = document.documentElement.dir === 'rtl';
-
-    function reset() {
-        for (let i = 0; i < items.length; i++) {
-            btns[i].classList.remove('expand');
-            items[i].classList.remove('animation');
-        }
-    }
-
-    function animate(i) {
-        btns[i].classList.add('expand');
-        items[i].classList.add('animation');
-    }
-
-    function scrollTo(i) {
-        const directionMultiplier = isRTL ? 1 : -1; // Adjust direction based on RTL or LTR
-        slider.style.transform = `translateX(${directionMultiplier * i * slider.offsetWidth}px)`;
-        reset();
-        animate(i);
-    }
-
-    const activate = (e) => e.target.matches('.testimonials-btn') && scrollTo(e.target.dataset.index);
-
-    const init = () => animate(0);
-
-    window.addEventListener('load', init, false);
-    window.addEventListener('click', activate, false);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    if (document.body.classList.contains('home') || document.body.classList.contains('citizenship')) {
-        testimonial();
-    }
-});
-const cookieBox = document.querySelector(".wrapper"), buttons = document.querySelectorAll(".button");
-
-const executeCodes = () => {
-    //if cookie contains codinglab it will be returned and below of this code will not run
-    if (document.cookie.includes("codinglab")) return;
-    cookieBox.classList.add("show");
-
-    buttons.forEach((button) => {
-        button.addEventListener("click", () => {
-            cookieBox.classList.remove("show");
-
-            //if button has acceptBtn id
-            if (button.id == "acceptBtn") {
-                //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
-                document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
-            }
-        });
-    });
-};
-
-//executeCodes function will be called on webpage load
-window.addEventListener("load", executeCodes);
 
 var acc = document.getElementsByClassName("accordion-nav");
 var i;
 
 for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
+    acc[i].addEventListener("click", function () {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
 
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
 }
 
-  $( function() {
-    $( "#accordion" ).accordion();
-  } );
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('multiStepForm');
+  const fieldsets = form.querySelectorAll('fieldset');
+  const messageInput = document.getElementById('messageInput');
+
+  let currentStep = 0;
+  let selectedCountry = '';
+  let selectedType = '';
+
+  function showStep(step) {
+    fieldsets.forEach((fieldset, index) => {
+      if (index === step) {
+        fieldset.style.display = 'flex';
+      } else {
+        fieldset.style.display = 'none';
+      }
+    });
+  }
+
+  function nextStep() {
+    if (currentStep < fieldsets.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    } else {
+      // If it's the last step, submit the form
+      form.submit();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+  }
+
+  document.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', function() {
+      if (currentStep === 0) {
+        selectedCountry = this.dataset.value;
+        nextStep(); // Move to the next step after selecting the country
+      } else if (currentStep === 1) {
+        selectedType = this.dataset.value;
+        // Concatenate both selected values
+          messageInput.value = `Hey Bagdad Team! 🌟 I'm ready to invest in ${selectedType} in beautiful ${selectedCountry}!  Let's talk about that! 💼`;
+        nextStep(); // Move to the next step after selecting the type
+      }
+    });
+  });
+
+  document.querySelectorAll('.prev-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      prevStep();
+    });
+  });
+});
+
+
+$(function () {
+    $("#accordion").accordion();
+    $("#tabs").tabs();
+});

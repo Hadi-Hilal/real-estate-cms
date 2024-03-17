@@ -4,6 +4,7 @@ namespace Modules\Testimonial\app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Core\app\Models\Country;
 use Modules\Testimonial\app\Http\Requests\TestimonialRequest;
 use Modules\Testimonial\app\Models\Testimonial;
 use Modules\Testimonial\app\Repositories\TestimonialRepository;
@@ -30,12 +31,14 @@ class TestimonialController extends Controller
 
     public function create()
     {
-        return view('testimonial::admin.create');
+        $countries = Country::all();
+        return view('testimonial::admin.create', compact('countries'));
     }
 
     public function edit(Testimonial $testimonial)
     {
-        return view('testimonial::admin.edit', compact('testimonial'));
+        $countries = Country::all();
+        return view('testimonial::admin.edit', compact('testimonial', 'countries'));
     }
 
 

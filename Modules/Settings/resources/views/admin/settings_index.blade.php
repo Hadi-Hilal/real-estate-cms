@@ -322,27 +322,13 @@
             <!--begin::Col-->
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-link mx-1 text-primary"></i> {{__('Privacy Policy Link')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="url" class="form-control form-control-solid" name="data[privacy_policy_link]"
-                       value="{{$settings->get('privacy_policy_link')}}"/>
-            </div>
-        </div>
-
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
                         class="bi bi-whatsapp mx-1 text-success"></i> {{__('Whatsapp')}}</div>
             </div>
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-9 fv-row">
                 <input type="text" class="form-control form-control-solid" name="data[whatsapp]"
-                       value="{{$settings->get('whatsapp')}}" placeholder="0564xxxxxxx"/>
+                       value="{{$settings->get('whatsapp')}}" placeholder="90564xxxxxxx"/>
             </div>
         </div>
         <h5 class="my-3 fw-bold text-primary ">LANDS Social media</h5>
@@ -398,7 +384,7 @@
                        value="{{$settings->get('lands_tiktok')}}" placeholder="https://www.tiktok.com/xxxx"/>
             </div>
         </div>
-                <h5 class="my-3 fw-bold text-primary ">Properties Social media</h5>
+        <h5 class="my-3 fw-bold text-primary ">Properties Social media</h5>
         <hr/>
         <div class="row mb-8">
             <!--begin::Col-->

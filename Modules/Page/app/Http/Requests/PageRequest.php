@@ -16,6 +16,7 @@ class PageRequest extends FormRequest
             'content' => 'required|min:25',
             'keywords' => 'required',
             'type' => 'required',
+            'country_id' => 'required',
         ];
     }
 

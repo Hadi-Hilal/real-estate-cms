@@ -82,7 +82,7 @@
                             aria-expanded="false">
                         {{__('Currency')}} ({{session()->get('currencyCode' , 'USD')}})
                     </button>
-                    <div class="dropdown-menu w-2" aria-labelledby="dropdownCurency">
+                    <div class="dropdown-menu w-2 p-3" aria-labelledby="dropdownCurency">
                         <div class="parent">
                             @foreach($currencies as $currency)
                                 <a class="dropdown-item" href="{{route('setCurrency' , $currency->id)}}">
@@ -101,7 +101,7 @@
                             aria-expanded="false">
                         <span class="text-uppercase"> {{ LaravelLocalization::getCurrentLocale() }}</span>
                     </button>
-                    <div class="dropdown-menu w-2" aria-labelledby="dropdownLang">
+                    <div class="dropdown-menu w-2 p-3" aria-labelledby="dropdownLang">
                         <div class="parent">
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                 <a class="dropdown-item"
@@ -191,22 +191,42 @@
                         {{__('Discover Bagdad Invest')}}
                     </button>
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
-                        <div class="parent">
-                            <a class="dropdown-item" href="{{route('articles.index')}}">
-                                {{__('Articles')}}
-                            </a>
-
-                            <a class="dropdown-item" href="{{route('faqs')}}">
-                                {{__('FAQs')}}
-                            </a>
-
-                            @foreach($pages->where('type' , 'custom') as $page)
-                                <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
-                                    {{$page->title}}
+                        <div class="dropdown-item">
+                            <a href="#"> {{__('Turkey')}}</a>
+                            <div class="submenu">
+                                <a class="dropdown-item" href="{{route('articles' , ['country' => 'turkey'])}}">
+                                    {{__('Articles')}}
                                 </a>
-                            @endforeach
-                        </div>
 
+                                <a class="dropdown-item" href="{{route('faqs'  , ['country' =>'turkey'])}}">
+                                    {{__('FAQs')}}
+                                </a>
+
+                                @foreach($pages->where('type' , 'custom')->where('country_id' , 223) as $page)
+                                    <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                        {{$page->title}}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="#"> {{__('Algeria')}}</a>
+                            <div class="submenu">
+                                <a class="dropdown-item" href="{{route('articles' , ['country' => 'algeria'])}}">
+                                    {{__('Articles')}}
+                                </a>
+
+                                <a class="dropdown-item" href="{{route('faqs'  , ['country' =>'algeria'])}}">
+                                    {{__('FAQs')}}
+                                </a>
+
+                                @foreach($pages->where('type' , 'custom')->where('country_id' , 3) as $page)
+                                    <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                        {{$page->title}}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -215,17 +235,30 @@
                             aria-expanded="false">
                         {{__('Our Services')}}
                     </button>
-                    <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
-                        <div class="parent">
-                            @foreach($pages->where('type' , 'service') as $page)
-                                <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
-                                    {{$page->title}}
-                                </a>
-                            @endforeach
+                     <div class="dropdown-menu w-2" aria-labelledby="dropdownLands">
+                        <div class="dropdown-item">
+                            <a href="#"> {{__('Turkey')}}</a>
+                            <div class="submenu">
+                                @foreach($pages->where('type' , 'service')->where('country_id' , 223) as $page)
+                                    <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                        {{$page->title}}
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-
+                        <div class="dropdown-item">
+                            <a href="#"> {{__('Algeria')}}</a>
+                            <div class="submenu">
+                                @foreach($pages->where('type' , 'service')->where('country_id' , 3) as $page)
+                                    <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                        {{$page->title}}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="dropdown">
                     <a class="btn fw-bold" href="{{route('contact-us')}}">
                         {{__('Contact Us')}}
@@ -245,25 +278,9 @@
 </main>
 
 <footer>
-    <section id="cookies">
-        <div class="wrapper">
-            <header>
-                <i class="bi bi-cookie"></i>
-                <h2>{{__('Cookies Consent')}}</h2>
-            </header>
-
-            <div class="data">
-                <p>{{__('This website use cookies to help you have a superior and more relevant browsing experience on the website.')}}
-                    <a href="{{$settings->get('privacy_policy_link' , '#')}}">{{__('Read More')}}</a>
-                </p>
-            </div>
-
-            <div class="buttons">
-                <button class="button" id="acceptBtn">{{__('Accept')}}</button>
-                <button class="button" id="declineBtn">{{__('Decline')}}</button>
-            </div>
-        </div>
-    </section>
+    <a href="https://web.whatsapp.com/send?phone={{$settings->get('whatsapp')}}" class="whats-btn btn btn-success heartbeat circle">
+        <i class="bi bi-whatsapp"></i>
+    </a>
     <section class="bg-main-color p-3">
         <div class="container">
             <div class="d-flex justify-content-around flex-wrap">
@@ -274,7 +291,7 @@
                 <div class="">
                     <form action="{{route('subscribe')}}" method="post" class="subscribe-form">
                         @csrf
-                        <input type="email" name="email" class="email-input" placeholder="Enter your email">
+                        <input type="email" name="email" class="email-input" placeholder="{{__('Enter your email')}}">
                         <button class="subscribe-button" type="submit">{{__('Subscribe')}}
                         </button>
                     </form>
@@ -311,8 +328,10 @@
             <hr/>
             <div class="d-flex justify-content-between flex-md-nowrap flex-wrap p-2">
                 <small class="fw-bold text-center mb-1">{{__('All Rights Reserved for Bagdad Invest ©2024')}}</small>
-                <small class="text-center mb-1">{{__('Powered By')}} <a href="https://www.linkedin.com/in/hadi-hilal/" target="_blank"
-                                               class="social-links fw-bold">Hadi Hilal</a> </small>
+                <small class="text-center mb-1">{{__('Powered By')}} <a href="#"
+                                                                        target="_blank"
+                                                                        class="social-links fw-bold">Hadi</a>
+                </small>
             </div>
         </div>
     </section>
@@ -375,29 +394,29 @@
                     </p>
 
                 </div>
-                <button class="accordion-nav ">  {{__('Discover Bagdad Invest')}}</button>
+                <button class="accordion-nav ">  {{__('Bagdad Invest In Turkey')}}</button>
                 <div class="panel">
                     <p>
-                        <a class="dropdown-item"  href="{{route('citizenship')}}">
-                        {{__('Turkish Citizenship')}}
+                        <a class="dropdown-item" href="{{route('citizenship')}}">
+                            {{__('Turkish Citizenship')}}
                         </a>
                     </p>
                     <p>
-                        <a class="dropdown-item" href="{{route('articles.index')}}">
+                        <a class="dropdown-item" href="{{route('articles' , ['country' => 'turkey'])}}">
                             {{__('Articles')}}
                         </a>
                     </p>
                     <p>
-                        <a class="dropdown-item" href="{{route('faqs')}}">
+                        <a class="dropdown-item" href="{{route('faqs'  , ['country' => 'turkey'])}}">
                             {{__('FAQs')}}
                         </a>
                     </p>
-                     <p>
+                    <p>
                         <a class="dropdown-item" href="{{route('contact-us')}}">
                             {{__('Contact Us')}}
                         </a>
                     </p>
-                    @foreach($pages->where('type' , 'custom') as $page)
+                    @foreach($pages->where('type' , 'custom')->where('country_id' , 223) as $page)
                         <p>
                             <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
                                 {{$page->title}}
@@ -406,9 +425,53 @@
                     @endforeach
 
                 </div>
-                <button class="accordion-nav ">   {{__('Our Services')}}</button>
+
+                <button class="accordion-nav ">  {{__('Bagdad Invest In Algeria')}}</button>
                 <div class="panel">
-                    @foreach($pages->where('type' , 'service') as $page)
+                    <p>
+                        <a class="dropdown-item" href="{{route('citizenship')}}">
+                            {{__('Turkish Citizenship')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('articles' , ['country' => 'algeria'])}}">
+                            {{__('Articles')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('faqs'  , ['country' => 'algeria'])}}">
+                            {{__('FAQs')}}
+                        </a>
+                    </p>
+                    <p>
+                        <a class="dropdown-item" href="{{route('contact-us')}}">
+                            {{__('Contact Us')}}
+                        </a>
+                    </p>
+                    @foreach($pages->where('type' , 'custom')->where('country_id' , 3) as $page)
+                        <p>
+                            <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
+                            </a>
+                        </p>
+                    @endforeach
+
+                </div>
+
+                <button class="accordion-nav">   {{__('Our Services In Turkey')}}</button>
+                <div class="panel">
+                    @foreach($pages->where('type' , 'service')->where('country_id' , 223) as $page)
+                        <p>
+                            <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
+                                {{$page->title}}
+                            </a>
+                        </p>
+                    @endforeach
+
+                </div>
+                   <button class="accordion-nav">   {{__('Our Services In Algeria')}}</button>
+                <div class="panel">
+                    @foreach($pages->where('type' , 'service')->where('country_id' , 3) as $page)
                         <p>
                             <a class="dropdown-item" href="{{route('page.show' , $page->slug)}}">
                                 {{$page->title}}
@@ -519,11 +582,25 @@
             margin: 10,
             responsive: {
                 0: {
-                    items: 1.5
+                    items: 1.2
                 }, 600: {
                     items: 2.3
                 }, 1000: {
                     items: 3
+                }
+            }
+        });
+        $(".owl-carsoul-testimonial").owlCarousel({
+            loop: true,
+            @if(LaravelLocalization::getCurrentLocale() == 'ar') rtl: true, @endif
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1.1
+                }, 600: {
+                    items: 1.3
+                }, 1000: {
+                    items: 2
                 }
             }
         });

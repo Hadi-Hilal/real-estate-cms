@@ -5,11 +5,11 @@
         <h5 class="card-title fw-bold h6">
         {{ Str::length($post->title) < 40 ? $post->title : Str::limit($post->title, 40)  }}
         </h5>
-        {{ Str::length($post->description) < 175 ? $post->description : Str::limit($post->description, 175) }}
+        {{ Str::length($post->description) < 130 ? $post->description : Str::limit($post->description, 130) }}
         <hr/>
         <div class="d-flex justify-content-between">
-            <p><i class="bi bi-calendar text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}</p>
-            <p><i class="bi bi-eye text-main-color mx-1"></i> {{__($post->visites)}}</p>
+            <p class="fw-bold"><i class="bi bi-calendar-check-fill text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}</p>
+            <p class="fw-bold"><i class="bi bi-eye-fill text-main-color mx-1"></i> {{__($post->visites)}}</p>
         </div>
     </a>
 </div>

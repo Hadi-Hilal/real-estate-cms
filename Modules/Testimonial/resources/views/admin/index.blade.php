@@ -36,8 +36,9 @@
 
             <th class="ps-4 min-w-325px rounded-start">{{__('Client Details')}}</th>
             <th class="min-w-200px">{{__('Client Comment')}}</th>
+            <th class="min-w-150px">{{__('Country')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
-            <th class="min-w-150px">{{__('Added To Citizenship Page')}}</th>
+            <th class="min-w-150px">{{__('Citizenship Page')}}</th>
             <th class="min-w-200px text-end rounded-end"></th>
         </tr>
         </thead>
@@ -68,6 +69,10 @@
                 </td>
                 <td>
                     {{$testimonial->comment}}
+                </td>
+
+                <td>
+                    {{$testimonial->country->name ?? '-'}}
                 </td>
                 <td>
                         <span

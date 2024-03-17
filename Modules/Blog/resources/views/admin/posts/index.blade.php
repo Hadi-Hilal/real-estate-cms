@@ -110,10 +110,11 @@
 
             <th class="min-w-200px"></th>
             <th class="min-w-200px">{{__('Title')}}</th>
-            <th class="min-w-200px">{{__('Category')}}</th>
-            <th class="min-w-200px">{{__('Featured')}}</th>
+            <th class="min-w-150px">{{__('Category')}}</th>
+            <th class="min-w-150px">{{__('Country')}}</th>
+            <th class="min-w-150px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish')}}</th>
-            <th class="min-w-200px">{{__('Added To Citizenship Page')}}</th>
+            <th class="min-w-150px">{{__('Citizenship Page')}}</th>
             <th class="min-w-150px">{{__('Created At')}}</th>
             <th class="min-w-150px"><i class="bi bi-eye text-primary fa-2x"></i></th>
             <th class="min-w-200px text-end rounded-end"></th>
@@ -140,11 +141,15 @@
                 </td>
                 <td>
                     <h5 class="">
-                        <a href="{{route('articles.show' , $post->slug)}}" target="_blank" class=" fw-bolder text-hover-primary mb-1 fs-6">{{$post->title}}</a>
+                        <a href="{{route('articles.show' , $post->slug)}}" target="_blank"
+                           class=" fw-bolder text-hover-primary mb-1 fs-6">{{$post->title}}</a>
                     </h5>
                 </td>
                 <td>
                     <strong> {{$post->category->name }} </strong>
+                </td>
+                <td>
+                    {{$post->country->name ?? '-'}}
                 </td>
                 <td>
                     {{$post->featured ? __('Yes') : __('No') }}

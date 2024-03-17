@@ -58,6 +58,18 @@
                                        placeholder="example: Investment In Turkey"/>
                             </div>
 
+                            <div class="mb-5">
+                                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Country')}} <span class="text-danger">*</span>
+                                </div>
+                                <select class="form-select" name="country_id" data-control="select2" id="country_id"
+                                        required
+                                        data-placeholder="{{__('Please Chose One')}}">
+                                    <option></option>
+                                    @foreach($countries as $country)
+                                        <option value="{{$country->id }}">{{$country->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -87,6 +99,7 @@
 
             <th class="min-w-200px">{{__('Name')}}</th>
             <th class="min-w-200px">{{__('Url')}}</th>
+            <th class="min-w-200px">{{__('Country')}}</th>
             <th class="min-w-150px">{{__('Number Of Posts')}}</th>
             <th class="min-w-200px">{{__('Created At')}}</th>
             <th class="min-w-200px text-end rounded-end"></th>
@@ -111,6 +124,9 @@
                 <td>
                     <a target="_blank" href="{{route('articles.index' , ['cat' => $category->slug] )}}"
                        class=" fw-bolder text-hover-primary mb-1 fs-6">{{route('articles.index' , ['cat' => $category->slug] )}}</a>
+                </td>
+                <td>
+                    {{$category->country->name}}
                 </td>
                 <td>
                     <h5 class="text-muted">

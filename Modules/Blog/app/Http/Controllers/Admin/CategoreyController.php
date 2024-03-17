@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Modules\Blog\app\Http\Requests\BlogCategoryRequest;
 use Modules\Blog\app\Models\BlogCategory;
+use Modules\Core\app\Models\Country;
 
 class CategoreyController extends Controller
 {
@@ -16,7 +17,8 @@ class CategoreyController extends Controller
         $this->setActive('blogs');
         $this->setActive('categories');
         $categories = BlogCategory::paginate($this->pageSize());
-        return view('blog::admin.categories.index', compact('categories'));
+        $countries = Country::all();
+        return view('blog::admin.categories.index', compact('categories', 'countries'));
     }
 
     public function store(BlogCategoryRequest $request): RedirectResponse

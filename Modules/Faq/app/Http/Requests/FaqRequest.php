@@ -13,6 +13,7 @@ class FaqRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:3',
+            'country_id' => 'required',
             'content' => 'required|string|min:10',
             'link' => 'nullable|url',
         ];

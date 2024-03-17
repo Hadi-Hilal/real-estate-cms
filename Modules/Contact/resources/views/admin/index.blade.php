@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-       <x-admin.table :model="$contacts" search="Search In Contacts"
+    <x-admin.table :model="$contacts" search="Search In Contacts"
                    :formUrl="route('admin.contacts.deleteMulti')">
         <!--begin::Table head-->
         <thead>
@@ -57,7 +57,7 @@
                     {{$contact->name}}
                 </td>
                 <td>
-                  {{$contact->ip}}
+                    {{$contact->ip}}
                 </td>
                 <td>
                     <a href="tel:{{$contact->phone_code.$contact->phone_number}}">{{$contact->phone_code .'-'.$contact->phone_number}}</a>

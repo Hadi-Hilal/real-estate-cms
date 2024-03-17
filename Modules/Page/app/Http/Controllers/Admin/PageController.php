@@ -5,6 +5,7 @@ namespace Modules\Page\app\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Modules\Core\app\Models\Country;
 use Modules\Page\app\Http\Requests\PageRequest;
 use Modules\Page\app\Models\Page;
 use Modules\Page\app\Repositories\PageRepository;
@@ -19,14 +20,15 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
-        $pages = $this->pageRepository->paginate($request, ['id', 'title', 'slug', 'image', 'type', 'publish', 'featured', 'visites', 'created_at']);
+        $pages = $this->pageRepository->paginate($request, ['id', 'country_id', 'title', 'slug', 'image', 'type', 'publish', 'featured', 'visites', 'created_at']);
 
         return view('page::admin.index', compact('pages'));
     }
 
     public function create()
     {
-        return view('page::admin.create');
+        $countries = Country::all();
+        return view('page::admin.create', compact('countries'));
     }
 
     public function store(PageRequest $request): RedirectResponse
@@ -38,7 +40,8 @@ class PageController extends Controller
 
     public function edit(Page $page)
     {
-        return view('page::admin.edit', compact('page'));
+        $countries = Country::all();
+        return view('page::admin.edit', compact('page', 'countries'));
     }
 
     public function update(PageRequest $request, Page $page): RedirectResponse

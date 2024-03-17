@@ -29,3 +29,14 @@ footer .subscribe-form .subscribe-button {
     margin-right: auto!important;
     margin-left: unset!important;
 }
+
+.whats-btn{
+    font-size: 46px;
+    line-height: 1.7;
+}
+@media (max-width: 767px) {
+    .whats-btn {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+}

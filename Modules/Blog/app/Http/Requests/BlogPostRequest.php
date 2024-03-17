@@ -18,6 +18,7 @@ class BlogPostRequest extends FormRequest
             'description' => 'required|string|min:10',
             'content' => 'required|min:25',
             'keywords' => 'required',
+            'country_id' => 'required',
             'category_id' => 'required|exists:blog_categories,id',
         ];
     }

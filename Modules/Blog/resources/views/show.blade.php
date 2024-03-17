@@ -10,19 +10,24 @@
 
             <div class="col-12 col-lg-9 pl-lg-0">
                 <section class="custom-section mb-3 text-center">
-                    <h1 class="h4 fw-bold text-main-color mb-3">{{$post->title}}
+                    <h1 class="h3 fw-bold text-main-color mb-3">{{$post->title}}
                     </h1>
                     <p class="title mb-0">{{ $post->description }}</p>
                 </section>
                 <section class="custom-section mb-3">
                     <img style="width: 100%" class="img-fluid" src="{{$post->image_link}}" alt="{{$post->title}}"/>
                     <div class="d-flex justify-content-between mt-3">
-                        <p><i class="bi bi-calendar text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}
+                        <p>
+                            <i class="bi bi-calendar-check-fill text-main-color mx-1"></i> {{$post->created_at->format('y-m-d')}}
                         </p>
-                        <p><i class="bi bi-eye text-main-color mx-1"></i> {{__($post->visites)}}</p>
+                        <p><i class="bi bi-eye-fill text-main-color mx-1"></i> {{__($post->visites)}}</p>
                     </div>
                     <div class="mb-3">
                         {!! $post->content !!}
+
+                        <div class="mt-1">
+                            <x-multi-step :settings="$settings"></x-multi-step>
+                        </div>
                     </div>
                 </section>
                 <section class="custom-section">

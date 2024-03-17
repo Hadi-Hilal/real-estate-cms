@@ -10,7 +10,7 @@
             <div class="col-12 col-lg-9 pl-lg-0">
                 <section class="custom-section">
                     <div class="mb-3">
-                        <h1 class="h5 fw-bold text-main-color mb-3">{{__('Frequently Asked Questions')}}
+                        <h1 class="h3 fw-bold text-main-color mb-3">{{__('Frequently Asked Questions')}}
                         </h1>
                         <p class="title mb-0">{{__('The most important questions we receive are addressed in our FAQ section, providing valuable information and solutions to you.')}}</p>
                         <hr>
@@ -29,6 +29,9 @@
                                     @endif
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="mt-3">
+                            <x-multi-step :settings="$settings"></x-multi-step>
                         </div>
                     </div>
                 </section>

@@ -26,7 +26,7 @@ class SiteLayout extends Component
             $settings->setCollection(Settings::all());
         }));
 
-        $this->pages =  Page::featured()->select('slug' , 'title' , 'publish' , 'featured' ,'type')->get();
+        $this->pages =  Page::featured()->select('slug' , 'title' , 'publish' , 'featured' ,'type' , 'country_id')->get();
         $this->currencies = Currency::all();
 
     }

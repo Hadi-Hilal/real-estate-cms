@@ -138,9 +138,9 @@
                 <td>
 
                     <h5 class="text-muted">
-                       <a href="{{route('lands.show' , $land->slug)}}" target="_blank">
-                           {{$land->title}}
-                       </a>
+                        <a href="{{route('lands.show' , $land->slug)}}" target="_blank">
+                            {{$land->title}}
+                        </a>
                     </h5>
                 </td>
 

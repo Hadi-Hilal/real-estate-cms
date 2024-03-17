@@ -54,13 +54,18 @@
                 </section>
 
                 <section class="custom-section mb-3 project-overview">
-                    <p> <strong class="text-main-color mx-1">{{__('Land Type')}}:</strong> <span class="text-second-color text-capitalize">{{$land->type->name}}</span> </p>
-                    <p> <strong class="text-main-color mx-1">{{__('Tapu Type')}}:</strong> <span class="text-second-color text-capitalize">{{__($land->tapu)}}</span> </p>
-                    <p> <strong class="text-main-color mx-1">{{__('Space')}}:</strong> <span class="text-second-color text-capitalize">{{$land->space}} m2</span> </p>
-                    <p> <strong class="text-main-color mx-1">{{__('Net Space')}}:</strong> <span class="text-second-color text-capitalize">{{$land->net_space}} m2</span> </p>
-                    <p> <strong class="text-main-color mx-1">{{__('Deduction percentage')}} :</strong> <span class="text-second-color text-capitalize">{{$land->deduction}} %</span> </p>
-                    <p> <strong class="text-main-color mx-1">{{__('Building Ratio')}}:</strong> <span class="text-second-color text-capitalize">{{$land->ratio}} %</span> </p>
-
+                    <p><strong class="text-main-color mx-1">{{__('Land Type')}}:</strong> <span
+                            class="text-second-color text-capitalize">{{$land->type->name}}</span></p>
+                    <p><strong class="text-main-color mx-1">{{__('Tapu Type')}}:</strong> <span
+                            class="text-second-color text-capitalize">{{__($land->tapu)}}</span></p>
+                    <p><strong class="text-main-color mx-1">{{__('Space')}}:</strong> <span
+                            class="text-second-color text-capitalize">{{$land->space}} m2</span></p>
+                    <p><strong class="text-main-color mx-1">{{__('Net Space')}}:</strong> <span
+                            class="text-second-color text-capitalize">{{$land->net_space}} m2</span></p>
+                    <p><strong class="text-main-color mx-1">{{__('Deduction percentage')}} :</strong> <span
+                            class="text-second-color text-capitalize">{{$land->deduction}} %</span></p>
+                    <p><strong class="text-main-color mx-1">{{__('Building Ratio')}}:</strong> <span
+                            class="text-second-color text-capitalize">{{$land->ratio}} %</span></p>
 
 
                 </section>

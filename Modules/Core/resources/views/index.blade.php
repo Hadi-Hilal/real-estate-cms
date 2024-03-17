@@ -8,8 +8,10 @@
         </div>
     </div>
 
+
     <div class="container">
-        <div class="home-filter ">
+
+        <div class=" home-filter ">
             <form class="home-filter-sections" method="GET" action="{{route('lands' , ['country' => 'turkey'])}}">
                 <div class="w-100">
                     <select name="country" class="form-control select2">
@@ -51,6 +53,7 @@
                 </button>
             </form>
         </div>
+
         <section class="choose-country">
             <p class="global-title text-center">{{__('Choose your desired country for real estate investment')}}</p>
             <div class="countries">
@@ -119,30 +122,48 @@
                 @endforeach
             </div>
         </section>
-
         <section class="sections-margin">
-            <h2 class="global-title h3">{{__('Our Valued Customers Reviews')}}</h2>
-            <div class="testimonials-card">
-                <ul class='slider'>
-                    @foreach($testimonials as $key=> $testimonial)
-                        <li class='item'>
-                            <div class='testimonial'>
-                                <blockquote>
+            <x-multi-step :settings="$settings"></x-multi-step>
+        </section>
+        <section class="sections-margin">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center h-100 p-3 text-center">
+                        <h2 class="global-title h3">{{__('Our Valued Customers Reviews')}} <i
+                                class="bi bi-stars mx-1 text-main-color"></i></h2>
+                    </div>
 
-                                    {{ Str::length($testimonial->comment) < 235 ? $testimonial->comment : Str::limit($testimonial->comment, 235) . '...' }}
-                                </blockquote>
-                                <p><a target="_blank" href="{{$testimonial->link}}"> {{$testimonial->name}}</a></p>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="owl-carousel">
+                        @foreach($testimonials as $key=> $testimonial)
+                            <div>
+                                <div class="test-content">
+                                    <p class="testimony">
+                                        ⭐ {{ Str::length($testimonial->comment) < 235 ? $testimonial->comment : Str::limit($testimonial->comment, 235) . '...' }}
+                                    </p>
+                                </div>
+                                <div class="reviewer">
+                                    <div>
+                                        <img class="circle" style="width: 50px; height: 50px"
+                                             src="{{$testimonial->image}}" alt="{{$testimonial->name}}">
+                                    </div>
+                                    <div class="name-date">
+                                        <p class="name">{{$testimonial->name}}</p>
+                                        <p class="date">
+                                            {{$testimonial->position}}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <img class="img-fluid image" src="{{$testimonial->image}}" alt="{{$testimonial->name}}">
-                        </li>
-                    @endforeach
-                </ul>
-                <nav>
-                    @foreach($testimonials as $key=> $testimonial)
-                        <button class="btn testimonials-btn " data-index="{{$key}}"></button>
-                    @endforeach
-                </nav>
+
+                        @endforeach
+                    </div>
+
+                </div>
             </div>
+
         </section>
 
         <section class="sections-margin">

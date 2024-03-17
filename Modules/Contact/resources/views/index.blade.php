@@ -4,14 +4,13 @@
             <div class="col-12 col-lg-3 order-1 order-lg-0 mt-3 mt-lg-0">
                 <div id="sidebar" class="sidebar">
                     <x-contact-form :countries="$countries"/>
-
                 </div>
             </div>
 
             <div class="col-12 col-lg-9 pl-lg-0">
                 <section class="custom-section">
                     <div class="mb-3">
-                        <h1 class="h5 fw-bold text-main-color mb-3">{{__('Contact Us')}}
+                        <h1 class="h3 fw-bold text-main-color mb-3">{{__('Contact Us')}}
                         </h1>
                         <p class="title mb-0">{{__('We are waiting your visit to our office')}}</p>
                         <hr>

@@ -11,7 +11,7 @@
             <div class="col-12 col-lg-9 pl-lg-0">
                 <section class="custom-section">
                     <div class="mb-3">
-                        <h1 class="h5 fw-bold text-main-color mb-3">{{$page->title}}
+                        <h1 class="h3 fw-bold text-main-color mb-3">{{$page->title}}
                         </h1>
                         <p class="title mb-0">{{ $page->description }}</p>
                         <hr>
@@ -21,6 +21,9 @@
                     </div>
                     <div class="mb-3">
                         {!! $page->content !!}
+                        <div class="mt-1">
+                            <x-multi-step :settings="$settings"></x-multi-step>
+                        </div>
                     </div>
                 </section>
             </div>

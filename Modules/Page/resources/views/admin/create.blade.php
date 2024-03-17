@@ -79,6 +79,29 @@
             </div>
 
         </div>
+
+        <!--begin::Row-->
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Country')}} <span
+                        class="text-danger">*</span></div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <select class="form-select" name="country_id" data-control="select2" id="country_id" required
+                        data-placeholder="{{__('Please Chose One')}}">
+                    <option></option>
+                    @foreach($countries as $country)
+                        <option value="{{$country->id }}">{{$country->name}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+        </div>
+        <!--end::Row-->
+
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">

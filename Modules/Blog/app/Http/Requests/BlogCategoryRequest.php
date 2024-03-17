@@ -14,6 +14,7 @@ class BlogCategoryRequest extends FormRequest
         return [
             'name' => 'required|string|min:4',
             'slug' => 'sometimes|string|min:4|unique:blog_categories,slug',
+            'country_id' => 'required',
         ];
     }
 

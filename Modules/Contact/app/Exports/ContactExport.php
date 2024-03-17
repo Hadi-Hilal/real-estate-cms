@@ -12,7 +12,7 @@ class ContactExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'name', 'phone_code' , 'phone_number' , 'email' , 'subject'
+            'name', 'phone_code', 'phone_number', 'email', 'subject'
         ];
     }
 
@@ -21,6 +21,6 @@ class ContactExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Contact::select('name', 'phone_code' , 'phone_number' , 'email' , 'subject')->get();
+        return Contact::select('name', 'phone_code', 'phone_number', 'email', 'subject')->get();
     }
 }

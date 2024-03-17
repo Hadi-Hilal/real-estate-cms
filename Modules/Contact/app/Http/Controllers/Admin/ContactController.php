@@ -14,7 +14,7 @@ class ContactController extends Controller
     {
         $this->setActive('contacts');
         $contacts = Contact::paginate($this->pageSize());
-        return view('contact::admin.index' , compact('contacts'));
+        return view('contact::admin.index', compact('contacts'));
     }
 
     public function export()
