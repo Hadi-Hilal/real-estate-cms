@@ -53,10 +53,15 @@
                 @if(count($lands) == 0)
                     <p class="text-center">{{__('The Data Not Found')}}</p>
                 @endif
-                @foreach($lands as $land)
+                @foreach($lands as $key => $land)
                     <div class="col-md-6 col-lg-4 mb-5">
                         <x-land-card :land="$land"></x-land-card>
                     </div>
+                    @if($key == 2)
+                        <div class="col-md-12 mb-5">
+                            <x-multi-step :settings="$settings"></x-multi-step>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             {{$lands->links()}}

@@ -8,16 +8,18 @@ use Illuminate\Support\Facades\Cache;
 use Modules\Core\app\Models\Country;
 use Modules\Property\app\Models\Property;
 use Modules\Property\app\Models\PropertyType;
+use Modules\Settings\app\Models\Settings;
 
 class PropertyController extends Controller
 {
     public function index(Request $request, string $country = "turkey", string $type = "project")
     {
-        $properties = Property::published()->country($country)->type($type)->cardData()->filter($request)->paginate($this->pageSize());
+        $properties = Property::published()->country($country)->type($type)->cardData()->filter($request)->latest()->paginate($this->pageSize());
         $types = Cache::rememberForever('propertyTypes', function () {
             return PropertyType::all();
         });
-        return view('property::index', compact('properties', 'types'));
+        $settings = Settings::pluck('value', 'key');
+        return view('property::index', compact('properties', 'types', 'settings'));
     }
 
     public function show($slug)
@@ -35,6 +37,7 @@ class PropertyController extends Controller
         $countries = Cache::rememberForever('countries', function () {
             return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
         });
-        return view('property::show', compact('property', 'countries', 'properties'));
+        $settings = Settings::pluck('value', 'key');
+        return view('property::show', compact('property', 'countries', 'properties', 'settings'));
     }
 }

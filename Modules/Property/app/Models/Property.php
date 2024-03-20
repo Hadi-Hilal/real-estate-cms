@@ -20,7 +20,7 @@ class Property extends Model
     use HasTranslations;
 
     public $translatable = ['title', 'description', 'keywords', 'content'];
-    protected $fillable = ['title', 'slug', 'description', 'keywords', 'content', 'image', 'slides', 'property_type_id', 'price', 'code', 'country_id', 'state_id', 'city_id', 'created_by', 'category', 'publish', 'citizenship', 'featured', 'visits',];
+    protected $fillable = ['title', 'slug', 'description', 'keywords', 'content', 'image', 'slides', 'virtual_tour', 'property_type_id', 'price', 'code', 'country_id', 'state_id', 'city_id', 'created_by', 'category', 'publish', 'citizenship', 'featured', 'visits',];
     protected $appends = ['image_link', 'location', 'price_currency'];
     protected $with = ['features', 'propertyType'];
 

@@ -1,19 +1,6 @@
-html, body, span, p , .ui-widget {
+html, body, span, p , .ui-widget  , .ui-tabs-anchor{
 font-family: 'Tajawal', sans-serif !important;
-line-height: 1.8;
-}
-
-.testimonials-card  .item .testimonial {
-    padding-right: unset;
-    padding: 2rem;
-    padding-left: 5rem;
-
-}
-
-.testimonials-card .item .image {
-    right: unset;
-    left: 0;
-
+line-height: 1.6;
 }
 footer .subscribe-form .subscribe-button {
     right: unset;
@@ -34,6 +21,15 @@ footer .subscribe-form .subscribe-button {
     font-size: 46px;
     line-height: 1.7;
 }
+
+.project-tabs .ui-tabs .ui-tabs-nav li {
+    margin-left: 10px ;
+    margin-right: unset;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    float: right;
+}
+
 @media (max-width: 767px) {
     .whats-btn {
         font-size: 30px;

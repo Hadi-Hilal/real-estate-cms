@@ -111,6 +111,20 @@
         <div class="row mb-8">
             <!--begin::Col-->
             <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('3D')}} </div>
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xl-9 fv-row">
+                <input type="text" class="form-control form-control-solid" value="{{old('virtual_tour')}}"
+                       name="virtual_tour">
+            </div>
+
+        </div>
+
+        <div class="row mb-8">
+            <!--begin::Col-->
+            <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Url')}} <span class="text-danger">*</span></div>
             </div>
             <!--end::Col-->
@@ -414,7 +428,7 @@
                 selector: 'textarea',
                 height: 750,
                 plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                toolbar: 'undo redo | blocks  fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
                 tinycomments_mode: 'embedded',
                 tinycomments_author: 'Author name',
                 @if(app()->getLocale() == 'ar') language: 'ar', @endif

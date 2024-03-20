@@ -24,5 +24,10 @@
     "Min Price": "الحد الأدنى للسعر",
     "Max Price": "الحد الأقصى للسعر",
     "Project Overview": "نظرة عامة عن المشروع",
-    "A New Property Just Added!": "عقار جديد أضيف للتو!"
+    "A New Property Just Added!": "عقار جديد أضيف للتو!",
+    "Search by City, Region or project": "ابحث حسب المدينة أو المنطقة أو المشروع",
+    "City": "المدينة",
+    "Region": "المنطقة",
+    "Project Images": "صور المشروع",
+    "Virtual Tour": "جولة افتراضية"
 }

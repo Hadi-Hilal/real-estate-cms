@@ -3,11 +3,11 @@
     <div class="container">
         <section class="mx-4">
             <form class="row" method="GET" action="{{url()->current()}}">
-                <div class="col-md-3 mb-3">
+                <div class="col-md-4 mb-3">
                     <input type="text" name="title" value="{{request()->query('title')}}" class="form-control"
-                           placeholder="{{__('Search In Properties')}}">
+                           placeholder="{{__('Search by City, Region or project')}}">
                 </div>
-                <div class="col-md-3 mb-3">
+                <div class="col-md-2 mb-3">
                     <select name="type" class="form-control">
                         <option selected disabled>{{__('Property Type')}}</option>
                         @foreach($types as $type)
@@ -39,10 +39,15 @@
                 @if(count($properties) == 0)
                     <p class="text-center">{{__('The Data Not Found')}}</p>
                 @endif
-                @foreach($properties as $property)
+                @foreach($properties as $key => $property)
                     <div class="col-md-6 col-lg-4 mb-5">
                         <x-property-card :property="$property"></x-property-card>
                     </div>
+                    @if($key == 2)
+                        <div class="col-md-12 mb-5">
+                            <x-multi-step :settings="$settings"></x-multi-step>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             {{$properties->links()}}

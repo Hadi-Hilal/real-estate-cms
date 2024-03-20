@@ -527,7 +527,7 @@
                 '<div class="slick-next"><i class="bi bi-chevron-compact-right"></i></div>'
         });
         $(".thumb-nav").slick({
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             infinite: true,
             centerPadding: "0px",
@@ -539,9 +539,9 @@
             @if(LaravelLocalization::getCurrentLocaleDirection() == 'rtl') rtl: true, @endif
             focusOnSelect: true,
             prevArrow:
-                '<div class="slick-prev"><i class="bi bi-chevron-compact-left"></i></div>',
+                '<div class="slick-prev"><i class="bi bi-arrow-left fw-bold"></i></div>',
             nextArrow:
-                '<div class="slick-next"><i class="bi bi-chevron-compact-right"></i></div>'
+                '<div class="slick-next"><i class="bi bi-arrow-right fw-bold"></i></div>'
         });
         $(".main-img-slider").on(
             "afterChange",
@@ -609,7 +609,7 @@
 
 </script>
 
-
+ @stack('scripts')
 {!! $settings->get('body_scripts') !!}
 </body>
 

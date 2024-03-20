@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use Modules\Core\app\Models\Country;
 use Modules\Land\app\Models\Land;
 use Modules\Land\app\Models\LandType;
+use Modules\Settings\app\Models\Settings;
 
 class LandController extends Controller
 {
@@ -17,7 +18,8 @@ class LandController extends Controller
         $types = Cache::rememberForever('landTypes', function () {
             return LandType::all();
         });
-        return view('land::index', compact('lands', 'types'));
+        $settings = Settings::pluck('value', 'key');
+        return view('land::index', compact('lands', 'types', 'settings'));
     }
 
     public function show($slug)
@@ -35,6 +37,7 @@ class LandController extends Controller
         $countries = Cache::rememberForever('countries', function () {
             return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
         });
-        return view('land::show', compact('lands', 'countries', 'land'));
+        $settings = Settings::pluck('value', 'key');
+        return view('land::show', compact('lands', 'countries', 'land', 'settings'));
     }
 }

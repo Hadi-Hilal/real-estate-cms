@@ -26,10 +26,10 @@ class LandRequest extends FormRequest
             'tapu' => 'required|string',
             'price' => 'required|between:0,99.99',
             'regulation' => 'required',
-            'ratio' => 'required',
+            'ratio' => 'required|numeric|min:1|max:99',
             'space' => 'required|between:0,99.99',
             'net_space' => 'required|between:0,99.99',
-            'deduction' => 'required|between:0,99.99',
+            'deduction' => 'required|numeric|min:1|max:99',
 
         ];
     }
