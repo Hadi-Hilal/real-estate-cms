@@ -81,20 +81,7 @@
                        value="{{$seo->get('main_title')}}" placeholder="Boots your website traffic today "/>
             </div>
         </div>
-        <div class="row mb-8">
-            <!--begin::Col-->
-            <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3"><i
-                        class="bi bi-translate text-primary mx-1 "></i>{{__('Website Sub Title')}}</div>
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-xl-9 fv-row">
-                <input type="text" class="form-control form-control-solid" name="data[sub_title]"
-                       value="{{$seo->get('sub_title')}}"
-                       placeholder="Unwilling he departure elsewhere dejection at. "/>
-            </div>
-        </div>
+
     </x-admin.create-card>
 @endsection
 

@@ -57,7 +57,7 @@ main {
 }
 
 .card-shadow {
-    box-shadow: 10px 10px 10px  #DDDDDD;
+    box-shadow: 10px 10px 10px #DDDDDD;
 }
 
 .circle {
@@ -239,29 +239,6 @@ a:hover {
     font-size: 40px;
 }
 
-@media (max-width: 767px) {
-    .text-container {
-        width: 90%;
-    }
-
-    .w-md-50 {
-        width: 100% !important;
-    }
-
-    .home-filter {
-        border-radius: 24px;
-        margin-bottom: -40px;
-        transform: translateY(-92px);
-    }
-
-    .whats-btn {
-        width: 50px;
-        height: 50px;
-        bottom: 50px;
-        right: 50px;
-        font-size: 25px;
-    }
-}
 
 .home-filter-sections {
     padding: 12px 32px;
@@ -861,40 +838,385 @@ footer .subscribe-form .subscribe-button {
     font-size: 1.5rem;
     margin-bottom: .5rem;
 }
-.project-features li{
+
+.project-features li {
     font-size: 24px;
     color: var(--second-color);
     line-height: 1.5;
 }
 
 .project-tabs .ui-widget-content {
-     border: unset !important;
-     background:  unset !important;
-     color:  unset !important;
+    border: unset !important;
+    background: unset !important;
+    color: unset !important;
 }
+
 .project-tabs .ui-widget-header {
     border: unset !important;
-    background:  unset !important;
-    color:  unset !important;
+    background: unset !important;
+    color: unset !important;
 
 }
-.project-tabs .ui-tabs .ui-tabs-panel{
+
+.project-tabs .ui-tabs .ui-tabs-panel {
     padding: 10px 0 !important;
     margin-top: 5px;
 }
+
 .project-tabs .ui-tabs .ui-tabs-nav li {
     margin-right: 10px;
     padding: 3px;
     border: 1px solid;
     border-radius: 12px;
 }
-.ui-state-default a:visited , .ui-state-default a, .ui-state-default a:link{
+
+.ui-state-default a:visited, .ui-state-default a, .ui-state-default a:link {
     color: var(--second-color);
     text-decoration: none;
 }
+
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
     color: var(--main-color);
     text-decoration: none;
+}
+
+.citizenship .page-banner {
+    padding: 1rem;
+    margin-bottom: 0 !important;
+}
+
+.section-border {
+    border-radius: 8px;
+    background: #fff;
+}
+
+.citizenship .page-banner .citizenship-main-img {
+    max-width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.citizenship-way .description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.citizenship-way .description p {
+    position: relative;
+}
+
+.new-turkish-citizenship-page .citizenship-way .description p:first-child:after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    height: 3px;
+    width: 55px;
+    background: var(--main-color);
+}
+
+.citizenship-way .ways-group {
+    border: 1px solid var(--main-color);
+    padding-top: 1rem;
+}
+
+.citizenship-way .ways-group .head {
+    width: 35%;
+    margin: auto;
+    background: #fff;
+    font-size: 1.4rem;
+    text-align: center;
+    position: relative;
+}
+
+.citizenship-way .ways-group .head::before,
+.citizenship-way .ways-group .head::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 120px;
+    height: 3px;
+    background: var(--main-color);
+}
+
+.citizenship-way .ways-group .head::after {
+    left: 0;
+    transform: translatex(-100%);
+}
+
+.citizenship-way .ways-group .head::before {
+    right: 0;
+    transform: translatex(100%);
+}
+
+.citizenship-way .ways-group .pointes {
+    display: flex;
+    justify-content: center;
+}
+
+.citizenship-way .ways-group .pointes span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--main-color);
+}
+
+.citizenship-way .ways-group .pointes span:nth-child(2) {
+    margin: 0 1.5rem;
+    background: var(--second-color);
+}
+
+.citizenship-way .ways-group .ways {
+    width: 100%;
+}
+
+.citizenship-way .ways-group .ways .item {
+    width: calc(100% / 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.citizenship-way .ways-group .ways .item .number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: .5rem 0;
+}
+
+.citizenship-way .ways-group .ways .item .desc {
+    background: var(--main-color);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #ffffff;
+}
+
+.citizenship-way .ways-group .ways .item:nth-child(2) .desc {
+    background-color: var(--second-color);
+}
+
+.citizenship-way .ways-group .ways .item .desc p {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+.citizenship-way .ways-group .ways .item .desc .title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+}
+
+.citizenship-way .ways-group .ways .item .desc .info {
+    padding: 1.5rem 0;
+    position: relative;
+}
+
+.turkish-card {
+    position: relative;
+}
+
+.turkish-card .card-img {
+    width: 100%;
+}
+
+.turkish-card .card-img img {
+    width: 100%;
+    object-fit: cover;
+    height: 500px;
+}
+
+.turkish-card .card-body {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: url('../images/custom/turkish-card-decor.png') no-repeat center;
+    background-size: cover;
+    color: #fff;
+    transition: all .4s ease-in-out;
+    z-index: 1;
+}
+
+.turkish-card .card-body .number {
+    font-size: .8rem;
+}
+
+.turkish-card .card-body .prop-location {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.turkish-card .card-body .prop-location .location-contain {
+    font-size: .9rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.turkish-card .card-body .prop-location .price-contain .price {
+    font-size: 1.5rem;
+}
+
+.steps-section .contain {
+    width: 70%;
+    margin: auto;
+}
+
+.steps-section .contain .steps {
+    position: relative;
+    padding: 3rem 0;
+    direction: rtl;
+}
+
+.steps-section .contain .steps .decor {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    background: var(--second-color);;
+    width: 10px;
+    height: 100%;
+}
+
+.steps-section .contain .steps .circle-decor.top {
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.steps-section .contain .steps .circle-decor.bottom {
+    bottom: 0;
+    transform: translate(-50%, 50%);
+}
+
+.steps-section .contain .steps .circle-decor span {
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.steps-section .contain .steps .circle-decor {
+    position: absolute;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--main-color);
+}
+
+.steps-section .contain .steps .step {
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    color: #fff;
+    margin-bottom: 3rem;
+}
+
+.steps-section .contain .steps .step .numbering {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.steps-section .contain .steps .step .details {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -5px;
+}
+
+.steps-section .contain .steps .step .details > div {
+    background: url(../images/custom/step-background.svg) no-repeat center;
+    background-size: cover;
+    width: 527px;
+    height: 253px;
+    font-size: 1.5rem;
+    padding: 1.2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.steps-section .contain .steps .step .details > div .background-decor {
+    background: url(../images/custom/step-background-decor.svg) no-repeat center;
+    background-size: cover;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    left: -60px;
+    width: 528px;
+    height: 254px;
+}
+
+.steps-section .contain .steps .step .numbering > div {
+    background: var(--second-color);
+    width: 75px;
+    height: 111px;
+    font-size: 5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.steps-section .contain .steps .step .numbering > div:before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 55px solid transparent;
+    border-left: 35px solid var(--second-color);;
+    border-bottom: 55px solid transparent;
+    margin-left: -.03rem;
+}
+
+.steps-section .contain .steps .step .numbering > div .background-decor {
+
+    background-size: cover;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 110px;
+    height: 108px;
+}
+
+.steps-section .contain .steps .step:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.steps-section .contain .steps .step:nth-child(odd) .details {
+    transform: scale(-1);
+    margin-right: 0;
+    margin-left: -10px;
+}
+
+.steps-section .contain .steps .step:nth-child(odd) .details span {
+    transform: scale(-1);
+}
+
+.steps-section .contain .steps .step:nth-child(odd) .numbering {
+    transform: scale(-1);
+}
+
+.steps-section .contain .steps .step:nth-child(odd) .numbering span {
+    transform: scale(-1);
 }
 
 @media (max-width: 767px) {
@@ -913,10 +1235,123 @@ footer .subscribe-form .subscribe-button {
         display: block;
     }
 
-   .project-boxes .box{
+    .project-boxes .box {
         width: 49%;
-        margin-bottom:10px ;
-       margin-right: 0;
+        margin-bottom: 10px;
+        margin-right: 0;
     }
 
+    .citizenship-way .description {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .citizenship-way .ways-group .head {
+        width: 60%;
+        font-size: 1.2rem;
+    }
+
+    .ways-group .head::before, .ways-group .head::after {
+        width: 50px !important;
+        height: 2px !important;
+    }
+
+    .citizenship-way .ways-group .ways .item .desc {
+        padding: .3rem;
+    }
+
+    .citizenship-way .ways-group .ways .item .desc p {
+        font-size: .8rem;
+        font-weight: unset;
+    }
+
+    .text-container {
+        width: 90%;
+    }
+
+    .w-md-50 {
+        width: 100% !important;
+    }
+
+    .home-filter {
+        border-radius: 24px;
+        margin-bottom: -40px;
+        transform: translateY(-92px);
+    }
+
+    .whats-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 50px;
+        right: 50px;
+        font-size: 25px;
+    }
+
+    .steps-section .contain {
+        width: 90%;
+    }
+
+    .steps-section .contain .steps {
+        padding: 2rem 0;
+    }
+
+    .steps-section .contain .steps .decor {
+        width: 5px;
+    }
+
+    .steps-section .contain .steps .circle-decor {
+        width: 35px;
+        height: 35px;
+    }
+
+    html:lang(en) .steps-section .contain .steps .step .details > div {
+        font-size: .9rem;
+        padding: .6rem;
+    }
+
+    .steps-section .contain .steps .step .details > div .background-decor {
+        background: url(../images/custom/step-background-decor-mobile.svg) no-repeat center;
+        background-size: cover;
+        width: 228px;
+        top: 2px;
+        height: 110px;
+    }
+
+    .steps-section .contain .steps .step .details > div {
+        background-size: cover;
+        width: 228px;
+        height: 110px;
+        font-size: 1rem;
+        padding: 1rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .steps-section .contain .steps .step .numbering > div {
+        width: 40px;
+        height: 45px;
+        font-size: 2rem;
+    }
+
+    .steps-section .contain .steps .step .numbering > div:before {
+        border-top: 23px solid transparent;
+        border-left: 15px solid var(--second-color);
+        border-bottom: 23px solid transparent;
+    }
+
+    .turkish-card .card-img img {
+        height: 400px;
+    }
+
+    .turkish-card .card-body .prop-location .price-contain .price {
+        font-size: 1rem;
+    }
+
+    .turkish-card .card-body .prop-location {
+        width: 95%;
+    }
 }

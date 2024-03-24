@@ -30,6 +30,12 @@ footer .subscribe-form .subscribe-button {
     float: right;
 }
 
+.turkish-card .card-body {
+
+    background: url('../images/custom/turkish-card-decor-ar.svg') no-repeat center;
+}
+
+
 @media (max-width: 767px) {
     .whats-btn {
         font-size: 30px;

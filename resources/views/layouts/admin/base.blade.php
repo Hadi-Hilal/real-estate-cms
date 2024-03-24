@@ -119,11 +119,11 @@ Author: Hadi Hilal
                             id="kt_app_header_menu" data-kt-menu="true">
                             <!--begin:Menu item-->
                             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                                 {{ app()->getLocale() == 'ar' ? 'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"' }}
+                                 {{ app()->getLocale() === 'ar' ? 'data-kt-menu-placement="bottom-end"' : 'data-kt-menu-placement="bottom-start"' }}
                                  class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                 <!--begin:Menu link-->
                                 <span class="menu-link">
-											<span class="menu-title">Bagdad Invest</span>
+											<span class="menu-title">{{__('Bagdad Invest Real Estate')}}</span>
 											<span class="menu-arrow d-lg-none"></span>
 										</span>
                                 <!--end:Menu link-->

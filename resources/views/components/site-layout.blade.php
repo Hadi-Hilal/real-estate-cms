@@ -590,20 +590,6 @@
                 }
             }
         });
-        $(".owl-carsoul-testimonial").owlCarousel({
-            loop: true,
-            @if(LaravelLocalization::getCurrentLocale() == 'ar') rtl: true, @endif
-            margin: 10,
-            responsive: {
-                0: {
-                    items: 1.1
-                }, 600: {
-                    items: 1.3
-                }, 1000: {
-                    items: 2
-                }
-            }
-        });
 
     });
 

@@ -39,6 +39,9 @@ for (i = 0; i < acc.length; i++) {
 
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('multiStepForm');
+  if (!form) {
+      return ;
+  }
   const fieldsets = form.querySelectorAll('fieldset');
   const messageInput = document.getElementById('messageInput');
 

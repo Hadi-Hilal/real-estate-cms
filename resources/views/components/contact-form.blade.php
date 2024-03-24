@@ -10,7 +10,7 @@
             <div class="d-flex">
                 <select name="phone_code" class="custom-input">
                     @foreach($countries as $country)
-                        <option @selected( $country->iso_code_2 == 'TR') value="{{$country->phonecode}}">
+                        <option @selected( $country->iso_code_2 === 'TR') value="{{$country->phonecode}}">
                             ({{'+'. $country->phonecode . ' ' . $country->iso_code_2 }})
                         </option>
                     @endforeach

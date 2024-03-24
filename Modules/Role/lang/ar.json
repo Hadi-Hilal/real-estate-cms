@@ -1,9 +1,9 @@
 {
-    "Roles List": "قائمة الأدوار",
     "Roles": "الادوار",
     "Craete": "إنشاء",
     "Role Name": "اسم الدور",
     "New Role": "إضافة دور جديد",
+    "Roles List": "قائمة الأدوار",
     "View Role Details": "عرض تفاصيل الدور",
     "Total Users With This Role": "إجمالي المستخدمين في هذا الدور :",
     "Total Permissions With This Role": "مجموع الأذونات :",
@@ -15,7 +15,7 @@
     "Update Role": "تحديث الدور",
     "Delete Role": "حذف الدور",
     "No Role Assigned": "لم يتم تعيين دور",
-    "Assign New User": "تعيين مستخدم جديد لدور",
+    "Assign New User": "تعيين مستخدم جديد لهذا الدور",
     "Users Assigned": "المستخدمون المعينون",
     "Manage Settings": "إدارة الإعدادات",
     "Manage Lands": "إدارة الأراضي",
@@ -28,5 +28,6 @@
     "Manage Subscribers": "إدارة المشتركين",
     "Manage Currencies": "إدارة العملات",
     "Manage Roles": "إدارة الأدوار",
+    "Manage Contacts" : "إدارة جهات الاتصال",
     "Manage Users & Admins": "إدارة المستخدمين والمسؤولين"
 }

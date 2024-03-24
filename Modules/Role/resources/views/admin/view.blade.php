@@ -162,7 +162,7 @@
                                                                     class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                                                                     <input class="form-check-input" type="checkbox"
                                                                            name="permissions[]"
-                                                                           @checked(in_array($permission->id, $role->permissions->pluck('id')->toArray() ))
+                                                                           @checked(in_array($permission->id, $role->permissions->pluck('id')->toArray(), true))
                                                                            value="{{ $permission->name }}"/>
                                                                 </label>
                                                                 <!--end::Checkbox-->
@@ -238,7 +238,7 @@
                             <!--end::Svg Icon-->
                             <input type="text" data-kt-roles-table-filter="search"
                                    class="form-control form-control-solid w-250px ps-15"
-                                   placeholder="Search Users"/>
+                                   placeholder="{{__('Search In Users')}}"/>
                         </div>
                         <!--end::Search-->
                         <!--begin::Group actions-->
@@ -362,7 +362,7 @@
                     <!--begin::Card body-->
                     <div class="card-body pt-0">
                         <select class="form-select form-select-solid" data-control="select2" name="user_ids[]"
-                                data-placeholder="Select an option" data-allow-clear="true" multiple="multiple">
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true" multiple="multiple">
                             <option>{{__('Please Chose One')}}</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
