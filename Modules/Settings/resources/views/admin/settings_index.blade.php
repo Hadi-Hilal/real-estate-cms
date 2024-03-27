@@ -189,7 +189,6 @@
             {{--            <!--end::Col-->--}}
 
 
-
         </div>
         <div class="row mb-8">
             <!--begin::Col-->

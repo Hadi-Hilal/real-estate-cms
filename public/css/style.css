@@ -24,7 +24,9 @@ main {
     padding-top: 20px;
     padding-bottom: 40px;
 }
-
+.btn{
+    font-weight: bold;
+}
 .text-main-color {
     color: var(--main-color);
 }
@@ -48,7 +50,7 @@ main {
 .btn-main-color {
     background-color: var(--main-color);
     color: #ffffff;
-
+    font-weight: bold;
 }
 
 .btn-main-color:hover {
@@ -1143,7 +1145,7 @@ footer .subscribe-form .subscribe-button {
     background-size: cover;
     width: 527px;
     height: 253px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     padding: 1.2rem;
     position: relative;
     display: flex;
@@ -1219,6 +1221,42 @@ footer .subscribe-form .subscribe-button {
     transform: scale(-1);
 }
 
+.citizenship .form-contain {
+    width: 80%;
+    margin: auto;
+    z-index: 1;
+    position: relative;
+    transform: translateY(-50%);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px #00000029;
+}
+
+.citizenship .contact-form {
+    background: #fff;
+    color: var(--main-color);
+    border-radius: 8px;
+}
+
+.citizenship .form-contain .contact-form .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0 !important;
+    background: #fff;
+    padding: 1.1rem !important;
+}
+
+.citizenship .form-contain .contact-form .form-group .custom-input {
+    width: 27%;
+    background: var(--gradiant-main-color);
+    border: 0;
+    color: var(--main-color);
+    margin: 0;
+    border-radius: 10px;
+    padding: .7rem;
+    font-size: 14px;
+}
+
 @media (max-width: 767px) {
     .home-filter-sections {
         border-radius: 24px;
@@ -1228,6 +1266,7 @@ footer .subscribe-form .subscribe-button {
 
     .home-filter-sections > div {
         border: 1px solid #eaeaea;
+        padding: 10px;
     }
 
     .filter-search-btn {
@@ -1353,5 +1392,23 @@ footer .subscribe-form .subscribe-button {
 
     .turkish-card .card-body .prop-location {
         width: 95%;
+    }
+
+    .citizenship .form-contain {
+        width: 100%;
+        margin: auto;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .citizenship .form-contain .contact-form .form-group {
+        flex-direction: column;
+        padding: .7rem !important;
+    }
+
+    .citizenship .form-contain .contact-form .form-group .custom-input , .citizenship .form-contain .contact-form .form-group .btn  {
+        width: 100%;
+        margin: .3rem;
+        font-size: 14px;
     }
 }

@@ -362,7 +362,8 @@
                     <!--begin::Card body-->
                     <div class="card-body pt-0">
                         <select class="form-select form-select-solid" data-control="select2" name="user_ids[]"
-                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true" multiple="multiple">
+                                data-placeholder="{{__('Please Chose One')}}" data-allow-clear="true"
+                                multiple="multiple">
                             <option>{{__('Please Chose One')}}</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>

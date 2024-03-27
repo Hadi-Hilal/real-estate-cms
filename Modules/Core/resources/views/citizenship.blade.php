@@ -18,7 +18,31 @@
                 </div>
             </div>
         </section>
+        <div class="form-contain">
 
+            <div class="contact-form text-center p-4 mb-3" id="contact-form-modal">
+                <form action="{{route('contact-us')}}" method="post"
+                      class="form-group mt-3 mb-0 contact-message-form">
+                    @csrf
+                    <input type="text" name="name" class="custom-input" placeholder="{{__('Name')}}*"
+                           aria-label="Name*">
+
+                    <select name="phone_code" class="custom-input">
+                        @foreach($countries as $country)
+                            <option @selected( $country->iso_code_2 === 'TR') value="{{$country->phonecode}}">
+                                ({{'+'. $country->phonecode . ' ' . $country->iso_code_2 }})
+                            </option>
+                        @endforeach
+                    </select>
+                    <input type="text" name="phone_number" class="custom-input" value="{{old('phone')}}"
+                           placeholder="{{__('Phone')}}" aria-label="Phone">
+                    <button type="submit" class="btn btn-main-color mx-1">
+                        {{__('Submit')}}
+                    </button>
+                </form>
+            </div>
+
+        </div>
         <section class="citizenship-way section-border p-3 sections-margin">
             <div class="container">
                 <div class="row">
@@ -231,6 +255,21 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section class="custom-section sections-margin">
+            <div class="multi-step-form">
+                <fieldset>
+                    <h4 class="fw-bold my-1 h5">{{__('nation.Do_you_want_free_real_estate_advice')}}</h4>
+                    <h4 class="fw-bold my-1 h5">{{__('nation.Do_you_want_free_legal_advice')}}</h4>
+                    <h4 class="fw-bold my-1 h5">{{__('nation.Would_you_like_free_real_estate_tour')}}</h4>
+                    <div class="options">
+                        <a href="https://web.whatsapp.com/send?phone={{$settings->get('whatsapp')}}&text={{__('nation.Hey_Bagdad_Team_I_Want_Free_Advice')}}"
+                           class="option" target="_blank">
+                            {{__('Contact Us')}} <i class="bi bi-whatsapp mx-1"></i>
+                        </a>
+                    </div>
+                </fieldset>
             </div>
         </section>
         <section class="custom-section sections-margin">

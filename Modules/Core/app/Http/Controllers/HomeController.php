@@ -8,8 +8,8 @@ use Modules\Blog\app\Models\BlogPost;
 use Modules\Core\app\Models\Country;
 use Modules\Faq\app\Models\Faq;
 use Modules\Land\app\Models\Land;
-use Modules\Land\app\Models\LandType;
 use Modules\Property\app\Models\Property;
+use Modules\Property\app\Models\PropertyType;
 use Modules\Settings\app\Models\Settings;
 use Modules\Testimonial\app\Models\Testimonial;
 
@@ -23,8 +23,8 @@ class HomeController extends Controller
         $countries = Cache::rememberForever('countries', function () {
             return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
         });
-        $landTypes = Cache::rememberForever('landTypes', function () {
-            return LandType::all();
+        $propertyTypes = Cache::rememberForever('propertyTypes', function () {
+            return PropertyType::all();
         });
         $lands = Cache::rememberForever('lands', function () {
             return Land::featured()->cardData()->get();
@@ -44,7 +44,7 @@ class HomeController extends Controller
         $testimonials = Cache::rememberForever('testimonials ', function () {
             return Testimonial::published()->get();
         });
-        return view('core::index', compact('settings', 'countries', 'landTypes', 'lands', 'all_lands', 'all_props',
+        return view('core::index', compact('settings', 'countries', 'propertyTypes', 'lands', 'all_lands', 'all_props',
             'posts', 'properties', 'testimonials'));
     }
 

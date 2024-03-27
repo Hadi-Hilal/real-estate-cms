@@ -74,6 +74,10 @@ class Property extends Model
             $q->where('property_type_id', $request->query('type'));
         }
 
+        if ($request->has('category')) {
+            $q->where('category', $request->query('category'));
+        }
+
         if ($request->has('min_price')) {
             $minPrice = (float)$request->query('min_price');
             $q->where('price', '>', $minPrice);

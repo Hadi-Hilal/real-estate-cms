@@ -20,5 +20,9 @@ return [
     'Comprehensive_Audit_Archiving' =>'تدقيق شامل وأرشفة وتقديم للتقييم من قبل السلطات',
     'Submission_File_for_Inclusion' =>'تقديم الملف لتضمينه في قائمة الموافقة على الجنسية من قبل مجلس الوزراء',
     'File_Decision_Making_Stage' => 'مرحلة اتخاذ القرار بشأن الملف',
-    'Communicating_the_Outcome' =>'توجيه النتيجة من خلال السلطة المعنية بالتقديم المناسبة'
+    'Communicating_the_Outcome' =>'توجيه النتيجة من خلال السلطة المعنية بالتقديم المناسبة',
+    'Do_you_want_free_real_estate_advice' => 'هل ترغب باستشارات عقارية مجانية ؟',
+     'Do_you_want_free_legal_advice' => 'هل ترغب باستشارات قانونية مجانية ؟',
+     'Would_you_like_free_real_estate_tour' => 'هل ترغب بإجراء جولة عقارية مجانية ؟',
+    'Hey_Bagdad_Team_I_Want_Free_Advice' => 'مرحبًا! هل يمكنني الحصول على نصيحة مجانية ؟',
 ];

@@ -33,11 +33,15 @@ class PropertyController extends Controller
 
         $properties = Property::published()->where('property_type_id', $property->property_type_id)
             ->where('country_id', $property->country_id)
+            ->where('category', $property->category)
             ->orderBy('visites', 'DESC')->take(2)->get();
         $countries = Cache::rememberForever('countries', function () {
             return Country::withoutGlobalScope('active')->select('phonecode', 'iso_code_2')->get();
         });
         $settings = Settings::pluck('value', 'key');
+        if ($property->category === 'resale') {
+            return view('property::resale_show', compact('property', 'countries', 'properties', 'settings'));
+        }
         return view('property::show', compact('property', 'countries', 'properties', 'settings'));
     }
 }

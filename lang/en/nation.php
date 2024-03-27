@@ -28,6 +28,10 @@ return [
     'Comprehensive_Audit_Archiving' =>'Comprehensive Audit, Archiving, and Submission for Evaluation by Authorities',
     'Submission_File_for_Inclusion' =>'Submission of the File for Inclusion in the Citizenship Approval List by the Council of Ministers',
     'File_Decision_Making_Stage' => 'File Decision-Making Stage',
-    'Communicating_the_Outcome' =>'Communicating the Outcome through the Appropriate Application Authority'
+    'Communicating_the_Outcome' =>'Communicating the Outcome through the Appropriate Application Authority',
+    'Do_you_want_free_real_estate_advice' => 'Do you want free real estate advice?',
+     'Do_you_want_free_legal_advice' => 'Do you want free legal advice?',
+     'Would_you_like_free_real_estate_tour' => 'Would you like a free real estate tour?',
+    'Hey_Bagdad_Team_I_Want_Free_Advice' => 'Hello, Can I Get Free Advice!',
 
 ];

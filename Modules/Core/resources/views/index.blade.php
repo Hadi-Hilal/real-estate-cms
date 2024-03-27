@@ -8,45 +8,37 @@
         </div>
     </div>
 
-
     <div class="container">
-
-        <div class=" home-filter ">
-            <form class="home-filter-sections" method="GET" action="{{route('lands' , ['country' => 'turkey'])}}">
+        <div class="home-filter">
+            <form class="home-filter-sections" method="GET" action="{{route('properties' , ['country' => 'turkey'])}}">
                 <div class="w-100">
                     <select name="country" class="form-control select2">
                         <option selected disabled>{{__('Country')}}</option>
                         <option>
                             {{__('Turkey')}}
                         </option>
-
                     </select>
                 </div>
                 <div class="filter-separator d-md-block d-none"></div>
                 <div class="w-100">
-                    <select name="tapu" class="form-control select2">
-                        <option selected disabled>{{__('Tapu Type')}}</option>
+                    <select name="category" class="form-control select2">
+                        <option selected disabled>{{__('Category')}}</option>
                         <option
-                            @selected(request()->query('tapu') == "agricultural")  value="agricultural">{{__('agricultural')}}</option>
+                            @selected(request()->query('category') === "project")  value="project">{{__('project')}}</option>
                         <option
-                            @selected(request()->query('tapu') == "construction") value="construction">{{__('construction')}}</option>
-                        <option
-                            @selected(request()->query('tapu') == "portion") value="portion">{{__('portion')}}</option>
-                        <option
-                            @selected(request()->query('tapu') == "independent") value="independent">{{__('independent')}}</option>
+                            @selected(request()->query('category') === "resale") value="resale">{{__('resale')}}</option>
                     </select>
                 </div>
                 <div class="filter-separator d-md-block d-none"></div>
                 <div class="w-100">
-                    <select name="landType" class="form-control select2">
-                        <option selected disabled>{{__('Land Type')}}</option>
-                        @foreach($landTypes as $type)
+                    <select name="type" class="form-control select2">
+                        <option selected disabled>{{__('Property Type')}}</option>
+                        @foreach($propertyTypes as $type)
                             <option value="{{$type->id}}">
                                 {{$type->name}}
                             </option>
                         @endforeach
                     </select>
-
                 </div>
                 <button class="btn filter-search-btn btn-main-color" type="submit">
                     <i class="bi bi-search"></i>
@@ -106,6 +98,15 @@
         </section>
 
         <section class="sections-margin">
+            <h2 class="global-title h3">{{__('Discover Our Featured Properties')}}</h2>
+            <div class="owl-carousel">
+                @foreach($properties as $property)
+                    <x-property-card :property="$property"></x-property-card>
+                @endforeach
+            </div>
+        </section>
+
+        <section class="sections-margin">
             <h2 class="global-title h3">{{__('Discover Our Featured Selection of Land Options')}}</h2>
             <div class="owl-carousel">
                 @foreach($lands as $land)
@@ -114,14 +115,7 @@
             </div>
         </section>
 
-        <section class="sections-margin">
-            <h2 class="global-title h3">{{__('Discover Our Featured Properties')}}</h2>
-            <div class="owl-carousel">
-                @foreach($properties as $property)
-                    <x-property-card :property="$property"></x-property-card>
-                @endforeach
-            </div>
-        </section>
+
         <section class="sections-margin">
             <x-multi-step :settings="$settings"></x-multi-step>
         </section>

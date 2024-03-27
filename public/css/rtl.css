@@ -35,6 +35,10 @@ footer .subscribe-form .subscribe-button {
     background: url('../images/custom/turkish-card-decor-ar.svg') no-repeat center;
 }
 
+.submenu {
+    left: unset;
+    right: 100%;
+}
 
 @media (max-width: 767px) {
     .whats-btn {
