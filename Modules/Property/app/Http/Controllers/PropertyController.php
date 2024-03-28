@@ -12,8 +12,9 @@ use Modules\Settings\app\Models\Settings;
 
 class PropertyController extends Controller
 {
-    public function index(Request $request, string $country = "turkey", string $type = "project")
+    public function index(Request $request, string $country = "turkey")
     {
+        $type = $request->query('category' , 'project');
         $properties = Property::published()->country($country)->type($type)->cardData()->filter($request)->latest()->paginate($this->pageSize());
         $types = Cache::rememberForever('propertyTypes', function () {
             return PropertyType::all();

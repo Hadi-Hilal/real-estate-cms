@@ -18,7 +18,6 @@
     "Property Type": "نوع العقار",
     "Property Features": "مميزات العقار",
     "project": "مشروع",
-    "land": "أرض",
     "resale": "إعادة بيع",
     "Resale": "إعادة بيع",
     "Min Price": "الحد الأدنى للسعر",
@@ -29,5 +28,7 @@
     "City": "المدينة",
     "Region": "المنطقة",
     "Project Images": "صور المشروع",
-    "Virtual Tour": "جولة افتراضية"
+    "Virtual Tour": "جولة افتراضية",
+    "Property For Resale" : "عقارات إعادة البيع",
+    "Property For Sale" : "عقارات للبيع"
 }

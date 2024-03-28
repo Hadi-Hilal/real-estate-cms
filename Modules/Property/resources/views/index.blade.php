@@ -34,16 +34,17 @@
         </section>
 
         <section class="custom-section">
-            <h1 class="global-title fw-bold h2">{{__('Properties')}}</h1>
+            <h1 class="global-title fw-bold h2">{{ request()->query('category') === 'resale'? __('Property For Resale')  : __('Property For Sale') }}
+                <strong class="text-main-color">({{ __(request()->route('country')) }})</strong> </h1>
             <div class="row">
-                @if(count($properties) == 0)
-                    <p class="text-center">{{__('The Data Not Found')}}</p>
+                @if(count($properties) === 0)
+                    <p class="text-center fw-bold text-second-color h3">{{__('The Data Not Found')}}</p>
                 @endif
                 @foreach($properties as $key => $property)
                     <div class="col-md-6 col-lg-4 mb-5">
                         <x-property-card :property="$property"></x-property-card>
                     </div>
-                    @if($key == 2)
+                    @if($key === 2)
                         <div class="col-md-12 mb-5">
                             <x-multi-step :settings="$settings"></x-multi-step>
                         </div>

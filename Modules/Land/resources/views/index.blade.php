@@ -48,16 +48,17 @@
         </section>
 
         <section class="custom-section">
-            <h1 class="global-title fw-bold h2">{{__('Lands')}}</h1>
+            <h1 class="global-title fw-bold h2">{{__('Lands')}} <strong class="text-main-color">({{ __(request()->route('country')) }})</strong></h1>
             <div class="row">
-                @if(count($lands) == 0)
-                    <p class="text-center">{{__('The Data Not Found')}}</p>
+                @if(count($lands) === 0)
+                    <p class="text-center fw-bold text-second-color h3">{{__('The Data Not Found')}}</p>
+
                 @endif
                 @foreach($lands as $key => $land)
                     <div class="col-md-6 col-lg-4 mb-5">
                         <x-land-card :land="$land"></x-land-card>
                     </div>
-                    @if($key == 2)
+                    @if($key === 2)
                         <div class="col-md-12 mb-5">
                             <x-multi-step :settings="$settings"></x-multi-step>
                         </div>

@@ -151,11 +151,11 @@
                     <div class="dropdown-menu w-2" aria-labelledby="dropdownResale">
                         <div class="parent">
                             <a class="dropdown-item"
-                               href="{{route('properties' , ['country' =>'turkey' , 'type' =>'resale'])}}">
+                               href="{{route('properties' , ['country' =>'turkey' , 'category' =>'resale'])}}">
                                 {{__('Turkey')}}
                             </a>
                             <a class="dropdown-item"
-                               href="{{route('properties' , ['country' =>'algeria' , 'type' =>'resale'])}}">
+                               href="{{route('properties' , ['country' =>'algeria' , 'category' =>'resale'])}}">
                                 {{__('Algeria')}}
                             </a>
                         </div>
@@ -368,13 +368,13 @@
                 <div class="panel">
                     <p>
                         <a class="dropdown-item"
-                           href="{{route('properties' , ['country' =>'turkey' , 'type' =>'resale'])}}">
+                           href="{{route('properties' , ['country' =>'turkey' , 'category' =>'resale'])}}">
                             {{__('Turkey')}}
                         </a>
                     </p>
                     <p>
                         <a class="dropdown-item"
-                           href="{{route('properties' , ['country' =>'algeria' , 'type' =>'resale'])}}">
+                           href="{{route('properties' , ['country' =>'algeria' , 'category' =>'resale'])}}">
                             {{__('Algeria')}}
                         </a>
                     </p>
